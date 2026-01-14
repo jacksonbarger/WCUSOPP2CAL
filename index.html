@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="P2 Calendar">
+    <meta name="theme-color" content="#0F172A">
+    <link rel="icon" type="image/svg+xml" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="manifest" href="manifest.json">
     <title>WCU SOP P2 Calendar - Spring 2026</title>
     <style>
         * {
@@ -11,72 +18,166 @@
             box-sizing: border-box;
         }
 
+        /* Theme: Midnight Indigo (Dark - Default)
+           Navy-slate backgrounds with indigo/cyan accents
+           WCAG AAA: 15.8:1 contrast ratio */
         :root {
-            --color-primary: #6366F1;
-            --color-primary-light: #818CF8;
-            --color-primary-dark: #4F46E5;
+            --color-primary: #818CF8;
+            --color-primary-light: #A5B4FC;
+            --color-primary-dark: #6366F1;
             --color-accent: #22D3EE;
             --color-accent-light: #67E8F9;
             --color-background: #0F172A;
             --color-background-light: #1E293B;
             --color-background-card: #334155;
             --color-text-primary: #F8FAFC;
-            --color-text-secondary: #CBD5E1;
-            --color-text-muted: #64748B;
-            --color-border: rgba(99, 102, 241, 0.2);
-            --color-glow: rgba(34, 211, 238, 0.3);
-            --block-neuro1: #F472B6;
-            --block-neuro2: #A78BFA;
-            --block-psych: #38BDF8;
-            --block-derm: #FB923C;
-            --block-special: #4ADE80;
-            --block-exam: #F87171;
-            --block-lab: #2DD4BF;
+            --color-text-secondary: #E2E8F0;
+            --color-text-muted: #94A3B8;
+            --color-border: rgba(129, 140, 248, 0.25);
+            --color-glow: rgba(34, 211, 238, 0.35);
+            /* CVD-safe block colors for dark themes */
+            --block-neuro1: #F59E0B;
+            --block-neuro2: #60A5FA;
+            --block-psych: #3B82F6;
+            --block-derm: #FCD34D;
+            --block-special: #34D399;
+            --block-exam: #F97316;
+            --block-lab: #E879F9;
         }
 
-        [data-theme="blue"] {
-            --color-primary: #0EA5E9;
-            --color-primary-light: #38BDF8;
-            --color-primary-dark: #0284C7;
-            --color-accent: #7DD3FC;
-            --color-accent-light: #BAE6FD;
-            --color-background: #082F49;
-            --color-background-light: #0C4A6E;
-            --color-background-card: #0369A1;
+        /* Theme: Ocean Depths (Dark)
+           Teal/ocean with warm amber accents - Wong/Okabe-Ito inspired
+           WCAG AAA: 16.2:1 contrast ratio */
+        [data-theme="ocean"] {
+            --color-primary: #14B8A6;
+            --color-primary-light: #2DD4BF;
+            --color-primary-dark: #0D9488;
+            --color-accent: #F59E0B;
+            --color-accent-light: #FBBF24;
+            --color-background: #0C1929;
+            --color-background-light: #162033;
+            --color-background-card: #1E3A5F;
+            --color-text-primary: #F0F9FF;
             --color-text-secondary: #E0F2FE;
             --color-text-muted: #7DD3FC;
-            --color-border: rgba(14, 165, 233, 0.3);
-            --color-glow: rgba(125, 211, 252, 0.3);
+            --color-border: rgba(20, 184, 166, 0.3);
+            --color-glow: rgba(245, 158, 11, 0.35);
+            /* Wong/Okabe-Ito CVD-safe palette */
+            --block-neuro1: #E69F00;
+            --block-neuro2: #56B4E9;
+            --block-psych: #0072B2;
+            --block-derm: #F0E442;
+            --block-special: #009E73;
+            --block-exam: #D55E00;
+            --block-lab: #CC79A7;
         }
 
-        [data-theme="camo"] {
-            --color-primary: #84CC16;
-            --color-primary-light: #A3E635;
-            --color-primary-dark: #65A30D;
-            --color-accent: #BEF264;
-            --color-accent-light: #D9F99D;
-            --color-background: #1A2E05;
-            --color-background-light: #365314;
-            --color-background-card: #3F6212;
-            --color-text-secondary: #D9F99D;
-            --color-text-muted: #84CC16;
-            --color-border: rgba(132, 204, 22, 0.3);
-            --color-glow: rgba(190, 242, 100, 0.3);
+        /* Theme: Cream & Coffee (Light)
+           Warm cream backgrounds with violet primary, amber accents
+           WCAG AAA: 18.2:1 contrast ratio */
+        [data-theme="cream"] {
+            --color-primary: #7C3AED;
+            --color-primary-light: #8B5CF6;
+            --color-primary-dark: #6D28D9;
+            --color-accent: #D97706;
+            --color-accent-light: #F59E0B;
+            --color-background: #FFFBEB;
+            --color-background-light: #FEF3C7;
+            --color-background-card: #FFFFFF;
+            --color-text-primary: #1C1917;
+            --color-text-secondary: #44403C;
+            --color-text-muted: #78716C;
+            --color-border: rgba(124, 58, 237, 0.2);
+            --color-glow: rgba(217, 119, 6, 0.25);
+            /* Darker block colors for light backgrounds */
+            --block-neuro1: #D97706;
+            --block-neuro2: #2563EB;
+            --block-psych: #1D4ED8;
+            --block-derm: #CA8A04;
+            --block-special: #059669;
+            --block-exam: #EA580C;
+            --block-lab: #C026D3;
         }
 
-        [data-theme="pink"] {
+        /* Theme: Arctic Frost (Light)
+           Cool gray-blue backgrounds with blue/rose accents
+           WCAG AAA: 15.8:1 contrast ratio */
+        [data-theme="arctic"] {
+            --color-primary: #2563EB;
+            --color-primary-light: #3B82F6;
+            --color-primary-dark: #1D4ED8;
+            --color-accent: #E11D48;
+            --color-accent-light: #F43F5E;
+            --color-background: #F8FAFC;
+            --color-background-light: #F1F5F9;
+            --color-background-card: #FFFFFF;
+            --color-text-primary: #0F172A;
+            --color-text-secondary: #334155;
+            --color-text-muted: #64748B;
+            --color-border: rgba(37, 99, 235, 0.15);
+            --color-glow: rgba(225, 29, 72, 0.15);
+            /* Darker block colors for light backgrounds */
+            --block-neuro1: #D97706;
+            --block-neuro2: #2563EB;
+            --block-psych: #0284C7;
+            --block-derm: #CA8A04;
+            --block-special: #059669;
+            --block-exam: #EA580C;
+            --block-lab: #C026D3;
+        }
+
+        /* Theme: Rose Garden (Light)
+           Soft pink/rose backgrounds with magenta/coral accents
+           WCAG AAA: 16+ contrast ratio */
+        [data-theme="rose"] {
             --color-primary: #EC4899;
             --color-primary-light: #F472B6;
             --color-primary-dark: #DB2777;
-            --color-accent: #F9A8D4;
-            --color-accent-light: #FBCFE8;
-            --color-background: #2D0A1F;
-            --color-background-light: #4C0D33;
-            --color-background-card: #831843;
-            --color-text-secondary: #FBCFE8;
-            --color-text-muted: #F472B6;
-            --color-border: rgba(236, 72, 153, 0.3);
-            --color-glow: rgba(249, 168, 212, 0.3);
+            --color-accent: #F97316;
+            --color-accent-light: #FB923C;
+            --color-background: #FFF1F2;
+            --color-background-light: #FFE4E6;
+            --color-background-card: #FFFFFF;
+            --color-text-primary: #1C1917;
+            --color-text-secondary: #44403C;
+            --color-text-muted: #9D174D;
+            --color-border: rgba(236, 72, 153, 0.2);
+            --color-glow: rgba(249, 115, 22, 0.2);
+            /* Darker block colors for light backgrounds */
+            --block-neuro1: #D97706;
+            --block-neuro2: #2563EB;
+            --block-psych: #1D4ED8;
+            --block-derm: #CA8A04;
+            --block-special: #059669;
+            --block-exam: #EA580C;
+            --block-lab: #BE185D;
+        }
+
+        /* Theme: Lavender Dreams (Dark)
+           Deep purple/violet backgrounds with pink/lavender accents
+           WCAG AAA: 15+ contrast ratio */
+        [data-theme="lavender"] {
+            --color-primary: #C084FC;
+            --color-primary-light: #D8B4FE;
+            --color-primary-dark: #A855F7;
+            --color-accent: #F472B6;
+            --color-accent-light: #F9A8D4;
+            --color-background: #1E1033;
+            --color-background-light: #2D1B4E;
+            --color-background-card: #3D2663;
+            --color-text-primary: #FAF5FF;
+            --color-text-secondary: #E9D5FF;
+            --color-text-muted: #D8B4FE;
+            --color-border: rgba(192, 132, 252, 0.25);
+            --color-glow: rgba(244, 114, 182, 0.3);
+            /* CVD-safe block colors for dark themes */
+            --block-neuro1: #F59E0B;
+            --block-neuro2: #60A5FA;
+            --block-psych: #3B82F6;
+            --block-derm: #FCD34D;
+            --block-special: #34D399;
+            --block-exam: #F97316;
+            --block-lab: #F472B6;
         }
 
         html, body {
@@ -165,10 +266,12 @@
 
         .theme-dot-btn:hover { opacity: 1; transform: scale(1.1); }
         .theme-dot-btn.active { opacity: 1; transform: scale(1.15); box-shadow: 0 0 8px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.3); }
-        .theme-dot-btn.default { background: linear-gradient(135deg, #22D3EE, #6366F1); }
-        .theme-dot-btn.blue { background: linear-gradient(135deg, #7DD3FC, #0EA5E9); }
-        .theme-dot-btn.camo { background: linear-gradient(135deg, #BEF264, #84CC16); }
-        .theme-dot-btn.pink { background: linear-gradient(135deg, #F9A8D4, #EC4899); }
+        .theme-dot-btn.midnight { background: linear-gradient(135deg, #22D3EE, #818CF8); }
+        .theme-dot-btn.ocean { background: linear-gradient(135deg, #F59E0B, #14B8A6); }
+        .theme-dot-btn.cream { background: linear-gradient(135deg, #F59E0B, #7C3AED); }
+        .theme-dot-btn.arctic { background: linear-gradient(135deg, #F43F5E, #3B82F6); }
+        .theme-dot-btn.rose { background: linear-gradient(135deg, #EC4899, #F97316); }
+        .theme-dot-btn.lavender { background: linear-gradient(135deg, #C084FC, #F472B6); }
 
         /* Daily Quote */
         .daily-quote {
@@ -240,6 +343,46 @@
 
         .status-info strong { color: var(--color-accent); }
 
+        /* Final Countdown */
+        .countdown-container {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .final-countdown {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, var(--color-background-card), var(--color-background-light));
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .final-countdown .countdown-icon {
+            font-size: 1.2rem;
+        }
+
+        .final-countdown .countdown-text {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+        }
+
+        .final-countdown .countdown-days {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .final-countdown .countdown-label {
+            font-size: 0.65rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+
         /* Calendar Container */
         .calendar-container {
             flex: 1;
@@ -253,6 +396,7 @@
         .calendar-container::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
 
         /* Week & Block Headers */
+        .week-container { margin-bottom: 4px; }
         .week-header {
             background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
             padding: 8px 14px;
@@ -261,7 +405,20 @@
             font-size: 0.85rem;
             margin: 16px 0 8px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: opacity 0.2s;
         }
+        .week-header:hover { opacity: 0.9; }
+        .week-header:active { opacity: 0.8; }
+        .week-toggle { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .week-container.collapsed .week-toggle { transform: rotate(-90deg); }
+        .week-content { transition: all 0.3s ease; }
+        .week-container.collapsed .week-content { display: none; }
+        .week-container.collapsed .week-header { opacity: 0.7; margin-bottom: 0; }
 
         .block-header {
             background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
@@ -333,6 +490,7 @@
 
         .badge.today-badge { background: var(--color-accent); color: #0F172A; }
         .badge.exam-badge { background: var(--block-exam); color: #fff; }
+        .badge.money-badge { background: linear-gradient(135deg, #15803D, #22C55E); color: #FEF9C3; }
 
         .classes-list { padding: 6px; }
 
@@ -431,6 +589,14 @@
         .class-status.completed { background: rgba(74, 222, 128, 0.15); color: #86EFAC; }
         .class-status.in-progress { background: rgba(74, 222, 128, 0.25); color: #BBF7D0; }
         .class-status.upcoming { background: rgba(255,255,255,0.08); color: var(--color-text-secondary); }
+
+        /* Light theme overrides for status badges */
+        [data-theme="cream"] .class-status.completed { background: rgba(5, 150, 105, 0.15); color: #047857; }
+        [data-theme="cream"] .class-status.in-progress { background: rgba(5, 150, 105, 0.2); color: #047857; }
+        [data-theme="cream"] .class-status.upcoming { background: rgba(0,0,0,0.06); }
+        [data-theme="arctic"] .class-status.completed { background: rgba(5, 150, 105, 0.15); color: #047857; }
+        [data-theme="arctic"] .class-status.in-progress { background: rgba(5, 150, 105, 0.2); color: #047857; }
+        [data-theme="arctic"] .class-status.upcoming { background: rgba(0,0,0,0.06); }
 
         .expand-icon {
             font-size: 0.75rem;
@@ -573,6 +739,27 @@
             font-weight: 600;
         }
 
+        .event-banner {
+            background: linear-gradient(135deg, #15803D 0%, #22C55E 50%, #15803D 100%);
+            background-size: 200% 200%;
+            animation: moneyShine 2s ease infinite;
+            color: #FEF9C3;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.4);
+        }
+
+        @keyframes moneyShine {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         /* Bottom Navigation */
         .bottom-nav {
             position: fixed;
@@ -599,6 +786,7 @@
             cursor: pointer;
             border-radius: 10px;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .nav-btn:hover { background: rgba(255,255,255,0.05); color: var(--color-text-primary); }
@@ -703,30 +891,369 @@
         .overview-topic.exam { background: rgba(248, 113, 113, 0.3); color: #FCA5A5; }
         .overview-topic.holiday { background: rgba(34, 211, 238, 0.2); color: var(--color-accent); }
 
-        /* Current indicator */
-        .current-indicator { position: relative; }
-
-        .current-indicator::before {
-            content: '► NOW';
-            position: absolute;
-            left: -6px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--block-special);
-            color: #fff;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.5rem;
-            font-weight: 700;
+        /* Exams Modal */
+        .exams-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 200;
+            overflow-y: auto;
+            padding: 20px;
         }
+
+        .exams-modal.active { display: block; }
+
+        .exams-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: var(--color-background);
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        .exams-header h2 {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+
+        .close-exams {
+            background: var(--color-primary);
+            border: none;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .exams-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .exam-section {
+            background: var(--color-background-card);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid var(--color-border);
+        }
+
+        .exam-section-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-primary-light);
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .exam-section-title .icon {
+            font-size: 1.1rem;
+        }
+
+        .exam-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .exam-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: var(--color-background-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--block-exam);
+            transition: all 0.2s;
+        }
+
+        .exam-item:hover {
+            transform: translateX(4px);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .exam-item.quiz {
+            border-left-color: var(--block-lab);
+        }
+
+        .exam-item.completed {
+            opacity: 0.5;
+        }
+
+        .exam-item.today {
+            border-left-color: var(--color-accent);
+            box-shadow: 0 0 12px var(--color-glow);
+        }
+
+        .exam-date {
+            min-width: 100px;
+            text-align: center;
+            padding-right: 12px;
+            border-right: 1px solid var(--color-border);
+            margin-right: 12px;
+        }
+
+        .exam-date .day {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+        }
+
+        .exam-date .date {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .exam-date .countdown {
+            font-size: 0.65rem;
+            color: var(--color-accent);
+            margin-top: 2px;
+        }
+
+        .exam-info {
+            flex: 1;
+        }
+
+        .exam-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--color-text-primary);
+            margin-bottom: 2px;
+        }
+
+        .exam-details {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+
+        .exam-type-badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .exam-type-badge.pda { background: rgba(249, 115, 22, 0.2); color: #FB923C; }
+        .exam-type-badge.ther { background: rgba(59, 130, 246, 0.2); color: #60A5FA; }
+        .exam-type-badge.pcl { background: rgba(168, 85, 247, 0.2); color: #C084FC; }
+        .exam-type-badge.final { background: rgba(239, 68, 68, 0.2); color: #F87171; }
+        .exam-type-badge.quiz { background: rgba(232, 121, 249, 0.2); color: #E879F9; }
+
+        .exam-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card {
+            background: var(--color-background-light);
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid var(--color-border);
+        }
+
+        .stat-card .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .stat-card .label {
+            font-size: 0.65rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        /* Current indicator - green background applied via .class-item.current */
 
         @media (max-width: 500px) {
             .header { padding: 10px 12px 16px; }
             .title-section h1 { font-size: 1.1rem; }
-            .calendar-container { padding-top: 175px; }
+            .calendar-container { padding-top: 200px; }
             .class-main { padding: 8px 10px; }
             .class-time { min-width: 75px; }
             .class-status { display: none; }
+            /* Mobile countdown optimizations */
+            .countdown-container { flex-direction: column; gap: 6px; }
+            .final-countdown { padding: 8px 10px; gap: 6px; }
+            .final-countdown .countdown-text { font-size: 0.7rem; }
+            .final-countdown .countdown-days { font-size: 1rem; }
+            .final-countdown .countdown-label { font-size: 0.65rem; }
+            /* Larger theme dots for touch */
+            .theme-dot-btn { width: 22px; height: 22px; }
+            .theme-toggle { gap: 8px; padding: 5px 8px; }
+        }
+
+        /* iPad and tablet optimizations */
+        @media (min-width: 501px) and (max-width: 1024px) {
+            .header { padding: 12px 20px 20px; }
+            .calendar-container { padding: 180px 12px 80px; }
+            .class-item { margin-bottom: 8px; }
+        }
+
+        /* Tutorial Modal */
+        .tutorial-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 300;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .tutorial-modal.active { display: flex; }
+
+        .tutorial-content {
+            background: var(--color-background-card);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 380px;
+            width: 100%;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .tutorial-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .tutorial-header .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .tutorial-header h2 {
+            font-size: 1.3rem;
+            color: var(--color-text-primary);
+            margin-bottom: 6px;
+        }
+
+        .tutorial-header p {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .tutorial-steps {
+            margin-bottom: 20px;
+        }
+
+        .tutorial-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: var(--color-background-light);
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tutorial-step:last-child { margin-bottom: 0; }
+
+        .step-number {
+            width: 28px;
+            height: 28px;
+            min-width: 28px;
+            background: var(--color-primary);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            display: block;
+            color: var(--color-text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .step-content span {
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .tutorial-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tutorial-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--color-background-light);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .tutorial-checkbox input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--color-primary);
+        }
+
+        .tutorial-checkbox span {
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+
+        .tutorial-close-btn {
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tutorial-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--color-glow);
+        }
+
+        .platform-note {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--color-border);
         }
     </style>
 </head>
@@ -743,10 +1270,12 @@
                     <div class="date" id="live-date">---</div>
                 </div>
                 <div class="theme-toggle">
-                    <button class="theme-dot-btn default active" data-theme="default" onclick="setTheme('default')"></button>
-                    <button class="theme-dot-btn blue" data-theme="blue" onclick="setTheme('blue')"></button>
-                    <button class="theme-dot-btn camo" data-theme="camo" onclick="setTheme('camo')"></button>
-                    <button class="theme-dot-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                    <button class="theme-dot-btn midnight active" data-theme="midnight" onclick="setTheme('midnight')" title="Midnight Indigo (Dark)"></button>
+                    <button class="theme-dot-btn ocean" data-theme="ocean" onclick="setTheme('ocean')" title="Ocean Depths (Dark)"></button>
+                    <button class="theme-dot-btn cream" data-theme="cream" onclick="setTheme('cream')" title="Cream & Coffee (Light)"></button>
+                    <button class="theme-dot-btn arctic" data-theme="arctic" onclick="setTheme('arctic')" title="Arctic Frost (Light)"></button>
+                    <button class="theme-dot-btn rose" data-theme="rose" onclick="setTheme('rose')" title="Rose Garden (Light)"></button>
+                    <button class="theme-dot-btn lavender" data-theme="lavender" onclick="setTheme('lavender')" title="Lavender Dreams (Dark)"></button>
                 </div>
             </div>
         </div>
@@ -757,6 +1286,20 @@
         <div class="status-bar" id="status-bar">
             <span class="status-badge upcoming" id="status-badge">Loading</span>
             <span class="status-info" id="status-info">...</span>
+        </div>
+        <div class="countdown-container">
+            <div class="final-countdown" id="next-final-countdown">
+                <span class="countdown-icon">📝</span>
+                <span class="countdown-text">Next Exam in</span>
+                <span class="countdown-days" id="next-final-days">--</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="final-countdown" id="final-countdown">
+                <span class="countdown-icon">🎓</span>
+                <span class="countdown-text">Last Final in</span>
+                <span class="countdown-days" id="final-days">--</span>
+                <span class="countdown-label">Days</span>
+            </div>
         </div>
     </div>
 
@@ -769,6 +1312,14 @@
             <span class="icon">⏱</span>
             <span class="label">Now</span>
         </button>
+        <button class="nav-btn" onclick="showExams()">
+            <span class="icon">📝</span>
+            <span class="label">Exams</span>
+        </button>
+        <a class="nav-btn" href="https://therapeutics-4u.vercel.app/" target="_blank">
+            <span class="icon">🎮</span>
+            <span class="label">Game</span>
+        </a>
         <button class="nav-btn" onclick="showOverview()">
             <span class="icon">📅</span>
             <span class="label">Overview</span>
@@ -788,11 +1339,115 @@
         <div class="overview-grid" id="overview-grid"></div>
     </div>
 
+    <!-- Exams Modal -->
+    <div class="exams-modal" id="exams-modal">
+        <div class="exams-header">
+            <h2>📝 Exams & Quizzes</h2>
+            <button class="close-exams" onclick="hideExams()">Close</button>
+        </div>
+        <div class="exams-content" id="exams-content"></div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div class="tutorial-modal" id="tutorial-modal">
+        <div class="tutorial-content">
+            <div class="tutorial-header">
+                <div class="icon">📲</div>
+                <h2>Add to Home Screen</h2>
+                <p>Get quick access to your calendar like an app!</p>
+            </div>
+            <div class="tutorial-steps" id="tutorial-steps">
+                <!-- Steps will be populated by JavaScript based on platform -->
+            </div>
+            <div class="tutorial-footer">
+                <label class="tutorial-checkbox">
+                    <input type="checkbox" id="tutorial-dont-show">
+                    <span>Don't show this again</span>
+                </label>
+                <button class="tutorial-close-btn" onclick="closeTutorial()">Got it!</button>
+            </div>
+            <div class="platform-note" id="platform-note"></div>
+        </div>
+    </div>
+
     <script>
         // Get current time in Central Time (Mississippi)
         function getCentralTime() {
             return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }));
         }
+
+        // Tutorial Modal - Add to Home Screen
+        function detectPlatform() {
+            const ua = navigator.userAgent;
+            if (/iPad|iPhone|iPod/.test(ua)) return 'ios';
+            if (/Android/.test(ua)) return 'android';
+            return 'desktop';
+        }
+
+        function showTutorial() {
+            const platform = detectPlatform();
+            const stepsContainer = document.getElementById('tutorial-steps');
+            const platformNote = document.getElementById('platform-note');
+
+            // Always show iOS instructions since this is for pharmacy students mostly on iPhones/iPads
+            const steps = `
+                <div class="tutorial-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <strong>Tap the Share button <span style="font-size:1.2em">⬆</span></strong>
+                        <span>Look for the square with an arrow at the bottom of Safari</span>
+                    </div>
+                </div>
+                <div class="tutorial-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <strong>Tap "Add to Home Screen" <span style="font-size:1.2em">➕</span></strong>
+                        <span>Scroll down in the share menu to find it</span>
+                    </div>
+                </div>
+                <div class="tutorial-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <strong>Tap "Add" in the top right corner</strong>
+                        <span>The calendar app icon will appear on your home screen!</span>
+                    </div>
+                </div>
+            `;
+
+            if (platform === 'ios') {
+                platformNote.innerHTML = '📱 <strong>You\'re on iPhone/iPad!</strong> Use Safari for best results.';
+            } else if (platform === 'android') {
+                platformNote.innerHTML = '📱 On Android? Tap ⋮ menu → "Add to Home screen"';
+            } else {
+                platformNote.innerHTML = '💡 <strong>Pro tip:</strong> Open this on your iPhone for the best experience!';
+            }
+
+            stepsContainer.innerHTML = steps;
+            document.getElementById('tutorial-modal').classList.add('active');
+        }
+
+        function closeTutorial() {
+            const dontShowAgain = document.getElementById('tutorial-dont-show').checked;
+            if (dontShowAgain) {
+                localStorage.setItem('hideTutorial', 'true');
+            }
+            document.getElementById('tutorial-modal').classList.remove('active');
+        }
+
+        function checkShowTutorial() {
+            const hideTutorial = localStorage.getItem('hideTutorial');
+            // Check if running as installed PWA (standalone mode)
+            const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+                                 window.navigator.standalone === true;
+
+            if (!hideTutorial && !isStandalone) {
+                // Small delay to let page render first
+                setTimeout(showTutorial, 500);
+            }
+        }
+
+        // Show tutorial on load
+        document.addEventListener('DOMContentLoaded', checkShowTutorial);
 
         // Biblical Quotes for Pharmacy Students
         const dailyQuotes = [
@@ -837,12 +1492,16 @@
 
         // Theme
         function setTheme(theme) {
-            if (theme === 'default') document.documentElement.removeAttribute('data-theme');
+            // Midnight is the default (no data-theme attribute needed)
+            if (theme === 'midnight') document.documentElement.removeAttribute('data-theme');
             else document.documentElement.setAttribute('data-theme', theme);
             localStorage.setItem('calendarTheme', theme);
             document.querySelectorAll('.theme-dot-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
         }
-        setTheme(localStorage.getItem('calendarTheme') || 'default');
+        // Migrate old theme names to new ones
+        const savedTheme = localStorage.getItem('calendarTheme');
+        const themeMap = { 'default': 'midnight', 'blue': 'ocean', 'camo': 'cream', 'pink': 'arctic' };
+        setTheme(themeMap[savedTheme] || savedTheme || 'midnight');
 
         // Schedule Data
         const schedule = [
@@ -877,17 +1536,17 @@
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Epilepsy/Status Epilepticus", block: "neuro1" },
                 { time: "13:15", end: "14:45", instructor: "Reed", topic: "Epilepsy/Refractory Epilepsy", details: "The Road to Status Epilepticus", block: "neuro1" }
             ]},
-            { week: 2, date: "2026-01-21", classes: [
+            { week: 2, date: "2026-01-21", event: "💵 LOANS SHOULD BE HITTIN 💵", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" },
                 { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" },
                 { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" }
             ]},
-            { week: 2, date: "2026-01-22", classes: [
+            { week: 2, date: "2026-01-22", event: "💵 LOANS SHOULD BE HITTIN 💵", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Complications of Antiepileptics", details: "DRESS, TENS, SJS | PT Quiz 1", block: "neuro1" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Lab", block: "lab" },
                 { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
             ]},
-            { week: 2, date: "2026-01-23", block: "Block 2: Neurology Part 2", classes: [
+            { week: 2, date: "2026-01-23", event: "💵 LOANS SHOULD BE HITTIN 💵", block: "Block 2: Neurology Part 2", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 1", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "Burmeister", topic: "Pathophysiology: Somatosensory and Pain", block: "neuro2" },
                 { time: "13:15", end: "14:45", instructor: "Burmeister", topic: "Pathophysiology: Somatosensory and Pain", block: "neuro2" }
@@ -1163,19 +1822,28 @@
         function generateCalendar() {
             const cal = document.getElementById('calendar'), now = getCentralTime(), today = getDateString(now);
             let html = '', cw = 0, cb = '';
+            const collapsedWeeks = JSON.parse(localStorage.getItem('collapsedWeeks') || '[]');
 
             for (const day of schedule) {
-                if (day.week !== cw) { cw = day.week; html += `<div class="week-header">Week ${cw}</div>`; }
+                if (day.week !== cw) {
+                    if (cw > 0) html += '</div></div>'; // Close previous week-content and week-container
+                    cw = day.week;
+                    const isCollapsed = collapsedWeeks.includes(cw);
+                    html += `<div class="week-container${isCollapsed ? ' collapsed' : ''}" data-week="${cw}">`;
+                    html += `<div class="week-header" onclick="toggleWeek(${cw})"><span>Week ${cw}</span><span class="week-toggle">▼</span></div>`;
+                    html += '<div class="week-content">';
+                }
                 if (day.block && day.block !== cb) { cb = day.block; html += `<div class="block-header">${cb}</div>`; }
 
-                const ds = day.date, isToday = ds === today, isPast = new Date(ds + 'T23:59:59') < now, isHoliday = !!day.holiday, hasExam = day.classes?.some(c => c.block === 'exam');
+                const ds = day.date, isToday = ds === today, isPast = new Date(ds + 'T23:59:59') < now, isHoliday = !!day.holiday, hasExam = day.classes?.some(c => c.block === 'exam'), hasEvent = !!day.event;
                 let cardClass = 'day-card'; if (isToday) cardClass += ' today'; if (isPast && !isToday) cardClass += ' past';
 
-                html += `<div class="${cardClass}" id="day-${ds}"><div class="day-header"><span class="day-name">${getDayName(ds)}, ${formatDate(ds)}</span><span class="badges">${isToday ? '<span class="badge today-badge">TODAY</span>' : ''}${hasExam ? '<span class="badge exam-badge">EXAM</span>' : ''}</span></div>`;
+                html += `<div class="${cardClass}" id="day-${ds}"><div class="day-header"><span class="day-name">${getDayName(ds)}, ${formatDate(ds)}</span><span class="badges">${isToday ? '<span class="badge today-badge">TODAY</span>' : ''}${hasExam ? '<span class="badge exam-badge">EXAM</span>' : ''}${hasEvent ? '<span class="badge money-badge">💰</span>' : ''}</span></div>`;
 
                 if (isHoliday) {
                     html += `<div class="holiday-notice">🎉 ${day.holiday}</div>`;
                 } else if (day.classes?.length) {
+                    if (day.event) html += `<div class="event-banner">${day.event}</div>`;
                     html += '<div class="classes-list">';
                     day.classes.forEach((cl, idx) => {
                         const st = parseTime(ds, cl.time), et = parseTime(ds, cl.end);
@@ -1198,7 +1866,22 @@
                 }
                 html += '</div>';
             }
+            if (cw > 0) html += '</div></div>'; // Close last week-content and week-container
             cal.innerHTML = html;
+        }
+
+        function toggleWeek(weekNum) {
+            const container = document.querySelector(`.week-container[data-week="${weekNum}"]`);
+            if (!container) return;
+            container.classList.toggle('collapsed');
+            // Save state to localStorage
+            let collapsed = JSON.parse(localStorage.getItem('collapsedWeeks') || '[]');
+            if (container.classList.contains('collapsed')) {
+                if (!collapsed.includes(weekNum)) collapsed.push(weekNum);
+            } else {
+                collapsed = collapsed.filter(w => w !== weekNum);
+            }
+            localStorage.setItem('collapsedWeeks', JSON.stringify(collapsed));
         }
 
         function toggleClass(ds, i) { document.getElementById(`class-${ds}-${i}`)?.classList.toggle('expanded'); }
@@ -1235,6 +1918,57 @@
             const now = getCentralTime();
             document.getElementById('live-time').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + ' CT';
             document.getElementById('live-date').textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+        }
+
+        function updateFinalCountdown() {
+            const now = getCentralTime();
+            const todayStr = getDateString(now);
+
+            // Find all exams from the schedule
+            const exams = [];
+            schedule.forEach(day => {
+                if (day.classes) {
+                    day.classes.forEach(cl => {
+                        if (cl.block === 'exam') {
+                            exams.push({ date: day.date, topic: cl.topic });
+                        }
+                    });
+                }
+            });
+
+            // Sort exams by date
+            exams.sort((a, b) => a.date.localeCompare(b.date));
+
+            // Find the next upcoming exam
+            const upcomingExams = exams.filter(e => e.date >= todayStr);
+            const nextExam = upcomingExams[0];
+
+            // Last final is Patient Care Lab Final Exam on March 26, 2026
+            const lastFinal = new Date('2026-03-26T12:00:00');
+            const lastDiff = lastFinal - now;
+
+            // Update Next Final countdown
+            const nextCountdown = document.getElementById('next-final-countdown');
+            if (nextExam) {
+                const nextDate = new Date(nextExam.date + 'T12:00:00');
+                const nextDiff = nextDate - now;
+                const nextDays = Math.ceil(nextDiff / (1000 * 60 * 60 * 24));
+                document.getElementById('next-final-days').textContent = nextDays;
+                nextCountdown.querySelector('.countdown-label').textContent = nextDays === 1 ? 'Day' : 'Days';
+            } else {
+                nextCountdown.innerHTML = '<span class="countdown-icon">✅</span><span class="countdown-text">All Exams Done!</span>';
+            }
+
+            // Update Last Final countdown
+            const lastCountdown = document.getElementById('final-countdown');
+            if (lastDiff <= 0) {
+                lastCountdown.innerHTML = '<span class="countdown-icon">🎉</span><span class="countdown-text">Finals Complete!</span>';
+                return;
+            }
+
+            const lastDays = Math.ceil(lastDiff / (1000 * 60 * 60 * 24));
+            document.getElementById('final-days').textContent = lastDays;
+            lastCountdown.querySelector('.countdown-label').textContent = lastDays === 1 ? 'Day' : 'Days';
         }
 
         function scrollToNow() {
@@ -1300,11 +2034,184 @@
             document.getElementById('overview-grid').innerHTML = html;
         }
 
+        // Exams Functions
+        function showExams() {
+            generateExams();
+            document.getElementById('exams-modal').classList.add('active');
+        }
+
+        function hideExams() {
+            document.getElementById('exams-modal').classList.remove('active');
+        }
+
+        function getExamType(topic) {
+            const t = topic.toLowerCase();
+            if (t.includes('final')) return { type: 'final', label: 'Final', badge: 'final' };
+            if (t.includes('principles of drug action') || t.includes('pda')) return { type: 'pda', label: 'PDA', badge: 'pda' };
+            if (t.includes('therapeutics')) return { type: 'ther', label: 'Therapeutics', badge: 'ther' };
+            if (t.includes('patient care lab') || t.includes('pcl')) return { type: 'pcl', label: 'PCL', badge: 'pcl' };
+            return { type: 'exam', label: 'Exam', badge: 'pda' };
+        }
+
+        function generateExams() {
+            const now = getCentralTime(), today = getDateString(now);
+            const exams = [], quizzes = [];
+
+            // Extract all exams and quizzes from schedule
+            schedule.forEach(day => {
+                if (!day.classes) return;
+                day.classes.forEach(cl => {
+                    // Check for exams
+                    if (cl.block === 'exam') {
+                        exams.push({
+                            date: day.date,
+                            topic: cl.topic,
+                            time: cl.time,
+                            end: cl.end,
+                            examType: getExamType(cl.topic)
+                        });
+                    }
+                    // Check for quizzes in details
+                    if (cl.details && cl.details.toLowerCase().includes('quiz')) {
+                        const quizMatch = cl.details.match(/PT Quiz (\d+)/i);
+                        quizzes.push({
+                            date: day.date,
+                            topic: quizMatch ? `PT Quiz ${quizMatch[1]}` : 'Quiz',
+                            relatedTopic: cl.topic,
+                            time: cl.time,
+                            end: cl.end
+                        });
+                    }
+                });
+            });
+
+            // Calculate stats
+            const totalExams = exams.length;
+            const completedExams = exams.filter(e => new Date(e.date + 'T23:59:59') < now).length;
+            const upcomingExams = totalExams - completedExams;
+            const nextExam = exams.find(e => new Date(e.date + 'T00:00:00') >= now);
+
+            let html = '';
+
+            // Stats section
+            html += '<div class="exam-stats">';
+            html += `<div class="stat-card"><div class="number">${upcomingExams}</div><div class="label">Upcoming Exams</div></div>`;
+            html += `<div class="stat-card"><div class="number">${completedExams}</div><div class="label">Completed</div></div>`;
+            html += `<div class="stat-card"><div class="number">${quizzes.length}</div><div class="label">PT Quizzes</div></div>`;
+            if (nextExam) {
+                const daysUntil = Math.ceil((new Date(nextExam.date + 'T00:00:00') - now) / (1000 * 60 * 60 * 24));
+                html += `<div class="stat-card"><div class="number">${daysUntil > 0 ? daysUntil : 'Today!'}</div><div class="label">${daysUntil > 0 ? 'Days to Next Exam' : 'Exam Day'}</div></div>`;
+            }
+            html += '</div>';
+
+            // Upcoming Exams Section
+            const upcomingExamsList = exams.filter(e => new Date(e.date + 'T23:59:59') >= now);
+            if (upcomingExamsList.length > 0) {
+                html += '<div class="exam-section">';
+                html += '<div class="exam-section-title"><span class="icon">🔴</span> Upcoming Exams</div>';
+                html += '<div class="exam-list">';
+                upcomingExamsList.forEach(exam => {
+                    const isToday = exam.date === today;
+                    const daysUntil = Math.ceil((new Date(exam.date + 'T00:00:00') - now) / (1000 * 60 * 60 * 24));
+                    const countdown = isToday ? 'TODAY' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil} days`;
+                    html += `<div class="exam-item ${isToday ? 'today' : ''}">
+                        <div class="exam-date">
+                            <div class="day">${dayNames[new Date(exam.date + 'T00:00:00').getDay()]}</div>
+                            <div class="date">${formatDate(exam.date)}</div>
+                            <div class="countdown">${countdown}</div>
+                        </div>
+                        <div class="exam-info">
+                            <div class="exam-name">${exam.topic}</div>
+                            <div class="exam-details">${formatTime12(exam.time)} - ${formatTime12(exam.end)}</div>
+                        </div>
+                        <span class="exam-type-badge ${exam.examType.badge}">${exam.examType.label}</span>
+                    </div>`;
+                });
+                html += '</div></div>';
+            }
+
+            // PT Quizzes Section
+            const upcomingQuizzes = quizzes.filter(q => new Date(q.date + 'T23:59:59') >= now);
+            const completedQuizzes = quizzes.filter(q => new Date(q.date + 'T23:59:59') < now);
+
+            if (upcomingQuizzes.length > 0) {
+                html += '<div class="exam-section">';
+                html += '<div class="exam-section-title"><span class="icon">📋</span> Upcoming PT Quizzes</div>';
+                html += '<div class="exam-list">';
+                upcomingQuizzes.forEach(quiz => {
+                    const isToday = quiz.date === today;
+                    const daysUntil = Math.ceil((new Date(quiz.date + 'T00:00:00') - now) / (1000 * 60 * 60 * 24));
+                    const countdown = isToday ? 'TODAY' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil} days`;
+                    html += `<div class="exam-item quiz ${isToday ? 'today' : ''}">
+                        <div class="exam-date">
+                            <div class="day">${dayNames[new Date(quiz.date + 'T00:00:00').getDay()]}</div>
+                            <div class="date">${formatDate(quiz.date)}</div>
+                            <div class="countdown">${countdown}</div>
+                        </div>
+                        <div class="exam-info">
+                            <div class="exam-name">${quiz.topic}</div>
+                            <div class="exam-details">During: ${quiz.relatedTopic}</div>
+                        </div>
+                        <span class="exam-type-badge quiz">Quiz</span>
+                    </div>`;
+                });
+                html += '</div></div>';
+            }
+
+            // Completed Exams Section
+            const completedExamsList = exams.filter(e => new Date(e.date + 'T23:59:59') < now);
+            if (completedExamsList.length > 0) {
+                html += '<div class="exam-section">';
+                html += '<div class="exam-section-title"><span class="icon">✅</span> Completed Exams</div>';
+                html += '<div class="exam-list">';
+                completedExamsList.forEach(exam => {
+                    html += `<div class="exam-item completed">
+                        <div class="exam-date">
+                            <div class="day">${dayNames[new Date(exam.date + 'T00:00:00').getDay()]}</div>
+                            <div class="date">${formatDate(exam.date)}</div>
+                            <div class="countdown">Done</div>
+                        </div>
+                        <div class="exam-info">
+                            <div class="exam-name">${exam.topic}</div>
+                            <div class="exam-details">${formatTime12(exam.time)} - ${formatTime12(exam.end)}</div>
+                        </div>
+                        <span class="exam-type-badge ${exam.examType.badge}">${exam.examType.label}</span>
+                    </div>`;
+                });
+                html += '</div></div>';
+            }
+
+            // Completed Quizzes Section
+            if (completedQuizzes.length > 0) {
+                html += '<div class="exam-section">';
+                html += '<div class="exam-section-title"><span class="icon">✅</span> Completed PT Quizzes</div>';
+                html += '<div class="exam-list">';
+                completedQuizzes.forEach(quiz => {
+                    html += `<div class="exam-item quiz completed">
+                        <div class="exam-date">
+                            <div class="day">${dayNames[new Date(quiz.date + 'T00:00:00').getDay()]}</div>
+                            <div class="date">${formatDate(quiz.date)}</div>
+                            <div class="countdown">Done</div>
+                        </div>
+                        <div class="exam-info">
+                            <div class="exam-name">${quiz.topic}</div>
+                            <div class="exam-details">Topic: ${quiz.relatedTopic}</div>
+                        </div>
+                        <span class="exam-type-badge quiz">Quiz</span>
+                    </div>`;
+                });
+                html += '</div></div>';
+            }
+
+            document.getElementById('exams-content').innerHTML = html;
+        }
+
         function init() {
             getDailyQuote();
             generateCalendar();
             updateStatus();
             updateClock();
+            updateFinalCountdown();
             setTimeout(scrollToNow, 300);
         }
 

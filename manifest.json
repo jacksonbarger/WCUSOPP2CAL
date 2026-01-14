@@ -1,0 +1,17 @@
+{
+  "name": "WCU P2 Calendar",
+  "short_name": "P2 Calendar",
+  "description": "Drug Action & Therapeutics Calendar for P2 Spring 2026",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
