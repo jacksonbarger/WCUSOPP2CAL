@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Calendar</title>
+    <title>WCU SOP P2 Calendar - Spring 2025</title>
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -32,12 +32,18 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
             background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+
+        header .subtitle {
+            color: #a0a0a0;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
 
         .current-time {
@@ -53,9 +59,9 @@
         .legend {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding: 15px;
             background: rgba(255,255,255,0.05);
             border-radius: 12px;
@@ -65,12 +71,12 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .legend-color {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 4px;
         }
 
@@ -124,40 +130,29 @@
             color: #667eea;
         }
 
-        .week-nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .week-nav button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.1);
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .week-nav button:hover {
-            background: rgba(102, 126, 234, 0.3);
-        }
-
-        .week-nav button.active {
-            background: linear-gradient(90deg, #667eea, #764ba2);
-        }
-
-        .week-nav button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
         .calendar {
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+
+        .week-header {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .block-header {
+            background: linear-gradient(90deg, rgba(233, 30, 99, 0.3), rgba(156, 39, 176, 0.3));
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            margin: 15px 0 5px 0;
         }
 
         .day-section {
@@ -174,6 +169,14 @@
 
         .day-section.past {
             opacity: 0.6;
+        }
+
+        .day-section.holiday {
+            border-left: 4px solid #ff9800;
+        }
+
+        .day-section.exam-day {
+            border-left: 4px solid #f44336;
         }
 
         .day-header {
@@ -198,6 +201,10 @@
             font-weight: 600;
         }
 
+        .day-header .exam-badge {
+            background: linear-gradient(90deg, #f44336, #d32f2f);
+        }
+
         .classes-list {
             padding: 10px;
         }
@@ -218,7 +225,7 @@
         .class-main {
             display: flex;
             align-items: center;
-            padding: 15px;
+            padding: 12px 15px;
             cursor: pointer;
         }
 
@@ -236,14 +243,9 @@
             50% { box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.2); }
         }
 
-        .class-item.upcoming-next {
-            background: rgba(102, 126, 234, 0.15);
-            border-width: 4px;
-        }
-
         .class-time {
-            min-width: 140px;
-            font-size: 0.95rem;
+            min-width: 130px;
+            font-size: 0.9rem;
             color: #a0a0a0;
         }
 
@@ -264,19 +266,19 @@
 
         .class-name {
             font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 4px;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
         }
 
         .class-details {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #a0a0a0;
         }
 
         .class-status {
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 15px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
         }
 
@@ -297,8 +299,8 @@
         }
 
         .expand-icon {
-            margin-left: 15px;
-            font-size: 1.2rem;
+            margin-left: 10px;
+            font-size: 1rem;
             transition: transform 0.3s;
             color: #667eea;
         }
@@ -328,16 +330,16 @@
 
         .materials-header h4 {
             color: #667eea;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .add-material-btn {
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: none;
             border-radius: 6px;
             background: linear-gradient(90deg, #667eea, #764ba2);
             color: #fff;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -348,18 +350,18 @@
 
         .material-categories {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .category-tab {
-            padding: 6px 14px;
+            padding: 5px 10px;
             border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
+            border-radius: 15px;
             background: transparent;
             color: #a0a0a0;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -377,25 +379,25 @@
 
         .category-tab .count {
             background: rgba(255,255,255,0.2);
-            padding: 2px 6px;
-            border-radius: 10px;
-            margin-left: 5px;
-            font-size: 0.7rem;
+            padding: 1px 5px;
+            border-radius: 8px;
+            margin-left: 4px;
+            font-size: 0.65rem;
         }
 
         .materials-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 300px;
+            gap: 8px;
+            max-height: 250px;
             overflow-y: auto;
         }
 
         .material-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 10px;
+            padding: 10px;
             background: rgba(255,255,255,0.05);
             border-radius: 8px;
             transition: all 0.3s;
@@ -406,13 +408,13 @@
         }
 
         .material-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
         .material-icon.game { background: rgba(76, 175, 80, 0.2); }
@@ -428,28 +430,29 @@
 
         .material-name {
             font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
         }
 
         .material-meta {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #a0a0a0;
         }
 
         .material-actions {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .material-actions button {
-            padding: 6px 10px;
+            padding: 5px 8px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             background: rgba(255,255,255,0.1);
             color: #fff;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.8rem;
         }
 
         .material-actions button:hover {
@@ -462,28 +465,33 @@
 
         .no-materials {
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             color: #666;
             font-style: italic;
+            font-size: 0.85rem;
         }
 
-        /* Color coding for different courses */
-        .class-item[data-course="math"] { border-color: #e91e63; }
-        .class-item[data-course="science"] { border-color: #2196f3; }
-        .class-item[data-course="english"] { border-color: #ff9800; }
-        .class-item[data-course="history"] { border-color: #9c27b0; }
-        .class-item[data-course="programming"] { border-color: #4caf50; }
-        .class-item[data-course="art"] { border-color: #00bcd4; }
-        .class-item[data-course="physics"] { border-color: #ff5722; }
-        .class-item[data-course="chemistry"] { border-color: #795548; }
-        .class-item[data-course="biology"] { border-color: #8bc34a; }
-        .class-item[data-course="economics"] { border-color: #ffc107; }
+        /* Color coding for blocks */
+        .class-item[data-block="neuro1"] { border-color: #e91e63; }
+        .class-item[data-block="neuro2"] { border-color: #9c27b0; }
+        .class-item[data-block="psych"] { border-color: #2196f3; }
+        .class-item[data-block="derm"] { border-color: #ff9800; }
+        .class-item[data-block="special"] { border-color: #4caf50; }
+        .class-item[data-block="exam"] { border-color: #f44336; }
+        .class-item[data-block="lab"] { border-color: #00bcd4; }
 
         .no-classes {
             text-align: center;
             padding: 30px;
-            color: #666;
+            color: #888;
             font-style: italic;
+        }
+
+        .holiday-notice {
+            text-align: center;
+            padding: 25px;
+            color: #ff9800;
+            font-size: 1.1rem;
         }
 
         .scroll-to-today {
@@ -526,7 +534,7 @@
             background: rgba(255,255,255,0.2);
         }
 
-        /* Modal for editing schedule */
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -596,11 +604,6 @@
             font-size: 1rem;
         }
 
-        .form-group textarea {
-            min-height: 200px;
-            font-family: monospace;
-        }
-
         .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -624,11 +627,10 @@
             opacity: 0.9;
         }
 
-        /* File upload area */
         .file-upload-area {
             border: 2px dashed rgba(255,255,255,0.2);
             border-radius: 12px;
-            padding: 30px;
+            padding: 25px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
@@ -665,38 +667,15 @@
             color: #a0a0a0;
         }
 
-        .link-form {
-            display: flex;
-            gap: 10px;
-        }
-
-        .link-form input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-        }
-
-        .link-form button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            background: #667eea;
-            color: #fff;
-            cursor: pointer;
-        }
-
         @media (max-width: 600px) {
             header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .class-main {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 10px;
+                gap: 8px;
             }
 
             .class-time {
@@ -709,15 +688,11 @@
             }
 
             .legend {
-                gap: 10px;
+                gap: 8px;
             }
 
             .form-row {
                 grid-template-columns: 1fr;
-            }
-
-            .link-form {
-                flex-direction: column;
             }
         }
     </style>
@@ -725,7 +700,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>📚 Course Calendar</h1>
+            <h1>WCU School of Pharmacy</h1>
+            <div class="subtitle">Drug Action and Therapeutics - Spring 2025 (P2)</div>
             <div class="current-time">
                 <span id="live-time"></span> • <span id="live-date"></span>
             </div>
@@ -738,31 +714,11 @@
             <span class="next-class-info" id="next-class-info"></span>
         </div>
 
-        <div class="week-nav" id="week-nav"></div>
-
         <div class="calendar" id="calendar"></div>
     </div>
 
     <button class="scroll-to-today" onclick="scrollToToday()">↓ Today</button>
-    <button class="edit-btn" onclick="openEditModal()">✏️ Edit Schedule</button>
-
-    <!-- Edit Schedule Modal -->
-    <div class="modal" id="edit-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Edit Schedule</h2>
-                <button class="close-btn" onclick="closeEditModal()">×</button>
-            </div>
-            <div class="form-group">
-                <label>Schedule Data (JSON format)</label>
-                <textarea id="schedule-json"></textarea>
-            </div>
-            <p style="color: #a0a0a0; font-size: 0.85rem; margin-bottom: 15px;">
-                Edit the JSON above to customize your schedule. Changes are saved to your browser's local storage.
-            </p>
-            <button class="save-btn" onclick="saveSchedule()">Save Schedule</button>
-        </div>
-    </div>
+    <button class="edit-btn" onclick="openMaterialModalGeneric()">+ Add Materials</button>
 
     <!-- Add Material Modal -->
     <div class="modal" id="material-modal">
@@ -774,7 +730,7 @@
 
             <div class="form-group">
                 <label>Material Name</label>
-                <input type="text" id="material-name" placeholder="e.g., Chapter 5 Review Game">
+                <input type="text" id="material-name" placeholder="e.g., Parkinson's Disease Quizlet">
             </div>
 
             <div class="form-row">
@@ -790,28 +746,28 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>For Class</label>
-                    <select id="material-course"></select>
+                    <label>For Date</label>
+                    <select id="material-date"></select>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Description (optional)</label>
-                <input type="text" id="material-description" placeholder="Brief description of the material">
+                <input type="text" id="material-description" placeholder="Brief description">
             </div>
 
             <div class="file-upload-area" id="file-upload-area">
                 <input type="file" id="file-input" multiple>
                 <div class="upload-icon">📤</div>
-                <p>Click or drag files here to upload</p>
-                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">Supports PDFs, images, documents</p>
+                <p>Click or drag files here</p>
+                <p style="font-size: 0.8rem; color: #666; margin-top: 5px;">PDFs, images, documents</p>
             </div>
             <div id="selected-files" style="margin-bottom: 15px;"></div>
 
             <div class="link-input-section">
-                <h5>Or add a link</h5>
+                <h5>Or add a link (Quizlet, YouTube, etc.)</h5>
                 <div class="form-group">
-                    <input type="url" id="material-link" placeholder="https://example.com/study-guide">
+                    <input type="url" id="material-link" placeholder="https://quizlet.com/...">
                 </div>
             </div>
 
@@ -821,67 +777,272 @@
 
     <script>
         // ============================================
-        // CUSTOMIZE YOUR SCHEDULE HERE
+        // WCU SOP P2 SPRING 2025 SCHEDULE
         // ============================================
-        const DEFAULT_SCHEDULE = {
-            termStart: "2025-01-13",  // First day of term
-            termEnd: "2025-05-16",    // Last day of term
-            courses: {
-                "math": { name: "Mathematics 201", color: "#e91e63", room: "Room 101" },
-                "science": { name: "General Science", color: "#2196f3", room: "Lab 3" },
-                "english": { name: "English Literature", color: "#ff9800", room: "Room 205" },
-                "history": { name: "World History", color: "#9c27b0", room: "Room 302" },
-                "programming": { name: "Intro to Programming", color: "#4caf50", room: "Computer Lab" },
-                "physics": { name: "Physics 101", color: "#ff5722", room: "Lab 1" },
-                "economics": { name: "Economics", color: "#ffc107", room: "Room 150" }
-            },
-            // Weekly schedule - each day has an array of classes
-            weeklySchedule: {
-                "monday": [
-                    { course: "math", start: "09:00", end: "10:30" },
-                    { course: "english", start: "11:00", end: "12:30" },
-                    { course: "programming", start: "14:00", end: "15:30" }
-                ],
-                "tuesday": [
-                    { course: "physics", start: "09:00", end: "10:30" },
-                    { course: "history", start: "11:00", end: "12:30" },
-                    { course: "economics", start: "14:00", end: "15:30" }
-                ],
-                "wednesday": [
-                    { course: "math", start: "09:00", end: "10:30" },
-                    { course: "science", start: "11:00", end: "12:30" },
-                    { course: "programming", start: "14:00", end: "15:30" }
-                ],
-                "thursday": [
-                    { course: "physics", start: "09:00", end: "10:30" },
-                    { course: "english", start: "11:00", end: "12:30" },
-                    { course: "history", start: "14:00", end: "15:30" }
-                ],
-                "friday": [
-                    { course: "economics", start: "09:00", end: "10:30" },
-                    { course: "science", start: "11:00", end: "12:30" }
-                ],
-                "saturday": [],
-                "sunday": []
-            },
-            // Special events or cancelled classes (optional)
-            specialDates: {
-                // "2025-01-20": { type: "holiday", name: "MLK Day" },
-                // "2025-03-10": { type: "spring_break", name: "Spring Break" }
-            }
-        };
+        const schedule = [
+            // Week 1
+            { week: 1, block: "Block 1: Neurology Part 1", date: "2025-01-12", classes: [
+                { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Pathophysiology: Disorders of Movement", details: "Parkinson, RLS, Multiple Sclerosis", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: Antiparkinson agents", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Multiple Sclerosis agents", block: "neuro1" }
+            ]},
+            { week: 1, date: "2025-01-13", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Parkinson Disease/Restless Leg Syndrome", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Parkinson Disease/Restless Leg Syndrome", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+            ]},
+            { week: 1, date: "2025-01-14", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Multiple Sclerosis", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+            ]},
+            { week: 1, date: "2025-01-15", classes: [
+                { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Pathophysiology: Neurocognitive disorders", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Neurocognitive disorders", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Burmeister/Lounsbury-Rivera", topic: "Neuroreceptor Review and Pain Pathways", block: "neuro1" }
+            ]},
+            { week: 1, date: "2025-01-16", classes: [
+                { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Pathophysiology: Epilepsy", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Med Chem: Antiepileptics, GABAergic", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Antiepileptics, GABAergic", block: "neuro1" }
+            ]},
+            // Week 2
+            { week: 2, date: "2025-01-19", holiday: "Martin Luther King Jr. Day" },
+            { week: 2, date: "2025-01-20", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Neurocognitive disorders (Dementia)", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Epilepsy/Status Epilepticus", block: "neuro1" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Epilepsy/Refractory Epilepsy", details: "The Road to Status Epilepticus", block: "neuro1" }
+            ]},
+            { week: 2, date: "2025-01-21", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" }
+            ]},
+            { week: 2, date: "2025-01-22", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Complications of Antiepileptics", details: "DRESS, TENS, SJS | PT Quiz 1", block: "neuro1" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 2, date: "2025-01-23", block: "Block 2: Neurology Part 2", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 1", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Burmeister", topic: "Pathophysiology: Somatosensory and Pain", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Burmeister", topic: "Pathophysiology: Somatosensory and Pain", block: "neuro2" }
+            ]},
+            // Week 3
+            { week: 3, date: "2025-01-26", classes: [
+                { time: "08:30", end: "10:00", instructor: "Lounsbury-Rivera", topic: "Pathophysiology: Migraines and Headache", block: "neuro2" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: NSAIDs, Opioids", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: Muscle Relaxants", block: "neuro2" }
+            ]},
+            { week: 3, date: "2025-01-27", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 1", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: NSAIDs, Opioids", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: Triptans", details: "and other prophylactic agents", block: "neuro2" }
+            ]},
+            { week: 3, date: "2025-01-28", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 1", block: "exam" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Pain (nociceptive, neuropathic, inflammatory)", block: "neuro2" }
+            ]},
+            { week: 3, date: "2025-01-29", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Pain (nociceptive, neuropathic, inflammatory)", block: "neuro2" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Pain (nociceptive, neuropathic, inflammatory)", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 3, date: "2025-01-30", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Reed/Lounsbury-Rivera", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Headache (Including Migraine)", block: "neuro2" }
+            ]},
+            // Week 4
+            { week: 4, date: "2025-02-02", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Headache (Including Migraine)", block: "neuro2" },
+                { time: "10:15", end: "11:45", instructor: "Reed/Lounsbury-Rivera", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 4, date: "2025-02-03", classes: [
+                { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Sleep Disorders", block: "neuro2" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Sleep Disorders", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Sleep-Wake Cycle Disorder", details: "narcolepsy/insomnia", block: "neuro2" }
+            ]},
+            { week: 4, date: "2025-02-04", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", details: "PT Quiz 2", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "ADHD", block: "neuro2" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Lab", block: "lab" }
+            ]},
+            { week: 4, date: "2025-02-05", block: "Block 3: Psychiatry", classes: [
+                { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Anxiety/Depression", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: SSRI/SNRI/MAOI/etc.", block: "psych" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: SSRI/SNRI/MAOI", block: "psych" }
+            ]},
+            { week: 4, date: "2025-02-06", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 2", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: SSRI/SNRI/MAOI/etc.", block: "psych" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Depression", block: "psych" }
+            ]},
+            // Week 5
+            { week: 5, date: "2025-02-09", classes: [
+                { time: "08:30", end: "10:00", instructor: "Long", topic: "Depression", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Anxiety/OCD/PTSD/Phobias", block: "psych" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Lab", block: "lab" }
+            ]},
+            { week: 5, date: "2025-02-10", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 2", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Lab", block: "lab" }
+            ]},
+            { week: 5, date: "2025-02-11", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 2", block: "exam" },
+                { time: "13:15", end: "14:45", instructor: "C. Breese", topic: "Pathophysiology: Schizophrenia/Bipolar", block: "psych" }
+            ]},
+            { week: 5, date: "2025-02-12", classes: [
+                { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Schizophrenia/Bipolar", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "C. Breese", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: Antipsychotics", block: "psych" }
+            ]},
+            { week: 5, date: "2025-02-13", classes: [
+                { time: "08:30", end: "10:00", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Antipsychotics", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Schizophrenia", block: "psych" }
+            ]},
+            // Week 6
+            { week: 6, date: "2025-02-16", classes: [
+                { time: "08:30", end: "10:00", instructor: "Long", topic: "Schizophrenia", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Long/Lounsbury-Rivera", topic: "Lab", block: "lab" }
+            ]},
+            { week: 6, date: "2025-02-17", classes: [
+                { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Bipolar Disorder", block: "psych" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Bipolar Disorder", block: "psych" }
+            ]},
+            { week: 6, date: "2025-02-18", classes: [
+                { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", details: "PT Quiz 3", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Drug and Alcohol Abuse", block: "psych" }
+            ]},
+            { week: 6, date: "2025-02-19", classes: [
+                { time: "08:30", end: "10:00", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Drug and Alcohol Abuse", block: "psych" },
+                { time: "10:15", end: "11:45", instructor: "Long", topic: "Substance Use Disorder", details: "Alcohol, Opioid, Medical Marijuana, Vaping", block: "psych" },
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Substance Use Disorder", block: "psych" }
+            ]},
+            { week: 6, date: "2025-02-20", block: "Block 4: Dermatology/Rheumatology", classes: [
+                { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Long/Lounsbury-Rivera", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Burmeister", topic: "Dermatology", block: "derm" }
+            ]},
+            // Week 7
+            { week: 7, date: "2025-02-23", classes: [
+                { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Dermatology", block: "derm" },
+                { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: Acne, Scars, Burns", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Acne, Scars, Burns", block: "derm" }
+            ]},
+            { week: 7, date: "2025-02-24", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 3", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Dermatologic Conditions", details: "including Alopecia", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 7, date: "2025-02-25", classes: [
+                { time: "08:30", end: "10:00", instructor: "A Weldon", topic: "Pathology: Musculoskeletal & Rheumatic", block: "derm" },
+                { time: "10:15", end: "11:45", instructor: "A Weldon", topic: "Pathology: Musculoskeletal & Rheumatic", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "A Weldon", topic: "Rheumatology: Immunosuppressants", block: "derm" }
+            ]},
+            { week: 7, date: "2025-02-26", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 3", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "A Weldon", topic: "Rheumatology: Immunosuppressants", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "A Weldon", topic: "Anti-gout therapies", block: "derm" }
+            ]},
+            { week: 7, date: "2025-02-27", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 3", block: "exam" },
+                { time: "13:15", end: "14:45", instructor: "A Weldon", topic: "Lab", block: "lab" }
+            ]},
+            // Week 8
+            { week: 8, date: "2025-03-02", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "SLE (Systemic Lupus Erythematosus)", block: "derm" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Rheumatoid Arthritis", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Psoriasis/Psoriatic Arthritis", block: "derm" }
+            ]},
+            { week: 8, date: "2025-03-03", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Gout", details: "PT Quiz 4", block: "derm" },
+                { time: "10:15", end: "11:45", instructor: "Reed/A Weldon", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Reed/A Weldon", topic: "Lab", block: "lab" }
+            ]},
+            { week: 8, date: "2025-03-04", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Anemia", block: "derm" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 8, date: "2025-03-05", block: "Block 5: Special Populations", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 4", block: "exam" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Sickle Cell Disease", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 8, date: "2025-03-06", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Intro to Pediatrics", details: "Growth/Development", block: "special" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Dosage Forms/Drug Delivery", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            // Spring Break
+            { week: 9, date: "2025-03-09", holiday: "Spring Break" },
+            { week: 9, date: "2025-03-10", holiday: "Spring Break" },
+            { week: 9, date: "2025-03-11", holiday: "Spring Break" },
+            { week: 9, date: "2025-03-12", holiday: "Spring Break" },
+            { week: 9, date: "2025-03-13", holiday: "Spring Break" },
+            // Week 9 (after break)
+            { week: 10, date: "2025-03-16", classes: [
+                { time: "08:30", end: "10:00", instructor: "Reed", topic: "Pedi Nutrition and Hydration", block: "special" },
+                { time: "10:15", end: "11:45", instructor: "Reed", topic: "Common Pediatric Diseases/Poisonings", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+            ]},
+            { week: 10, date: "2025-03-17", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Ophthalmic Disorders", block: "special" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Lab", block: "lab" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Intro to Geriatrics/BEERS", details: "Medication Use in the Elderly", block: "special" }
+            ]},
+            { week: 10, date: "2025-03-18", classes: [
+                { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics/Patient Care Lab Exam – Block 4", block: "exam" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Falls and Fall Risk/Frailty", block: "special" }
+            ]},
+            { week: 10, date: "2025-03-19", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab", block: "lab" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Geriatric Syndrome", details: "Swallowing Issues, Pressure Ulcers", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+            ]},
+            { week: 10, date: "2025-03-20", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Intro to Critical Care/MODS", block: "special" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Pain, Agitation, and Delirium", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+            ]},
+            // Week 10
+            { week: 11, date: "2025-03-23", classes: [
+                { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "ARDS, CNS Traumas, ACLS", block: "special" },
+                { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "End-of-life Care", details: "Pain, dyspnea, constipation, restlessness", block: "special" },
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+            ]},
+            { week: 11, date: "2025-03-24", holiday: "Study Day" },
+            { week: 11, date: "2025-03-25", classes: [
+                { time: "08:30", end: "12:00", instructor: "", topic: "Therapeutics Final Exam", block: "exam" }
+            ]},
+            { week: 11, date: "2025-03-26", classes: [
+                { time: "08:30", end: "12:00", instructor: "", topic: "Patient Care Lab Final Exam", block: "exam" }
+            ]},
+            { week: 11, date: "2025-03-27", holiday: "End of Term for P2s" }
+        ];
 
-        // Load schedule from localStorage or use default
-        let schedule = JSON.parse(localStorage.getItem('courseSchedule')) || DEFAULT_SCHEDULE;
+        const blocks = {
+            neuro1: { name: "Neurology Part 1", color: "#e91e63" },
+            neuro2: { name: "Neurology Part 2", color: "#9c27b0" },
+            psych: { name: "Psychiatry", color: "#2196f3" },
+            derm: { name: "Derm/Rheum", color: "#ff9800" },
+            special: { name: "Special Populations", color: "#4caf50" },
+            exam: { name: "Exam", color: "#f44336" },
+            lab: { name: "Lab", color: "#00bcd4" }
+        };
 
         // Load study materials from localStorage
         let studyMaterials = JSON.parse(localStorage.getItem('studyMaterials')) || {};
-
-        // Current material modal context
         let currentMaterialContext = null;
         let pendingFiles = [];
 
-        // Category icons and colors
         const categoryConfig = {
             game: { icon: '🎮', label: 'Study Games' },
             guide: { icon: '📖', label: 'Study Guides' },
@@ -891,15 +1052,10 @@
             other: { icon: '📁', label: 'Other' }
         };
 
-        // ============================================
-        // CALENDAR LOGIC
-        // ============================================
-
-        const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        const dayDisplayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-        function formatTime(timeStr) {
+        function formatTime12(timeStr) {
             const [hours, minutes] = timeStr.split(':');
             const h = parseInt(hours);
             const ampm = h >= 12 ? 'PM' : 'AM';
@@ -909,16 +1065,20 @@
 
         function parseTime(dateStr, timeStr) {
             const [hours, minutes] = timeStr.split(':');
-            const date = new Date(dateStr);
+            const date = new Date(dateStr + 'T00:00:00');
             date.setHours(parseInt(hours), parseInt(minutes), 0, 0);
             return date;
         }
 
         function getDateString(date) {
-            return date.toISOString().split('T')[0];
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
         }
 
-        function formatDate(date) {
+        function formatDate(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
             return `${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
         }
 
@@ -926,55 +1086,27 @@
             return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
         }
 
-        function getClassesForDate(date) {
-            const dateStr = getDateString(date);
-            const dayName = dayNames[date.getDay()];
-
-            // Check for special dates (holidays, etc.)
-            if (schedule.specialDates && schedule.specialDates[dateStr]) {
-                return { special: schedule.specialDates[dateStr] };
-            }
-
-            // Check if within term dates
-            const termStart = new Date(schedule.termStart);
-            const termEnd = new Date(schedule.termEnd);
-            if (date < termStart || date > termEnd) {
-                return { outOfTerm: true };
-            }
-
-            return schedule.weeklySchedule[dayName] || [];
-        }
-
-        function getClassStatus(classItem, dateStr, now) {
-            const startTime = parseTime(dateStr, classItem.start);
-            const endTime = parseTime(dateStr, classItem.end);
-
-            if (now > endTime) return 'completed';
-            if (now >= startTime && now <= endTime) return 'in-progress';
-            return 'upcoming';
+        function getDayName(dateStr) {
+            const date = new Date(dateStr + 'T00:00:00');
+            return dayNames[date.getDay()];
         }
 
         function getTimeUntil(targetTime, now) {
             const diff = targetTime - now;
             if (diff <= 0) return null;
-
             const minutes = Math.floor(diff / 60000);
             const hours = Math.floor(minutes / 60);
             const mins = minutes % 60;
-
-            if (hours > 0) {
-                return `in ${hours}h ${mins}m`;
-            }
+            if (hours > 0) return `in ${hours}h ${mins}m`;
             return `in ${mins}m`;
         }
 
-        function getMaterialsForClass(courseId, dateStr) {
-            const key = `${courseId}-${dateStr}`;
-            return studyMaterials[key] || [];
+        function getMaterialsForDate(dateStr) {
+            return studyMaterials[dateStr] || [];
         }
 
-        function getMaterialCountsByCategory(courseId, dateStr) {
-            const materials = getMaterialsForClass(courseId, dateStr);
+        function getMaterialCountsByCategory(dateStr) {
+            const materials = getMaterialsForDate(dateStr);
             const counts = {};
             for (const m of materials) {
                 counts[m.category] = (counts[m.category] || 0) + 1;
@@ -984,99 +1116,84 @@
 
         function generateLegend() {
             const legend = document.getElementById('legend');
-            legend.innerHTML = Object.entries(schedule.courses).map(([key, course]) => `
+            legend.innerHTML = Object.entries(blocks).map(([key, block]) => `
                 <div class="legend-item">
-                    <div class="legend-color" style="background: ${course.color}"></div>
-                    <span>${course.name}</span>
+                    <div class="legend-color" style="background: ${block.color}"></div>
+                    <span>${block.name}</span>
                 </div>
             `).join('');
         }
 
-        function generateMaterialsSection(courseId, dateStr, classIndex) {
-            const materials = getMaterialsForClass(courseId, dateStr);
-            const counts = getMaterialCountsByCategory(courseId, dateStr);
+        function generateMaterialsSection(dateStr, classIndex) {
+            const materials = getMaterialsForDate(dateStr);
+            const counts = getMaterialCountsByCategory(dateStr);
             const categories = Object.keys(categoryConfig);
 
             let categoriesHtml = categories.map(cat => {
                 const count = counts[cat] || 0;
                 return `<button class="category-tab ${cat === 'game' ? 'active' : ''}"
                         data-category="${cat}"
-                        onclick="filterMaterials('${courseId}', '${dateStr}', '${cat}', ${classIndex})">
+                        onclick="filterMaterials('${dateStr}', '${cat}', ${classIndex})">
                     ${categoryConfig[cat].icon} ${categoryConfig[cat].label}
                     ${count > 0 ? `<span class="count">${count}</span>` : ''}
                 </button>`;
             }).join('');
 
-            let materialsHtml = '';
             const defaultCategory = 'game';
             const filteredMaterials = materials.filter(m => m.category === defaultCategory);
-
-            if (filteredMaterials.length === 0) {
-                materialsHtml = `<div class="no-materials">No ${categoryConfig[defaultCategory].label.toLowerCase()} yet. Add some!</div>`;
-            } else {
-                materialsHtml = filteredMaterials.map((m, idx) => generateMaterialItem(m, courseId, dateStr, idx)).join('');
-            }
+            let materialsHtml = filteredMaterials.length === 0
+                ? `<div class="no-materials">No ${categoryConfig[defaultCategory].label.toLowerCase()} yet</div>`
+                : filteredMaterials.map((m, idx) => generateMaterialItem(m, dateStr, idx)).join('');
 
             return `
-                <div class="study-materials" id="materials-${courseId}-${dateStr}-${classIndex}">
+                <div class="study-materials" id="materials-${dateStr}-${classIndex}">
                     <div class="materials-header">
                         <h4>📚 Study Materials</h4>
-                        <button class="add-material-btn" onclick="openMaterialModal('${courseId}', '${dateStr}')">+ Add Material</button>
+                        <button class="add-material-btn" onclick="openMaterialModal('${dateStr}')">+ Add</button>
                     </div>
-                    <div class="material-categories">
-                        ${categoriesHtml}
-                    </div>
-                    <div class="materials-list" id="materials-list-${courseId}-${dateStr}-${classIndex}">
-                        ${materialsHtml}
-                    </div>
+                    <div class="material-categories">${categoriesHtml}</div>
+                    <div class="materials-list" id="materials-list-${dateStr}-${classIndex}">${materialsHtml}</div>
                 </div>
             `;
         }
 
-        function generateMaterialItem(material, courseId, dateStr, index) {
+        function generateMaterialItem(material, dateStr, index) {
             const icon = categoryConfig[material.category]?.icon || '📁';
             const isLink = material.type === 'link';
-            const actionUrl = isLink ? material.url : material.dataUrl;
-
             return `
                 <div class="material-item">
                     <div class="material-icon ${material.category}">${icon}</div>
                     <div class="material-info">
                         <div class="material-name">${material.name}</div>
-                        <div class="material-meta">
-                            ${material.description || (isLink ? 'External Link' : material.fileName || 'Uploaded File')}
-                        </div>
+                        <div class="material-meta">${material.description || (isLink ? 'External Link' : material.fileName || 'File')}</div>
                     </div>
                     <div class="material-actions">
-                        ${isLink ?
-                            `<button onclick="window.open('${material.url}', '_blank')" title="Open Link">🔗</button>` :
-                            `<button onclick="downloadMaterial('${courseId}', '${dateStr}', ${index})" title="Download">⬇️</button>`
+                        ${isLink
+                            ? `<button onclick="window.open('${material.url}', '_blank')">🔗</button>`
+                            : `<button onclick="downloadMaterial('${dateStr}', ${index})">⬇️</button>`
                         }
-                        <button class="delete" onclick="deleteMaterial('${courseId}', '${dateStr}', ${index})" title="Delete">🗑️</button>
+                        <button class="delete" onclick="deleteMaterial('${dateStr}', ${index})">🗑️</button>
                     </div>
                 </div>
             `;
         }
 
-        function filterMaterials(courseId, dateStr, category, classIndex) {
-            const materials = getMaterialsForClass(courseId, dateStr);
+        function filterMaterials(dateStr, category, classIndex) {
+            const materials = getMaterialsForDate(dateStr);
             const filtered = materials.filter(m => m.category === category);
 
-            // Update active tab
-            const container = document.getElementById(`materials-${courseId}-${dateStr}-${classIndex}`);
+            const container = document.getElementById(`materials-${dateStr}-${classIndex}`);
             container.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.toggle('active', tab.dataset.category === category);
             });
 
-            // Update materials list
-            const listEl = document.getElementById(`materials-list-${courseId}-${dateStr}-${classIndex}`);
+            const listEl = document.getElementById(`materials-list-${dateStr}-${classIndex}`);
             if (filtered.length === 0) {
-                listEl.innerHTML = `<div class="no-materials">No ${categoryConfig[category].label.toLowerCase()} yet. Add some!</div>`;
+                listEl.innerHTML = `<div class="no-materials">No ${categoryConfig[category].label.toLowerCase()} yet</div>`;
             } else {
                 listEl.innerHTML = filtered.map((m, idx) => {
-                    // Find actual index in full materials array
                     const actualIdx = materials.findIndex(mat => mat === m);
-                    return generateMaterialItem(m, courseId, dateStr, actualIdx);
+                    return generateMaterialItem(m, dateStr, actualIdx);
                 }).join('');
             }
         }
@@ -1086,125 +1203,146 @@
             const now = new Date();
             const today = getDateString(now);
 
-            // Generate dates for the term
-            const termStart = new Date(schedule.termStart);
-            const termEnd = new Date(schedule.termEnd);
-
             let html = '';
-            let currentDate = new Date(termStart);
+            let currentWeek = 0;
+            let currentBlock = '';
 
-            while (currentDate <= termEnd) {
-                const dateStr = getDateString(currentDate);
+            for (const day of schedule) {
+                if (day.week !== currentWeek) {
+                    currentWeek = day.week;
+                    html += `<div class="week-header">Week ${currentWeek}</div>`;
+                }
+
+                if (day.block && day.block !== currentBlock) {
+                    currentBlock = day.block;
+                    html += `<div class="block-header">${currentBlock}</div>`;
+                }
+
+                const dateStr = day.date;
                 const isToday = dateStr === today;
-                const isPast = currentDate < new Date(today);
-                const dayName = dayDisplayNames[currentDate.getDay()];
-                const classes = getClassesForDate(currentDate);
+                const isPast = new Date(dateStr + 'T23:59:59') < now;
+                const isHoliday = !!day.holiday;
+                const hasExam = day.classes?.some(c => c.block === 'exam');
 
                 let dayClass = 'day-section';
                 if (isToday) dayClass += ' today';
                 if (isPast) dayClass += ' past';
+                if (isHoliday) dayClass += ' holiday';
+                if (hasExam) dayClass += ' exam-day';
 
                 html += `<div class="${dayClass}" id="day-${dateStr}" data-date="${dateStr}">`;
                 html += `<div class="day-header">
-                    <span>${dayName}, ${formatDate(currentDate)}</span>
-                    ${isToday ? '<span class="date-badge today-badge">TODAY</span>' : ''}
+                    <span>${getDayName(dateStr)}, ${formatDate(dateStr)}</span>
+                    <span>
+                        ${isToday ? '<span class="date-badge today-badge">TODAY</span>' : ''}
+                        ${hasExam ? '<span class="date-badge exam-badge">EXAM</span>' : ''}
+                    </span>
                 </div>`;
 
                 html += '<div class="classes-list">';
 
-                if (classes.special) {
-                    html += `<div class="no-classes">${classes.special.name}</div>`;
-                } else if (classes.outOfTerm) {
-                    html += `<div class="no-classes">Outside of term dates</div>`;
-                } else if (classes.length === 0) {
-                    html += `<div class="no-classes">No classes scheduled</div>`;
-                } else {
-                    classes.forEach((classItem, index) => {
-                        const course = schedule.courses[classItem.course];
-                        const status = isToday ? getClassStatus(classItem, dateStr, now) : (isPast ? 'completed' : 'upcoming');
-                        const startTime = parseTime(dateStr, classItem.start);
+                if (isHoliday) {
+                    html += `<div class="holiday-notice">🎉 ${day.holiday}</div>`;
+                } else if (day.classes && day.classes.length > 0) {
+                    day.classes.forEach((classItem, index) => {
+                        const blockInfo = blocks[classItem.block] || { color: '#666' };
+                        const startTime = parseTime(dateStr, classItem.time);
+                        const endTime = parseTime(dateStr, classItem.end);
+
+                        let status = 'upcoming';
+                        if (isPast || now > endTime) status = 'completed';
+                        else if (now >= startTime && now <= endTime) status = 'in-progress';
+
                         const countdown = status === 'upcoming' && isToday ? getTimeUntil(startTime, now) : null;
-                        const materialCount = getMaterialsForClass(classItem.course, dateStr).length;
+                        const materialCount = getMaterialsForDate(dateStr).length;
 
                         html += `
                             <div class="class-item ${status === 'completed' ? 'completed' : ''} ${status === 'in-progress' ? 'current' : ''}"
-                                 data-course="${classItem.course}"
-                                 data-start="${classItem.start}"
+                                 data-block="${classItem.block}"
+                                 data-start="${classItem.time}"
                                  data-end="${classItem.end}"
                                  data-date="${dateStr}"
-                                 id="class-${classItem.course}-${dateStr}-${index}">
-                                <div class="class-main" onclick="toggleClassExpand('${classItem.course}', '${dateStr}', ${index})">
+                                 id="class-${dateStr}-${index}">
+                                <div class="class-main" onclick="toggleClassExpand('${dateStr}', ${index})">
                                     <div class="class-time">
-                                        <div class="time-range">${formatTime(classItem.start)} - ${formatTime(classItem.end)}</div>
+                                        <div class="time-range">${formatTime12(classItem.time)} - ${formatTime12(classItem.end)}</div>
                                         ${countdown ? `<div class="countdown">${countdown}</div>` : ''}
                                     </div>
                                     <div class="class-info">
-                                        <div class="class-name">${course.name}</div>
-                                        <div class="class-details">${course.room} ${materialCount > 0 ? `• 📚 ${materialCount} materials` : ''}</div>
+                                        <div class="class-name">${classItem.topic}</div>
+                                        <div class="class-details">
+                                            ${classItem.instructor ? classItem.instructor : ''}
+                                            ${classItem.details ? ` • ${classItem.details}` : ''}
+                                            ${materialCount > 0 && index === 0 ? ` • 📚 ${materialCount}` : ''}
+                                        </div>
                                     </div>
                                     <span class="class-status ${status}">${status === 'in-progress' ? '● LIVE' : status}</span>
                                     <span class="expand-icon">▼</span>
                                 </div>
-                                ${generateMaterialsSection(classItem.course, dateStr, index)}
+                                ${index === 0 ? generateMaterialsSection(dateStr, index) : '<div class="study-materials"></div>'}
                             </div>
                         `;
                     });
                 }
 
                 html += '</div></div>';
-
-                currentDate.setDate(currentDate.getDate() + 1);
             }
 
             calendar.innerHTML = html;
         }
 
-        function toggleClassExpand(courseId, dateStr, index) {
-            const classEl = document.getElementById(`class-${courseId}-${dateStr}-${index}`);
+        function toggleClassExpand(dateStr, index) {
+            const classEl = document.getElementById(`class-${dateStr}-${index}`);
             classEl.classList.toggle('expanded');
         }
 
         function updateStatus() {
             const now = new Date();
             const today = getDateString(now);
-            const classes = getClassesForDate(now);
+            const todaySchedule = schedule.find(d => d.date === today);
 
             const statusBadge = document.getElementById('status-badge');
             const statusInfo = document.getElementById('next-class-info');
             const statusIndicator = document.getElementById('status-indicator');
 
-            if (Array.isArray(classes) && classes.length > 0) {
+            if (todaySchedule?.holiday) {
+                statusIndicator.className = 'status-indicator';
+                statusBadge.className = 'status-badge done-for-day';
+                statusBadge.textContent = 'DAY OFF';
+                statusInfo.innerHTML = `🎉 ${todaySchedule.holiday}`;
+                return;
+            }
+
+            if (todaySchedule?.classes) {
                 let currentClass = null;
                 let nextClass = null;
 
-                for (const classItem of classes) {
-                    const status = getClassStatus(classItem, today, now);
-                    if (status === 'in-progress') {
+                for (const classItem of todaySchedule.classes) {
+                    const startTime = parseTime(today, classItem.time);
+                    const endTime = parseTime(today, classItem.end);
+
+                    if (now >= startTime && now <= endTime) {
                         currentClass = classItem;
                         break;
-                    } else if (status === 'upcoming' && !nextClass) {
+                    } else if (now < startTime && !nextClass) {
                         nextClass = classItem;
                     }
                 }
 
                 if (currentClass) {
-                    const course = schedule.courses[currentClass.course];
                     const endTime = parseTime(today, currentClass.end);
                     const timeLeft = getTimeUntil(endTime, now);
-
                     statusIndicator.className = 'status-indicator in-class';
                     statusBadge.className = 'status-badge in-progress';
                     statusBadge.textContent = '● IN CLASS';
-                    statusInfo.innerHTML = `<strong>${course.name}</strong> • Ends ${timeLeft ? timeLeft : 'soon'}`;
+                    statusInfo.innerHTML = `<strong>${currentClass.topic}</strong> • Ends ${timeLeft || 'soon'}`;
                 } else if (nextClass) {
-                    const course = schedule.courses[nextClass.course];
-                    const startTime = parseTime(today, nextClass.start);
+                    const startTime = parseTime(today, nextClass.time);
                     const timeUntil = getTimeUntil(startTime, now);
-
                     statusIndicator.className = 'status-indicator';
                     statusBadge.className = 'status-badge upcoming';
                     statusBadge.textContent = 'UP NEXT';
-                    statusInfo.innerHTML = `<strong>${course.name}</strong> • Starts ${timeUntil}`;
+                    statusInfo.innerHTML = `<strong>${nextClass.topic}</strong> • Starts ${timeUntil}`;
                 } else {
                     statusIndicator.className = 'status-indicator';
                     statusBadge.className = 'status-badge done-for-day';
@@ -1215,49 +1353,14 @@
                 statusIndicator.className = 'status-indicator';
                 statusBadge.className = 'status-badge done-for-day';
                 statusBadge.textContent = 'NO CLASSES';
-                statusInfo.innerHTML = 'Enjoy your day off!';
+                statusInfo.innerHTML = 'No classes scheduled today';
             }
         }
 
         function updateLiveTime() {
             const now = new Date();
             document.getElementById('live-time').textContent = formatTimeDisplay(now);
-            document.getElementById('live-date').textContent = formatDate(now);
-        }
-
-        function updateClassStatuses() {
-            const now = new Date();
-            const today = getDateString(now);
-
-            document.querySelectorAll('.class-item').forEach(item => {
-                const dateStr = item.dataset.date;
-                if (dateStr !== today) return;
-
-                const startTime = parseTime(dateStr, item.dataset.start);
-                const endTime = parseTime(dateStr, item.dataset.end);
-
-                let status = 'upcoming';
-                if (now > endTime) status = 'completed';
-                else if (now >= startTime && now <= endTime) status = 'in-progress';
-
-                item.classList.remove('completed', 'current');
-                if (status === 'completed') item.classList.add('completed');
-                if (status === 'in-progress') item.classList.add('current');
-
-                const statusEl = item.querySelector('.class-status');
-                statusEl.className = `class-status ${status}`;
-                statusEl.textContent = status === 'in-progress' ? '● LIVE' : status;
-
-                const countdownEl = item.querySelector('.countdown');
-                if (status === 'upcoming') {
-                    const timeUntil = getTimeUntil(startTime, now);
-                    if (countdownEl) {
-                        countdownEl.textContent = timeUntil || '';
-                    }
-                } else if (countdownEl) {
-                    countdownEl.textContent = '';
-                }
-            });
+            document.getElementById('live-date').textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
         }
 
         function scrollToToday() {
@@ -1265,46 +1368,32 @@
             const todayEl = document.getElementById(`day-${today}`);
             if (todayEl) {
                 todayEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                // Find closest future date
+                const now = new Date();
+                for (const day of schedule) {
+                    if (new Date(day.date + 'T00:00:00') >= now) {
+                        const el = document.getElementById(`day-${day.date}`);
+                        if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            break;
+                        }
+                    }
+                }
             }
         }
 
-        // ============================================
-        // MODAL FUNCTIONS
-        // ============================================
-
-        function openEditModal() {
-            document.getElementById('schedule-json').value = JSON.stringify(schedule, null, 2);
-            document.getElementById('edit-modal').classList.add('active');
-        }
-
-        function closeEditModal() {
-            document.getElementById('edit-modal').classList.remove('active');
-        }
-
-        function saveSchedule() {
-            try {
-                const newSchedule = JSON.parse(document.getElementById('schedule-json').value);
-                schedule = newSchedule;
-                localStorage.setItem('courseSchedule', JSON.stringify(schedule));
-                closeEditModal();
-                init();
-                alert('Schedule saved successfully!');
-            } catch (e) {
-                alert('Invalid JSON format. Please check your input.');
-            }
-        }
-
-        function openMaterialModal(courseId, dateStr) {
-            currentMaterialContext = { courseId, dateStr };
+        // Modal functions
+        function openMaterialModal(dateStr) {
+            currentMaterialContext = { dateStr };
             pendingFiles = [];
 
-            // Populate course dropdown
-            const courseSelect = document.getElementById('material-course');
-            courseSelect.innerHTML = Object.entries(schedule.courses).map(([key, course]) =>
-                `<option value="${key}" ${key === courseId ? 'selected' : ''}>${course.name}</option>`
-            ).join('');
+            const dateSelect = document.getElementById('material-date');
+            dateSelect.innerHTML = schedule
+                .filter(d => !d.holiday)
+                .map(d => `<option value="${d.date}" ${d.date === dateStr ? 'selected' : ''}>${formatDate(d.date)}</option>`)
+                .join('');
 
-            // Reset form
             document.getElementById('material-name').value = '';
             document.getElementById('material-category').value = 'game';
             document.getElementById('material-description').value = '';
@@ -1313,6 +1402,12 @@
             document.getElementById('file-input').value = '';
 
             document.getElementById('material-modal').classList.add('active');
+        }
+
+        function openMaterialModalGeneric() {
+            const today = getDateString(new Date());
+            const closestDate = schedule.find(d => d.date >= today && !d.holiday)?.date || schedule[0].date;
+            openMaterialModal(closestDate);
         }
 
         function closeMaterialModal() {
@@ -1324,75 +1419,43 @@
         function saveMaterial() {
             const name = document.getElementById('material-name').value.trim();
             const category = document.getElementById('material-category').value;
-            const courseId = document.getElementById('material-course').value;
+            const dateStr = document.getElementById('material-date').value;
             const description = document.getElementById('material-description').value.trim();
             const link = document.getElementById('material-link').value.trim();
 
-            if (!name) {
-                alert('Please enter a material name.');
-                return;
-            }
+            if (!name) { alert('Please enter a material name.'); return; }
 
-            const dateStr = currentMaterialContext.dateStr;
-            const key = `${courseId}-${dateStr}`;
-
-            if (!studyMaterials[key]) {
-                studyMaterials[key] = [];
-            }
+            if (!studyMaterials[dateStr]) studyMaterials[dateStr] = [];
 
             if (link) {
-                // Add as link
-                studyMaterials[key].push({
-                    name,
-                    category,
-                    description,
-                    type: 'link',
-                    url: link,
-                    addedAt: new Date().toISOString()
-                });
+                studyMaterials[dateStr].push({ name, category, description, type: 'link', url: link, addedAt: new Date().toISOString() });
             } else if (pendingFiles.length > 0) {
-                // Add files
                 for (const file of pendingFiles) {
-                    studyMaterials[key].push({
+                    studyMaterials[dateStr].push({
                         name: pendingFiles.length === 1 ? name : `${name} - ${file.name}`,
-                        category,
-                        description,
-                        type: 'file',
-                        fileName: file.name,
-                        fileType: file.type,
-                        dataUrl: file.dataUrl,
-                        addedAt: new Date().toISOString()
+                        category, description, type: 'file', fileName: file.name, fileType: file.type, dataUrl: file.dataUrl, addedAt: new Date().toISOString()
                     });
                 }
-            } else {
-                alert('Please add a link or upload a file.');
-                return;
-            }
+            } else { alert('Please add a link or upload a file.'); return; }
 
             localStorage.setItem('studyMaterials', JSON.stringify(studyMaterials));
             closeMaterialModal();
             generateCalendar();
-            alert('Material added successfully!');
         }
 
-        function deleteMaterial(courseId, dateStr, index) {
-            if (!confirm('Are you sure you want to delete this material?')) return;
-
-            const key = `${courseId}-${dateStr}`;
-            if (studyMaterials[key]) {
-                studyMaterials[key].splice(index, 1);
-                if (studyMaterials[key].length === 0) {
-                    delete studyMaterials[key];
-                }
+        function deleteMaterial(dateStr, index) {
+            if (!confirm('Delete this material?')) return;
+            if (studyMaterials[dateStr]) {
+                studyMaterials[dateStr].splice(index, 1);
+                if (studyMaterials[dateStr].length === 0) delete studyMaterials[dateStr];
                 localStorage.setItem('studyMaterials', JSON.stringify(studyMaterials));
                 generateCalendar();
             }
         }
 
-        function downloadMaterial(courseId, dateStr, index) {
-            const key = `${courseId}-${dateStr}`;
-            const material = studyMaterials[key]?.[index];
-            if (material && material.dataUrl) {
+        function downloadMaterial(dateStr, index) {
+            const material = studyMaterials[dateStr]?.[index];
+            if (material?.dataUrl) {
                 const link = document.createElement('a');
                 link.href = material.dataUrl;
                 link.download = material.fileName || 'download';
@@ -1402,34 +1465,14 @@
             }
         }
 
-        // ============================================
-        // FILE UPLOAD HANDLING
-        // ============================================
-
         function setupFileUpload() {
             const uploadArea = document.getElementById('file-upload-area');
             const fileInput = document.getElementById('file-input');
-
             uploadArea.addEventListener('click', () => fileInput.click());
-
-            uploadArea.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                uploadArea.classList.add('dragover');
-            });
-
-            uploadArea.addEventListener('dragleave', () => {
-                uploadArea.classList.remove('dragover');
-            });
-
-            uploadArea.addEventListener('drop', (e) => {
-                e.preventDefault();
-                uploadArea.classList.remove('dragover');
-                handleFiles(e.dataTransfer.files);
-            });
-
-            fileInput.addEventListener('change', (e) => {
-                handleFiles(e.target.files);
-            });
+            uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('dragover'); });
+            uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('dragover'));
+            uploadArea.addEventListener('drop', (e) => { e.preventDefault(); uploadArea.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+            fileInput.addEventListener('change', (e) => handleFiles(e.target.files));
         }
 
         function handleFiles(files) {
@@ -1437,34 +1480,17 @@
             const selectedFilesEl = document.getElementById('selected-files');
             selectedFilesEl.innerHTML = '';
 
-            const filePromises = Array.from(files).map(file => {
-                return new Promise((resolve) => {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        resolve({
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            dataUrl: e.target.result
-                        });
-                    };
-                    reader.readAsDataURL(file);
-                });
-            });
-
-            Promise.all(filePromises).then(results => {
+            Promise.all(Array.from(files).map(file => new Promise(resolve => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve({ name: file.name, type: file.type, size: file.size, dataUrl: e.target.result });
+                reader.readAsDataURL(file);
+            }))).then(results => {
                 pendingFiles = results;
                 selectedFilesEl.innerHTML = results.map(f =>
-                    `<div style="padding: 8px; background: rgba(102,126,234,0.1); border-radius: 6px; margin-bottom: 5px; font-size: 0.9rem;">
-                        📄 ${f.name} (${(f.size / 1024).toFixed(1)} KB)
-                    </div>`
+                    `<div style="padding: 8px; background: rgba(102,126,234,0.1); border-radius: 6px; margin-bottom: 5px; font-size: 0.85rem;">📄 ${f.name} (${(f.size / 1024).toFixed(1)} KB)</div>`
                 ).join('');
             });
         }
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
 
         function init() {
             generateLegend();
@@ -1472,29 +1498,12 @@
             updateStatus();
             updateLiveTime();
             setupFileUpload();
-
-            // Auto-scroll to today after a short delay
             setTimeout(scrollToToday, 500);
         }
 
-        // Initialize
         init();
-
-        // Update every second
-        setInterval(() => {
-            updateLiveTime();
-            updateClassStatuses();
-            updateStatus();
-        }, 1000);
-
-        // Close modals on outside click
-        document.getElementById('edit-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'edit-modal') closeEditModal();
-        });
-
-        document.getElementById('material-modal').addEventListener('click', (e) => {
-            if (e.target.id === 'material-modal') closeMaterialModal();
-        });
+        setInterval(() => { updateLiveTime(); updateStatus(); }, 1000);
+        document.getElementById('material-modal').addEventListener('click', (e) => { if (e.target.id === 'material-modal') closeMaterialModal(); });
     </script>
 </body>
 </html>
