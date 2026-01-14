@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WCU SOP P2 Calendar - Spring 2025</title>
     <style>
         * {
@@ -12,486 +12,333 @@
         }
 
         :root {
-            /* Default Theme - Gold/Red (Zentreks style) */
-            --color-primary: #C4251D;
-            --color-primary-light: #E03030;
-            --color-primary-dark: #8B1A15;
-            --color-accent: #D4A574;
-            --color-accent-light: #E5C4A1;
-            --color-background: #0D0D0D;
-            --color-background-light: #1A1717;
-            --color-background-card: #231F1F;
-            --color-text-primary: #FFFFFF;
-            --color-text-secondary: #C4B8B8;
-            --color-text-muted: #8A7F7F;
-            --color-border: rgba(139, 21, 56, 0.2);
-            --color-glow: rgba(212, 165, 116, 0.3);
-
-            /* Block Colors */
-            --block-neuro1: #e91e63;
-            --block-neuro2: #9c27b0;
-            --block-psych: #2196f3;
-            --block-derm: #ff9800;
-            --block-special: #4caf50;
-            --block-exam: #f44336;
-            --block-lab: #00bcd4;
+            --color-primary: #6366F1;
+            --color-primary-light: #818CF8;
+            --color-primary-dark: #4F46E5;
+            --color-accent: #22D3EE;
+            --color-accent-light: #67E8F9;
+            --color-background: #0F172A;
+            --color-background-light: #1E293B;
+            --color-background-card: #334155;
+            --color-text-primary: #F8FAFC;
+            --color-text-secondary: #CBD5E1;
+            --color-text-muted: #64748B;
+            --color-border: rgba(99, 102, 241, 0.2);
+            --color-glow: rgba(34, 211, 238, 0.3);
+            --block-neuro1: #F472B6;
+            --block-neuro2: #A78BFA;
+            --block-psych: #38BDF8;
+            --block-derm: #FB923C;
+            --block-special: #4ADE80;
+            --block-exam: #F87171;
+            --block-lab: #2DD4BF;
         }
 
-        /* Blue Theme */
         [data-theme="blue"] {
-            --color-primary: #1E88E5;
-            --color-primary-light: #42A5F5;
-            --color-primary-dark: #1565C0;
-            --color-accent: #64B5F6;
-            --color-accent-light: #90CAF9;
-            --color-background: #0A1929;
-            --color-background-light: #132F4C;
-            --color-background-card: #1E3A5F;
-            --color-text-secondary: #B8D4E8;
-            --color-text-muted: #7A9CBF;
-            --color-border: rgba(30, 136, 229, 0.2);
-            --color-glow: rgba(100, 181, 246, 0.3);
+            --color-primary: #0EA5E9;
+            --color-primary-light: #38BDF8;
+            --color-primary-dark: #0284C7;
+            --color-accent: #7DD3FC;
+            --color-accent-light: #BAE6FD;
+            --color-background: #082F49;
+            --color-background-light: #0C4A6E;
+            --color-background-card: #0369A1;
+            --color-text-secondary: #E0F2FE;
+            --color-text-muted: #7DD3FC;
+            --color-border: rgba(14, 165, 233, 0.3);
+            --color-glow: rgba(125, 211, 252, 0.3);
         }
 
-        /* Camo Theme */
         [data-theme="camo"] {
-            --color-primary: #4A5D23;
-            --color-primary-light: #6B8E23;
-            --color-primary-dark: #3D4F1C;
-            --color-accent: #8B7355;
-            --color-accent-light: #A08060;
-            --color-background: #1C1E14;
-            --color-background-light: #2A2E1F;
-            --color-background-card: #3A3E2A;
-            --color-text-secondary: #C4C4A0;
-            --color-text-muted: #8A8A70;
-            --color-border: rgba(107, 142, 35, 0.2);
-            --color-glow: rgba(139, 115, 85, 0.3);
+            --color-primary: #84CC16;
+            --color-primary-light: #A3E635;
+            --color-primary-dark: #65A30D;
+            --color-accent: #BEF264;
+            --color-accent-light: #D9F99D;
+            --color-background: #1A2E05;
+            --color-background-light: #365314;
+            --color-background-card: #3F6212;
+            --color-text-secondary: #D9F99D;
+            --color-text-muted: #84CC16;
+            --color-border: rgba(132, 204, 22, 0.3);
+            --color-glow: rgba(190, 242, 100, 0.3);
         }
 
-        /* Pink Theme */
         [data-theme="pink"] {
-            --color-primary: #E91E63;
-            --color-primary-light: #F06292;
-            --color-primary-dark: #AD1457;
-            --color-accent: #F8BBD9;
-            --color-accent-light: #FCE4EC;
-            --color-background: #1A0A12;
-            --color-background-light: #2D1520;
-            --color-background-card: #3D1F2D;
-            --color-text-secondary: #E8C4D4;
-            --color-text-muted: #BF8A9F;
-            --color-border: rgba(233, 30, 99, 0.2);
-            --color-glow: rgba(248, 187, 217, 0.3);
+            --color-primary: #EC4899;
+            --color-primary-light: #F472B6;
+            --color-primary-dark: #DB2777;
+            --color-accent: #F9A8D4;
+            --color-accent-light: #FBCFE8;
+            --color-background: #2D0A1F;
+            --color-background-light: #4C0D33;
+            --color-background-card: #831843;
+            --color-text-secondary: #FBCFE8;
+            --color-text-muted: #F472B6;
+            --color-border: rgba(236, 72, 153, 0.3);
+            --color-glow: rgba(249, 168, 212, 0.3);
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--color-background);
-            min-height: 100vh;
             color: var(--color-text-primary);
             -webkit-font-smoothing: antialiased;
-            transition: background 0.3s ease;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--color-background);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--color-primary);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--color-accent);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Header */
-        header {
-            text-align: center;
-            padding: 40px 0 30px;
-            border-bottom: 1px solid var(--color-border);
-            margin-bottom: 25px;
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--color-background) 0%, var(--color-background) 90%, transparent 100%);
+            padding: 12px 16px 20px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 50%, var(--color-accent) 100%);
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .title-section h1 {
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-light) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: 700;
         }
 
-        header .subtitle {
-            color: var(--color-text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .current-time {
-            font-size: 1.2rem;
+        .title-section .subtitle {
+            font-size: 0.7rem;
             color: var(--color-text-muted);
         }
 
-        .current-time span {
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .live-clock {
+            text-align: right;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        .live-clock .date {
+            font-size: 0.65rem;
+            color: var(--color-text-muted);
+            font-weight: 400;
+        }
+
+        .theme-toggle {
+            display: flex;
+            gap: 5px;
+        }
+
+        .theme-dot-btn {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .theme-dot-btn:hover { transform: scale(1.15); }
+        .theme-dot-btn.active { border-color: #fff; box-shadow: 0 0 10px var(--color-glow); }
+        .theme-dot-btn.default { background: linear-gradient(135deg, #22D3EE, #6366F1); }
+        .theme-dot-btn.blue { background: linear-gradient(135deg, #7DD3FC, #0EA5E9); }
+        .theme-dot-btn.camo { background: linear-gradient(135deg, #BEF264, #84CC16); }
+        .theme-dot-btn.pink { background: linear-gradient(135deg, #F9A8D4, #EC4899); }
+
+        /* Daily Quote */
+        .daily-quote {
+            background: linear-gradient(135deg, var(--color-background-card), var(--color-background-light));
+            border-radius: 12px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .quote-text {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--color-text-primary);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .quote-verse {
+            font-size: 0.7rem;
             color: var(--color-accent);
             font-weight: 600;
         }
 
-        /* Theme Selector */
-        .theme-selector {
+        /* Status Bar */
+        .status-bar {
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 12px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
-        .theme-btn {
-            padding: 10px 20px;
-            border: 2px solid var(--color-border);
-            border-radius: 25px;
-            background: var(--color-background-card);
-            color: var(--color-text-secondary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .theme-btn:hover {
-            border-color: var(--color-primary);
-            color: var(--color-text-primary);
-            box-shadow: 0 0 20px var(--color-glow);
-        }
-
-        .theme-btn.active {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            border-color: var(--color-primary);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .theme-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-        }
-
-        .theme-dot.gold { background: linear-gradient(135deg, #D4A574, #C4251D); }
-        .theme-dot.blue { background: linear-gradient(135deg, #64B5F6, #1E88E5); }
-        .theme-dot.camo { background: linear-gradient(135deg, #8B7355, #6B8E23); }
-        .theme-dot.pink { background: linear-gradient(135deg, #F8BBD9, #E91E63); }
-
-        /* Legend */
-        .legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-bottom: 25px;
-            padding: 18px;
+            padding: 10px 14px;
             background: var(--color-background-card);
             border-radius: 12px;
             border: 1px solid var(--color-border);
         }
 
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            color: var(--color-text-secondary);
-        }
-
-        .legend-color {
-            width: 14px;
-            height: 14px;
-            border-radius: 4px;
-        }
-
-        /* Status Indicator */
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 25px;
-            padding: 22px;
-            background: var(--color-background-card);
-            border-radius: 12px;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 0 30px var(--color-glow);
-            transition: all 0.3s ease;
-        }
-
-        .status-indicator.in-class {
+        .status-bar.in-class {
             border-color: var(--block-special);
-            box-shadow: 0 0 30px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
         }
 
         .status-badge {
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 5px 12px;
+            border-radius: 20px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
-        .status-badge.upcoming {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        .status-badge.in-progress {
-            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
-            animation: pulse 2s infinite;
-        }
-
-        .status-badge.done-for-day {
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-            color: #0D0D0D;
-        }
+        .status-badge.upcoming { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light)); }
+        .status-badge.in-progress { background: linear-gradient(135deg, #22C55E, #4ADE80); animation: pulse 2s infinite; }
+        .status-badge.done { background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light)); color: #0F172A; }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-            50% { opacity: 0.85; box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.2); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
-        .next-class-info {
-            font-size: 1.1rem;
+        .status-info {
+            flex: 1;
+            font-size: 0.8rem;
             color: var(--color-text-secondary);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
-        .next-class-info strong {
-            color: var(--color-accent);
+        .status-info strong { color: var(--color-accent); }
+
+        /* Calendar Container */
+        .calendar-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 185px 12px 80px;
+            scroll-behavior: smooth;
         }
 
-        /* Calendar */
-        .calendar {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+        .calendar-container::-webkit-scrollbar { width: 5px; }
+        .calendar-container::-webkit-scrollbar-track { background: transparent; }
+        .calendar-container::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
 
+        /* Week & Block Headers */
         .week-header {
-            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
-            padding: 14px 22px;
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+            padding: 8px 14px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 0.85rem;
+            margin: 16px 0 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
         }
 
         .block-header {
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-            color: #0D0D0D;
-            padding: 12px 22px;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-accent-light));
+            color: #0F172A;
+            padding: 6px 14px;
+            border-radius: 6px;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.75rem;
             text-align: center;
-            margin: 15px 0 8px 0;
+            margin: 10px 0 6px;
         }
 
-        /* Day Section Card */
-        .day-section {
+        /* Day Card */
+        .day-card {
             background: var(--color-background-card);
             border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 10px;
             border: 1px solid var(--color-border);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .day-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 25px var(--color-glow);
+        .day-card:hover {
             border-color: var(--color-primary);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
         }
 
-        .day-section.today {
+        .day-card.today {
             border: 2px solid var(--color-accent);
-            box-shadow: 0 0 30px var(--color-glow);
+            box-shadow: 0 0 25px var(--color-glow);
         }
 
-        .day-section.past {
-            opacity: 0.55;
+        /* Past days - lighter opacity */
+        .day-card.past {
+            opacity: 0.4;
         }
-
-        .day-section.past:hover {
-            opacity: 0.8;
-        }
-
-        .day-section.holiday {
-            border-left: 4px solid var(--color-accent);
-        }
-
-        .day-section.exam-day {
-            border-left: 4px solid var(--block-exam);
+        .day-card.past:hover {
+            opacity: 0.6;
         }
 
         .day-header {
-            padding: 16px 22px;
+            padding: 10px 14px;
             background: var(--color-background-light);
-            font-weight: 600;
-            font-size: 1.05rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--color-border);
         }
 
-        .day-header .badges {
-            display: flex;
-            gap: 8px;
-        }
-
-        .day-header .date-badge {
-            font-size: 0.8rem;
-            padding: 5px 14px;
-            border-radius: 20px;
+        .day-header .day-name {
             font-weight: 600;
-        }
-
-        .day-header .today-badge {
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-            color: #0D0D0D;
-        }
-
-        .day-header .exam-badge {
-            background: linear-gradient(135deg, var(--block-exam) 0%, #ef5350 100%);
-            color: #fff;
-        }
-
-        .classes-list {
-            padding: 12px;
-        }
-
-        /* Class Item Card */
-        .class-item {
-            margin: 10px 0;
-            border-radius: 10px;
-            background: var(--color-background-light);
-            border-left: 4px solid;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .class-item:hover {
-            background: rgba(255,255,255,0.05);
-            transform: translateX(5px);
-        }
-
-        .class-main {
-            display: flex;
-            align-items: center;
-            padding: 14px 16px;
-            cursor: pointer;
-        }
-
-        .class-item.completed .class-main {
-            opacity: 0.5;
-        }
-
-        .class-item.current {
-            background: rgba(76, 175, 80, 0.15);
-            border-color: var(--block-special) !important;
-            animation: currentPulse 2s infinite;
-        }
-
-        @keyframes currentPulse {
-            0%, 100% { box-shadow: inset 0 0 0 0 rgba(76, 175, 80, 0.2); }
-            50% { box-shadow: inset 0 0 30px 0 rgba(76, 175, 80, 0.15); }
-        }
-
-        .class-time {
-            min-width: 130px;
             font-size: 0.9rem;
-            color: var(--color-text-muted);
         }
 
-        .class-time .time-range {
-            font-weight: 600;
-            color: var(--color-text-primary);
-        }
+        .day-header .badges { display: flex; gap: 5px; }
 
-        .class-time .countdown {
-            font-size: 0.8rem;
-            color: var(--color-accent);
-            margin-top: 3px;
-            font-weight: 500;
-        }
-
-        .class-info {
-            flex: 1;
-        }
-
-        .class-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 4px;
-            color: var(--color-text-primary);
-        }
-
-        .class-details {
-            font-size: 0.8rem;
-            color: var(--color-text-muted);
-        }
-
-        .class-status {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
+        .badge {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.6rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
         }
 
-        .class-status.completed {
-            background: rgba(76, 175, 80, 0.15);
-            color: #81c784;
+        .badge.today-badge { background: var(--color-accent); color: #0F172A; }
+        .badge.exam-badge { background: var(--block-exam); color: #fff; }
+
+        .classes-list { padding: 6px; }
+
+        /* Class Item */
+        .class-item {
+            background: var(--color-background-light);
+            border-radius: 10px;
+            margin: 5px 0;
+            border-left: 4px solid;
+            overflow: hidden;
+            transition: all 0.3s;
+            opacity: 1;
         }
 
-        .class-status.in-progress {
-            background: rgba(76, 175, 80, 0.25);
-            color: #a5d6a7;
-            animation: pulse 1.5s infinite;
-        }
+        .class-item:hover { transform: translateX(3px); background: rgba(255,255,255,0.03); }
 
-        .class-status.upcoming {
-            background: rgba(255,255,255,0.08);
-            color: var(--color-text-secondary);
-        }
-
-        .expand-icon {
-            margin-left: 12px;
-            font-size: 1rem;
-            transition: transform 0.3s;
-            color: var(--color-accent);
-        }
-
-        .class-item.expanded .expand-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Block Colors */
         .class-item[data-block="neuro1"] { border-color: var(--block-neuro1); }
         .class-item[data-block="neuro2"] { border-color: var(--block-neuro2); }
         .class-item[data-block="psych"] { border-color: var(--block-psych); }
@@ -500,494 +347,482 @@
         .class-item[data-block="exam"] { border-color: var(--block-exam); }
         .class-item[data-block="lab"] { border-color: var(--block-lab); }
 
+        .class-item.current {
+            background: rgba(74, 222, 128, 0.15);
+            border-color: var(--block-special) !important;
+            animation: liveGlow 2s infinite;
+        }
+
+        @keyframes liveGlow {
+            0%, 100% { box-shadow: inset 0 0 0 0 rgba(74, 222, 128, 0.1); }
+            50% { box-shadow: inset 0 0 20px 0 rgba(74, 222, 128, 0.15); }
+        }
+
+        /* Completed classes - lighter opacity */
+        .class-item.completed {
+            opacity: 0.35;
+        }
+
+        .class-main {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            cursor: pointer;
+            gap: 10px;
+        }
+
+        .class-time { min-width: 85px; }
+
+        .class-time .time-range {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--color-text-primary);
+        }
+
+        .class-time .countdown {
+            font-size: 0.65rem;
+            color: var(--color-accent);
+            margin-top: 2px;
+        }
+
+        .class-info { flex: 1; min-width: 0; }
+
+        .class-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .class-details {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .class-status {
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .class-status.completed { background: rgba(74, 222, 128, 0.15); color: #86EFAC; }
+        .class-status.in-progress { background: rgba(74, 222, 128, 0.25); color: #BBF7D0; }
+        .class-status.upcoming { background: rgba(255,255,255,0.08); color: var(--color-text-secondary); }
+
+        .expand-icon {
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            transition: transform 0.3s;
+        }
+
+        .class-item.expanded .expand-icon { transform: rotate(180deg); }
+
         /* Study Materials */
         .study-materials {
             display: none;
-            padding: 18px;
-            background: rgba(0,0,0,0.25);
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
             border-top: 1px solid var(--color-border);
         }
 
-        .class-item.expanded .study-materials {
-            display: block;
-        }
+        .class-item.expanded .study-materials { display: block; }
 
         .materials-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .materials-header h4 {
-            color: var(--color-accent);
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .add-material-btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 20px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: #fff;
             font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: var(--color-accent);
         }
 
-        .add-material-btn:hover {
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transform: translateY(-2px);
-        }
-
-        .material-categories {
+        .material-bubbles {
             display: flex;
-            gap: 8px;
+            gap: 5px;
             flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
-        .category-tab {
-            padding: 6px 14px;
-            border: 1px solid var(--color-border);
-            border-radius: 20px;
-            background: transparent;
-            color: var(--color-text-muted);
-            font-size: 0.75rem;
+        .material-bubble {
+            padding: 4px 10px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.08);
+            font-size: 0.65rem;
+            color: var(--color-text-secondary);
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .category-tab:hover {
-            border-color: var(--color-primary);
-            color: var(--color-text-primary);
-        }
-
-        .category-tab.active {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
-            color: #fff;
-        }
-
-        .category-tab .count {
+        .material-bubble:hover { background: var(--color-primary); color: #fff; }
+        .material-bubble.active { background: var(--color-primary); color: #fff; }
+        .material-bubble .count {
             background: rgba(255,255,255,0.2);
-            padding: 2px 7px;
-            border-radius: 10px;
-            margin-left: 5px;
-            font-size: 0.7rem;
+            padding: 1px 5px;
+            border-radius: 8px;
+            font-size: 0.55rem;
         }
 
         .materials-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            max-height: 280px;
+            gap: 6px;
+            max-height: 200px;
             overflow-y: auto;
         }
 
         .material-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px;
+            gap: 8px;
+            padding: 8px 10px;
             background: var(--color-background-card);
-            border-radius: 10px;
+            border-radius: 8px;
             transition: all 0.3s;
-            border: 1px solid transparent;
+            cursor: pointer;
         }
 
-        .material-item:hover {
-            border-color: var(--color-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
+        .material-item:hover { background: rgba(255,255,255,0.05); transform: translateX(2px); }
 
         .material-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
+            flex-shrink: 0;
         }
 
-        .material-icon.game { background: rgba(76, 175, 80, 0.2); }
-        .material-icon.guide { background: rgba(33, 150, 243, 0.2); }
-        .material-icon.quiz { background: rgba(255, 152, 0, 0.2); }
-        .material-icon.notes { background: rgba(156, 39, 176, 0.2); }
-        .material-icon.video { background: rgba(244, 67, 54, 0.2); }
-        .material-icon.other { background: rgba(158, 158, 158, 0.2); }
+        .material-icon.game { background: rgba(74, 222, 128, 0.2); }
+        .material-icon.guide { background: rgba(56, 189, 248, 0.2); }
+        .material-icon.quiz { background: rgba(251, 146, 60, 0.2); }
+        .material-icon.notes { background: rgba(167, 139, 250, 0.2); }
+        .material-icon.video { background: rgba(248, 113, 113, 0.2); }
+        .material-icon.other { background: rgba(148, 163, 184, 0.2); }
 
-        .material-info { flex: 1; }
+        .material-info { flex: 1; min-width: 0; }
 
         .material-name {
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 3px;
-            color: var(--color-text-primary);
+            font-size: 0.75rem;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .material-meta {
-            font-size: 0.75rem;
+            font-size: 0.6rem;
             color: var(--color-text-muted);
         }
 
-        .material-actions {
-            display: flex;
-            gap: 8px;
-        }
+        .star-rating { display: flex; gap: 1px; }
 
-        .material-actions button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 8px;
-            background: rgba(255,255,255,0.08);
-            color: #fff;
+        .star {
+            font-size: 0.8rem;
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.85rem;
-        }
-
-        .material-actions button:hover {
-            background: var(--color-primary);
-        }
-
-        .material-actions button.delete:hover {
-            background: var(--block-exam);
-        }
-
-        .no-materials {
-            text-align: center;
-            padding: 20px;
             color: var(--color-text-muted);
-            font-style: italic;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .star:hover { transform: scale(1.2); }
+        .star.filled { color: #FBBF24; }
+        .star.hovered { color: #FDE68A; }
+
+        .avg-rating {
+            font-size: 0.6rem;
+            color: var(--color-accent);
+            margin-left: 4px;
         }
 
         .holiday-notice {
             text-align: center;
-            padding: 30px;
+            padding: 20px;
             color: var(--color-accent);
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
         }
 
-        /* Fixed Buttons */
-        .scroll-to-today {
+        /* Bottom Navigation */
+        .bottom-nav {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 16px 28px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-            color: #fff;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
-            transition: all 0.3s;
-            z-index: 100;
-        }
-
-        .scroll-to-today:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 35px rgba(0,0,0,0.5);
-        }
-
-        .add-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            padding: 16px 28px;
-            border: 2px solid var(--color-primary);
-            border-radius: 30px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 16px;
             background: var(--color-background-card);
-            color: var(--color-text-primary);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
+            border-top: 1px solid var(--color-border);
             z-index: 100;
         }
 
-        .add-btn:hover {
-            background: var(--color-primary);
-            box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
         }
 
-        /* Modal */
-        .modal {
+        .nav-btn:hover { background: rgba(255,255,255,0.05); color: var(--color-text-primary); }
+        .nav-btn.active { color: var(--color-accent); background: rgba(34, 211, 238, 0.1); }
+
+        .nav-btn .icon { font-size: 1.2rem; }
+        .nav-btn .label { font-size: 0.65rem; font-weight: 600; }
+
+        /* Overview Modal */
+        .overview-modal {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 1000;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 200;
             overflow-y: auto;
+            padding: 20px;
         }
 
-        .modal.active {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 50px 20px;
-        }
+        .overview-modal.active { display: block; }
 
-        .modal-content {
-            background: var(--color-background-card);
-            border-radius: 16px;
-            padding: 35px;
-            width: 100%;
-            max-width: 550px;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-        }
-
-        .modal-header {
+        .overview-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 10px 0;
+            z-index: 10;
         }
 
-        .modal-header h2 {
-            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
+        .overview-header h2 {
+            font-size: 1.2rem;
+            color: var(--color-accent);
         }
 
-        .close-btn {
-            background: none;
+        .close-overview {
+            background: var(--color-primary);
             border: none;
-            color: var(--color-text-muted);
-            font-size: 1.8rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .close-btn:hover {
-            color: var(--color-primary);
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--color-text-secondary);
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--color-border);
-            border-radius: 10px;
-            background: var(--color-background-light);
-            color: var(--color-text-primary);
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .save-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
             color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-weight: 600;
         }
 
-        .save-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
         }
 
-        .file-upload-area {
-            border: 2px dashed var(--color-border);
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 15px;
+        .overview-week {
+            background: var(--color-background-card);
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid var(--color-border);
         }
 
-        .file-upload-area:hover {
-            border-color: var(--color-primary);
-            background: rgba(255,255,255,0.02);
+        .overview-week h3 {
+            font-size: 0.85rem;
+            color: var(--color-primary-light);
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--color-border);
         }
 
-        .file-upload-area.dragover {
-            border-color: var(--color-accent);
-            background: rgba(212, 165, 116, 0.1);
+        .overview-day {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .file-upload-area input[type="file"] {
-            display: none;
-        }
+        .overview-day:last-child { border-bottom: none; }
 
-        .upload-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-
-        .link-input-section {
-            margin-top: 18px;
-            padding-top: 18px;
-            border-top: 1px solid var(--color-border);
-        }
-
-        .link-input-section h5 {
-            margin-bottom: 12px;
+        .overview-day-name {
+            font-size: 0.7rem;
             color: var(--color-text-muted);
-            font-weight: 500;
+            margin-bottom: 4px;
         }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 1.8rem; }
-            .class-main {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            .class-time { min-width: auto; }
-            .status-indicator { flex-direction: column; gap: 12px; }
-            .form-row { grid-template-columns: 1fr; }
-            .theme-selector { gap: 8px; }
-            .theme-btn { padding: 8px 14px; font-size: 0.8rem; }
+        .overview-day.today .overview-day-name { color: var(--color-accent); font-weight: 700; }
+        .overview-day.past { opacity: 0.4; }
+
+        .overview-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .overview-topic {
+            font-size: 0.6rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: var(--color-background-light);
+        }
+
+        .overview-topic.exam { background: rgba(248, 113, 113, 0.3); color: #FCA5A5; }
+        .overview-topic.holiday { background: rgba(34, 211, 238, 0.2); color: var(--color-accent); }
+
+        /* Current indicator */
+        .current-indicator { position: relative; }
+
+        .current-indicator::before {
+            content: '► NOW';
+            position: absolute;
+            left: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--block-special);
+            color: #fff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.5rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 500px) {
+            .header { padding: 10px 12px 16px; }
+            .title-section h1 { font-size: 1.1rem; }
+            .calendar-container { padding-top: 175px; }
+            .class-main { padding: 8px 10px; }
+            .class-time { min-width: 75px; }
+            .class-status { display: none; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>WCU School of Pharmacy</h1>
-            <div class="subtitle">Drug Action and Therapeutics - Spring 2025 (P2)</div>
-            <div class="current-time">
-                <span id="live-time"></span> • <span id="live-date"></span>
+    <div class="header">
+        <div class="header-top">
+            <div class="title-section">
+                <h1>WCU School of Pharmacy</h1>
+                <div class="subtitle">Drug Action & Therapeutics • P2 Spring 2025</div>
             </div>
-        </header>
-
-        <div class="theme-selector">
-            <button class="theme-btn active" data-theme="default" onclick="setTheme('default')">
-                <span class="theme-dot gold"></span> Gold
-            </button>
-            <button class="theme-btn" data-theme="blue" onclick="setTheme('blue')">
-                <span class="theme-dot blue"></span> Blue
-            </button>
-            <button class="theme-btn" data-theme="camo" onclick="setTheme('camo')">
-                <span class="theme-dot camo"></span> Camo
-            </button>
-            <button class="theme-btn" data-theme="pink" onclick="setTheme('pink')">
-                <span class="theme-dot pink"></span> Pink
-            </button>
+            <div class="header-controls">
+                <div class="live-clock">
+                    <div id="live-time">--:--:--</div>
+                    <div class="date" id="live-date">---</div>
+                </div>
+                <div class="theme-toggle">
+                    <button class="theme-dot-btn default active" data-theme="default" onclick="setTheme('default')"></button>
+                    <button class="theme-dot-btn blue" data-theme="blue" onclick="setTheme('blue')"></button>
+                    <button class="theme-dot-btn camo" data-theme="camo" onclick="setTheme('camo')"></button>
+                    <button class="theme-dot-btn pink" data-theme="pink" onclick="setTheme('pink')"></button>
+                </div>
+            </div>
         </div>
-
-        <div class="legend" id="legend"></div>
-
-        <div class="status-indicator" id="status-indicator">
-            <span class="status-badge upcoming" id="status-badge">Loading...</span>
-            <span class="next-class-info" id="next-class-info"></span>
+        <div class="daily-quote" id="daily-quote">
+            <div class="quote-text" id="quote-text">"Loading daily encouragement..."</div>
+            <div class="quote-verse" id="quote-verse"></div>
         </div>
-
-        <div class="calendar" id="calendar"></div>
+        <div class="status-bar" id="status-bar">
+            <span class="status-badge upcoming" id="status-badge">Loading</span>
+            <span class="status-info" id="status-info">...</span>
+        </div>
     </div>
 
-    <button class="scroll-to-today" onclick="scrollToToday()">↓ Today</button>
-    <button class="add-btn" onclick="openMaterialModalGeneric()">+ Add Materials</button>
+    <div class="calendar-container" id="calendar-container">
+        <div id="calendar"></div>
+    </div>
 
-    <!-- Add Material Modal -->
-    <div class="modal" id="material-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Add Study Material</h2>
-                <button class="close-btn" onclick="closeMaterialModal()">×</button>
-            </div>
-            <div class="form-group">
-                <label>Material Name</label>
-                <input type="text" id="material-name" placeholder="e.g., Parkinson's Disease Quizlet">
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Category</label>
-                    <select id="material-category">
-                        <option value="game">🎮 Study Game</option>
-                        <option value="guide">📖 Study Guide</option>
-                        <option value="quiz">📝 Practice Quiz</option>
-                        <option value="notes">📋 Notes</option>
-                        <option value="video">🎬 Video</option>
-                        <option value="other">📁 Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>For Date</label>
-                    <select id="material-date"></select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Description (optional)</label>
-                <input type="text" id="material-description" placeholder="Brief description">
-            </div>
-            <div class="file-upload-area" id="file-upload-area">
-                <input type="file" id="file-input" multiple>
-                <div class="upload-icon">📤</div>
-                <p>Click or drag files here</p>
-                <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 8px;">PDFs, images, documents</p>
-            </div>
-            <div id="selected-files" style="margin-bottom: 15px;"></div>
-            <div class="link-input-section">
-                <h5>Or add a link (Quizlet, YouTube, etc.)</h5>
-                <div class="form-group">
-                    <input type="url" id="material-link" placeholder="https://quizlet.com/...">
-                </div>
-            </div>
-            <button class="save-btn" onclick="saveMaterial()">Add Material</button>
+    <div class="bottom-nav">
+        <button class="nav-btn active" onclick="scrollToNow()">
+            <span class="icon">⏱</span>
+            <span class="label">Now</span>
+        </button>
+        <button class="nav-btn" onclick="showOverview()">
+            <span class="icon">📅</span>
+            <span class="label">Overview</span>
+        </button>
+        <button class="nav-btn" onclick="scrollToTop()">
+            <span class="icon">⬆️</span>
+            <span class="label">Top</span>
+        </button>
+    </div>
+
+    <!-- Overview Modal -->
+    <div class="overview-modal" id="overview-modal">
+        <div class="overview-header">
+            <h2>📅 Full Calendar Overview</h2>
+            <button class="close-overview" onclick="hideOverview()">Close</button>
         </div>
+        <div class="overview-grid" id="overview-grid"></div>
     </div>
 
     <script>
-        // Theme Management
-        function setTheme(theme) {
-            if (theme === 'default') {
-                document.documentElement.removeAttribute('data-theme');
-            } else {
-                document.documentElement.setAttribute('data-theme', theme);
+        // Biblical Quotes for Pharmacy Students
+        const dailyQuotes = [
+            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", verse: "Proverbs 3:5" },
+            { text: "I can do all things through Christ who strengthens me.", verse: "Philippians 4:13" },
+            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you.", verse: "Jeremiah 29:11" },
+            { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", verse: "Joshua 1:9" },
+            { text: "Commit to the Lord whatever you do, and he will establish your plans.", verse: "Proverbs 16:3" },
+            { text: "The Lord is my strength and my shield; my heart trusts in him.", verse: "Psalm 28:7" },
+            { text: "Do not be anxious about anything, but in every situation, by prayer present your requests to God.", verse: "Philippians 4:6" },
+            { text: "Whatever you do, work at it with all your heart, as working for the Lord.", verse: "Colossians 3:23" },
+            { text: "But those who hope in the Lord will renew their strength.", verse: "Isaiah 40:31" },
+            { text: "The fear of the Lord is the beginning of knowledge.", verse: "Proverbs 1:7" },
+            { text: "Cast all your anxiety on him because he cares for you.", verse: "1 Peter 5:7" },
+            { text: "And let us not grow weary of doing good, for in due season we will reap.", verse: "Galatians 6:9" },
+            { text: "The Lord will fight for you; you need only to be still.", verse: "Exodus 14:14" },
+            { text: "Ask and it will be given to you; seek and you will find.", verse: "Matthew 7:7" },
+            { text: "With God all things are possible.", verse: "Matthew 19:26" },
+            { text: "Be still, and know that I am God.", verse: "Psalm 46:10" },
+            { text: "Have I not commanded you? Be strong and courageous!", verse: "Joshua 1:9" },
+            { text: "The Lord is near to all who call on him.", verse: "Psalm 145:18" },
+            { text: "Peace I leave with you; my peace I give you.", verse: "John 14:27" },
+            { text: "In all your ways acknowledge him, and he will make straight your paths.", verse: "Proverbs 3:6" }
+        ];
+
+        function getDailyQuote() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            // Show quotes on weekdays only (1-5)
+            if (dayOfWeek === 0 || dayOfWeek === 6) {
+                document.getElementById('daily-quote').style.display = 'none';
+                return;
             }
-            localStorage.setItem('calendarTheme', theme);
-            document.querySelectorAll('.theme-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
-            });
+            // Use day of year to cycle through quotes
+            const start = new Date(now.getFullYear(), 0, 0);
+            const diff = now - start;
+            const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const quote = dailyQuotes[dayOfYear % dailyQuotes.length];
+            document.getElementById('quote-text').textContent = `"${quote.text}"`;
+            document.getElementById('quote-verse').textContent = `— ${quote.verse}`;
         }
 
-        // Load saved theme
-        const savedTheme = localStorage.getItem('calendarTheme') || 'default';
-        setTheme(savedTheme);
+        // Theme
+        function setTheme(theme) {
+            if (theme === 'default') document.documentElement.removeAttribute('data-theme');
+            else document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('calendarTheme', theme);
+            document.querySelectorAll('.theme-dot-btn').forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
+        }
+        setTheme(localStorage.getItem('calendarTheme') || 'default');
 
         // Schedule Data
         const schedule = [
@@ -1224,19 +1059,8 @@
             { week: 11, date: "2025-03-27", holiday: "End of Term for P2s" }
         ];
 
-        const blocks = {
-            neuro1: { name: "Neuro 1", color: "#e91e63" },
-            neuro2: { name: "Neuro 2", color: "#9c27b0" },
-            psych: { name: "Psychiatry", color: "#2196f3" },
-            derm: { name: "Derm/Rheum", color: "#ff9800" },
-            special: { name: "Special Pop", color: "#4caf50" },
-            exam: { name: "Exam", color: "#f44336" },
-            lab: { name: "Lab", color: "#00bcd4" }
-        };
-
         let studyMaterials = JSON.parse(localStorage.getItem('studyMaterials')) || {};
-        let currentMaterialContext = null;
-        let pendingFiles = [];
+        let materialRatings = JSON.parse(localStorage.getItem('materialRatings')) || {};
 
         const categoryConfig = {
             game: { icon: '🎮', label: 'Games' },
@@ -1247,134 +1071,225 @@
             other: { icon: '📁', label: 'Other' }
         };
 
-        const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const fullDayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-        function formatTime12(t) { const [h,m]=t.split(':'); const hr=parseInt(h); return `${hr%12||12}:${m} ${hr>=12?'PM':'AM'}`; }
-        function parseTime(d,t) { const [h,m]=t.split(':'); const dt=new Date(d+'T00:00:00'); dt.setHours(parseInt(h),parseInt(m),0,0); return dt; }
-        function getDateString(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
-        function formatDate(ds) { const d=new Date(ds+'T00:00:00'); return `${monthNames[d.getMonth()]} ${d.getDate()}`; }
-        function formatTimeDisplay(d) { return d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'}); }
-        function getDayName(ds) { return dayNames[new Date(ds+'T00:00:00').getDay()]; }
-        function getTimeUntil(t,n) { const diff=t-n; if(diff<=0)return null; const mins=Math.floor(diff/60000); const hrs=Math.floor(mins/60); return hrs>0?`in ${hrs}h ${mins%60}m`:`in ${mins}m`; }
-        function getMaterialsForDate(ds) { return studyMaterials[ds]||[]; }
-        function getMaterialCountsByCategory(ds) { const m=getMaterialsForDate(ds); const c={}; m.forEach(x=>c[x.category]=(c[x.category]||0)+1); return c; }
+        function formatTime12(t) { const [h,m] = t.split(':'); const hr = parseInt(h); return `${hr % 12 || 12}:${m} ${hr >= 12 ? 'PM' : 'AM'}`; }
+        function parseTime(d, t) { const [h, m] = t.split(':'); const dt = new Date(d + 'T00:00:00'); dt.setHours(parseInt(h), parseInt(m), 0, 0); return dt; }
+        function getDateString(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; }
+        function formatDate(ds) { const d = new Date(ds + 'T00:00:00'); return `${monthNames[d.getMonth()]} ${d.getDate()}`; }
+        function getDayName(ds) { return fullDayNames[new Date(ds + 'T00:00:00').getDay()]; }
+        function getTimeUntil(t, n) { const diff = t - n; if (diff <= 0) return null; const mins = Math.floor(diff / 60000); const hrs = Math.floor(mins / 60); return hrs > 0 ? `${hrs}h ${mins % 60}m` : `${mins}m`; }
 
-        function generateLegend() {
-            document.getElementById('legend').innerHTML = Object.entries(blocks).map(([k,b])=>`<div class="legend-item"><div class="legend-color" style="background:${b.color}"></div><span>${b.name}</span></div>`).join('');
+        function getMaterialKey(ds, i) { return `${ds}_${i}`; }
+        function getRating(ds, i) {
+            const r = materialRatings[getMaterialKey(ds, i)] || [];
+            if (!r.length) return { avg: 0, count: 0 };
+            return { avg: Math.round(r.reduce((a,b) => a+b, 0) / r.length * 10) / 10, count: r.length };
+        }
+        function addRating(ds, i, rating) {
+            const k = getMaterialKey(ds, i);
+            if (!materialRatings[k]) materialRatings[k] = [];
+            materialRatings[k].push(rating);
+            localStorage.setItem('materialRatings', JSON.stringify(materialRatings));
+            generateCalendar();
         }
 
-        function generateMaterialsSection(ds,ci) {
-            const m=getMaterialsForDate(ds), c=getMaterialCountsByCategory(ds), cats=Object.keys(categoryConfig);
-            const catHtml=cats.map(ct=>`<button class="category-tab ${ct==='game'?'active':''}" data-category="${ct}" onclick="filterMaterials('${ds}','${ct}',${ci})">${categoryConfig[ct].icon} ${categoryConfig[ct].label}${c[ct]?`<span class="count">${c[ct]}</span>`:''}</button>`).join('');
-            const fm=m.filter(x=>x.category==='game');
-            const mHtml=fm.length===0?'<div class="no-materials">No study games yet</div>':fm.map((x,i)=>genMatItem(x,ds,i)).join('');
-            return `<div class="study-materials" id="materials-${ds}-${ci}"><div class="materials-header"><h4>📚 Study Materials</h4><button class="add-material-btn" onclick="openMaterialModal('${ds}')">+ Add</button></div><div class="material-categories">${catHtml}</div><div class="materials-list" id="materials-list-${ds}-${ci}">${mHtml}</div></div>`;
+        function getSortedMaterials(ds, cat) {
+            const m = studyMaterials[ds] || [];
+            const f = cat ? m.filter(x => x.category === cat) : m;
+            return f.map((x, i) => ({ ...x, originalIdx: m.indexOf(x), rating: getRating(ds, m.indexOf(x)) }))
+                    .sort((a, b) => b.rating.avg - a.rating.avg);
         }
 
-        function genMatItem(m,ds,i) {
-            const ic=categoryConfig[m.category]?.icon||'📁', isL=m.type==='link';
-            return `<div class="material-item"><div class="material-icon ${m.category}">${ic}</div><div class="material-info"><div class="material-name">${m.name}</div><div class="material-meta">${m.description||(isL?'External Link':m.fileName||'File')}</div></div><div class="material-actions">${isL?`<button onclick="window.open('${m.url}','_blank')">🔗</button>`:`<button onclick="downloadMaterial('${ds}',${i})">⬇️</button>`}<button class="delete" onclick="deleteMaterial('${ds}',${i})">🗑️</button></div></div>`;
+        function getCategoriesWithMaterials(ds) {
+            const m = studyMaterials[ds] || [], cats = {};
+            m.forEach(x => { cats[x.category] = (cats[x.category] || 0) + 1; });
+            return cats;
         }
 
-        function filterMaterials(ds,cat,ci) {
-            const m=getMaterialsForDate(ds), fm=m.filter(x=>x.category===cat);
-            const cont=document.getElementById(`materials-${ds}-${ci}`);
-            cont.querySelectorAll('.category-tab').forEach(t=>t.classList.toggle('active',t.dataset.category===cat));
-            document.getElementById(`materials-list-${ds}-${ci}`).innerHTML=fm.length===0?`<div class="no-materials">No ${categoryConfig[cat].label.toLowerCase()} yet</div>`:fm.map((x,i)=>{const ai=m.findIndex(y=>y===x);return genMatItem(x,ds,ai);}).join('');
+        function generateMaterialsSection(ds, ci) {
+            const cats = getCategoriesWithMaterials(ds), keys = Object.keys(cats);
+            if (!keys.length) return '<div class="study-materials"><div style="padding:12px;text-align:center;color:var(--color-text-muted);font-size:0.75rem;">No study materials yet</div></div>';
+            const first = keys[0];
+            const bubbles = keys.map(c => `<div class="material-bubble ${c === first ? 'active' : ''}" data-category="${c}" onclick="filterMaterials('${ds}','${c}',${ci})">${categoryConfig[c]?.icon || '📁'} ${categoryConfig[c]?.label || c}<span class="count">${cats[c]}</span></div>`).join('');
+            const items = getSortedMaterials(ds, first).map(m => generateMaterialItem(m, ds)).join('');
+            return `<div class="study-materials" id="materials-${ds}-${ci}"><div class="materials-header"><h4>📚 Study Materials</h4></div><div class="material-bubbles">${bubbles}</div><div class="materials-list" id="materials-list-${ds}-${ci}">${items}</div></div>`;
+        }
+
+        function generateMaterialItem(m, ds) {
+            const icon = categoryConfig[m.category]?.icon || '📁', r = m.rating || getRating(ds, m.originalIdx);
+            const stars = Array.from({length: 5}, (_, i) => `<span class="star ${i < Math.round(r.avg) ? 'filled' : ''}" onmouseover="hoverStar(this,${i+1})" onmouseout="unhoverStars(this)" onclick="rateMaterial('${ds}',${m.originalIdx},${i+1})">★</span>`).join('');
+            return `<div class="material-item" onclick="${m.type === 'link' ? `window.open('${m.url}','_blank')` : `downloadMaterial('${ds}',${m.originalIdx})`}"><div class="material-icon ${m.category}">${icon}</div><div class="material-info"><div class="material-name">${m.name}</div><div class="material-meta">${m.description || (m.type === 'link' ? 'Link' : m.fileName || 'File')}</div></div><div class="star-rating" onclick="event.stopPropagation()">${stars}${r.count > 0 ? `<span class="avg-rating">${r.avg}</span>` : ''}</div></div>`;
+        }
+
+        function hoverStar(el, r) { el.parentElement.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('hovered', i < r)); }
+        function unhoverStars(el) { el.parentElement.querySelectorAll('.star').forEach(s => s.classList.remove('hovered')); }
+        function rateMaterial(ds, i, r) { addRating(ds, i, r); }
+
+        function filterMaterials(ds, cat, ci) {
+            const cont = document.getElementById(`materials-${ds}-${ci}`);
+            if (!cont) return;
+            cont.querySelectorAll('.material-bubble').forEach(b => b.classList.toggle('active', b.dataset.category === cat));
+            document.getElementById(`materials-list-${ds}-${ci}`).innerHTML = getSortedMaterials(ds, cat).map(m => generateMaterialItem(m, ds)).join('');
+        }
+
+        function downloadMaterial(ds, i) {
+            const m = studyMaterials[ds]?.[i];
+            if (m?.dataUrl) { const a = document.createElement('a'); a.href = m.dataUrl; a.download = m.fileName || 'download'; document.body.appendChild(a); a.click(); document.body.removeChild(a); }
         }
 
         function generateCalendar() {
-            const cal=document.getElementById('calendar'), now=new Date(), today=getDateString(now);
-            let html='', cw=0, cb='';
-            for(const day of schedule) {
-                if(day.week!==cw) { cw=day.week; html+=`<div class="week-header">Week ${cw}</div>`; }
-                if(day.block&&day.block!==cb) { cb=day.block; html+=`<div class="block-header">${cb}</div>`; }
-                const ds=day.date, isT=ds===today, isP=new Date(ds+'T23:59:59')<now, isH=!!day.holiday, hasE=day.classes?.some(c=>c.block==='exam');
-                let dc='day-section'; if(isT)dc+=' today'; if(isP)dc+=' past'; if(isH)dc+=' holiday'; if(hasE)dc+=' exam-day';
-                html+=`<div class="${dc}" id="day-${ds}"><div class="day-header"><span>${getDayName(ds)}, ${formatDate(ds)}</span><span class="badges">${isT?'<span class="date-badge today-badge">TODAY</span>':''}${hasE?'<span class="date-badge exam-badge">EXAM</span>':''}</span></div><div class="classes-list">`;
-                if(isH) { html+=`<div class="holiday-notice">🎉 ${day.holiday}</div>`; }
-                else if(day.classes?.length) {
-                    day.classes.forEach((cl,idx)=>{
-                        const st=parseTime(ds,cl.time), et=parseTime(ds,cl.end);
-                        let status='upcoming'; if(isP||now>et)status='completed'; else if(now>=st&&now<=et)status='in-progress';
-                        const cd=status==='upcoming'&&isT?getTimeUntil(st,now):null, mc=getMaterialsForDate(ds).length;
-                        html+=`<div class="class-item ${status==='completed'?'completed':''} ${status==='in-progress'?'current':''}" data-block="${cl.block}" id="class-${ds}-${idx}"><div class="class-main" onclick="toggleClassExpand('${ds}',${idx})"><div class="class-time"><div class="time-range">${formatTime12(cl.time)} - ${formatTime12(cl.end)}</div>${cd?`<div class="countdown">${cd}</div>`:''}</div><div class="class-info"><div class="class-name">${cl.topic}</div><div class="class-details">${cl.instructor||''}${cl.details?' • '+cl.details:''}${mc>0&&idx===0?' • 📚 '+mc:''}</div></div><span class="class-status ${status}">${status==='in-progress'?'● LIVE':status}</span><span class="expand-icon">▼</span></div>${idx===0?generateMaterialsSection(ds,idx):'<div class="study-materials"></div>'}</div>`;
+            const cal = document.getElementById('calendar'), now = new Date(), today = getDateString(now);
+            let html = '', cw = 0, cb = '';
+
+            for (const day of schedule) {
+                if (day.week !== cw) { cw = day.week; html += `<div class="week-header">Week ${cw}</div>`; }
+                if (day.block && day.block !== cb) { cb = day.block; html += `<div class="block-header">${cb}</div>`; }
+
+                const ds = day.date, isToday = ds === today, isPast = new Date(ds + 'T23:59:59') < now, isHoliday = !!day.holiday, hasExam = day.classes?.some(c => c.block === 'exam');
+                let cardClass = 'day-card'; if (isToday) cardClass += ' today'; if (isPast && !isToday) cardClass += ' past';
+
+                html += `<div class="${cardClass}" id="day-${ds}"><div class="day-header"><span class="day-name">${getDayName(ds)}, ${formatDate(ds)}</span><span class="badges">${isToday ? '<span class="badge today-badge">TODAY</span>' : ''}${hasExam ? '<span class="badge exam-badge">EXAM</span>' : ''}</span></div>`;
+
+                if (isHoliday) {
+                    html += `<div class="holiday-notice">🎉 ${day.holiday}</div>`;
+                } else if (day.classes?.length) {
+                    html += '<div class="classes-list">';
+                    day.classes.forEach((cl, idx) => {
+                        const st = parseTime(ds, cl.time), et = parseTime(ds, cl.end);
+                        let status = 'upcoming'; if (isPast || now > et) status = 'completed'; else if (now >= st && now <= et) status = 'in-progress';
+                        const countdown = status === 'upcoming' && isToday ? getTimeUntil(st, now) : null;
+                        const hasMaterials = (studyMaterials[ds]?.length || 0) > 0;
+                        const isCurrent = status === 'in-progress';
+
+                        html += `<div class="class-item ${status === 'completed' ? 'completed' : ''} ${isCurrent ? 'current current-indicator' : ''}" data-block="${cl.block}" id="class-${ds}-${idx}">
+                            <div class="class-main" onclick="toggleClass('${ds}',${idx})">
+                                <div class="class-time"><div class="time-range">${formatTime12(cl.time)} - ${formatTime12(cl.end)}</div>${countdown ? `<div class="countdown">in ${countdown}</div>` : ''}</div>
+                                <div class="class-info"><div class="class-name">${cl.topic}</div><div class="class-details">${cl.instructor || ''}${cl.details ? ' • ' + cl.details : ''}${hasMaterials && idx === 0 ? ' • 📚' : ''}</div></div>
+                                <span class="class-status ${status}">${status === 'in-progress' ? '● LIVE' : status}</span>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                            ${idx === 0 ? generateMaterialsSection(ds, idx) : ''}
+                        </div>`;
                     });
+                    html += '</div>';
                 }
-                html+='</div></div>';
+                html += '</div>';
             }
-            cal.innerHTML=html;
+            cal.innerHTML = html;
         }
 
-        function toggleClassExpand(ds,i) { document.getElementById(`class-${ds}-${i}`).classList.toggle('expanded'); }
+        function toggleClass(ds, i) { document.getElementById(`class-${ds}-${i}`)?.classList.toggle('expanded'); }
 
         function updateStatus() {
-            const now=new Date(), today=getDateString(now), ts=schedule.find(d=>d.date===today);
-            const sb=document.getElementById('status-badge'), si=document.getElementById('next-class-info'), sc=document.getElementById('status-indicator');
-            if(ts?.holiday) { sc.className='status-indicator'; sb.className='status-badge done-for-day'; sb.textContent='DAY OFF'; si.innerHTML=`🎉 ${ts.holiday}`; return; }
-            if(ts?.classes) {
-                let cur=null, nxt=null;
-                for(const cl of ts.classes) { const st=parseTime(today,cl.time), et=parseTime(today,cl.end); if(now>=st&&now<=et){cur=cl;break;}else if(now<st&&!nxt){nxt=cl;} }
-                if(cur) { const et=parseTime(today,cur.end); sc.className='status-indicator in-class'; sb.className='status-badge in-progress'; sb.textContent='● IN CLASS'; si.innerHTML=`<strong>${cur.topic}</strong> • Ends ${getTimeUntil(et,now)||'soon'}`; }
-                else if(nxt) { const st=parseTime(today,nxt.time); sc.className='status-indicator'; sb.className='status-badge upcoming'; sb.textContent='UP NEXT'; si.innerHTML=`<strong>${nxt.topic}</strong> • Starts ${getTimeUntil(st,now)}`; }
-                else { sc.className='status-indicator'; sb.className='status-badge done-for-day'; sb.textContent='DONE TODAY'; si.innerHTML='All classes completed! 🎉'; }
-            } else { sc.className='status-indicator'; sb.className='status-badge done-for-day'; sb.textContent='NO CLASSES'; si.innerHTML='No classes today'; }
+            const now = new Date(), today = getDateString(now), ts = schedule.find(d => d.date === today);
+            const sb = document.getElementById('status-badge'), si = document.getElementById('status-info'), bar = document.getElementById('status-bar');
+
+            if (ts?.holiday) { bar.className = 'status-bar'; sb.className = 'status-badge done'; sb.textContent = 'OFF'; si.innerHTML = `🎉 ${ts.holiday}`; return; }
+
+            if (ts?.classes) {
+                let cur = null, nxt = null;
+                for (const cl of ts.classes) { const st = parseTime(today, cl.time), et = parseTime(today, cl.end); if (now >= st && now <= et) { cur = cl; break; } else if (now < st && !nxt) { nxt = cl; } }
+
+                if (cur) {
+                    const et = parseTime(today, cur.end), rem = getTimeUntil(et, now);
+                    bar.className = 'status-bar in-class'; sb.className = 'status-badge in-progress'; sb.textContent = '● LIVE';
+                    si.innerHTML = `<strong>${cur.topic}</strong> • ${rem ? rem + ' left' : 'ending soon'}`;
+                } else if (nxt) {
+                    const st = parseTime(today, nxt.time);
+                    bar.className = 'status-bar'; sb.className = 'status-badge upcoming'; sb.textContent = 'NEXT';
+                    si.innerHTML = `<strong>${nxt.topic}</strong> • in ${getTimeUntil(st, now)}`;
+                } else {
+                    bar.className = 'status-bar'; sb.className = 'status-badge done'; sb.textContent = 'DONE';
+                    si.innerHTML = 'All classes completed today! 🎉';
+                }
+            } else {
+                bar.className = 'status-bar'; sb.className = 'status-badge done'; sb.textContent = 'FREE';
+                si.innerHTML = 'No classes scheduled today';
+            }
         }
 
-        function updateLiveTime() { const n=new Date(); document.getElementById('live-time').textContent=formatTimeDisplay(n); document.getElementById('live-date').textContent=`${monthNames[n.getMonth()]} ${n.getDate()}, ${n.getFullYear()}`; }
-
-        function scrollToToday() {
-            const today=getDateString(new Date()), el=document.getElementById(`day-${today}`);
-            if(el) { el.scrollIntoView({behavior:'smooth',block:'center'}); }
-            else { const now=new Date(); for(const d of schedule) { if(new Date(d.date+'T00:00:00')>=now) { const e=document.getElementById(`day-${d.date}`); if(e){e.scrollIntoView({behavior:'smooth',block:'center'});break;} } } }
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-time').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+            document.getElementById('live-date').textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
         }
 
-        function openMaterialModal(ds) {
-            currentMaterialContext={dateStr:ds}; pendingFiles=[];
-            document.getElementById('material-date').innerHTML=schedule.filter(d=>!d.holiday).map(d=>`<option value="${d.date}" ${d.date===ds?'selected':''}>${formatDate(d.date)}</option>`).join('');
-            ['material-name','material-description','material-link'].forEach(id=>document.getElementById(id).value='');
-            document.getElementById('material-category').value='game';
-            document.getElementById('selected-files').innerHTML='';
-            document.getElementById('file-input').value='';
-            document.getElementById('material-modal').classList.add('active');
+        function scrollToNow() {
+            const now = new Date(), today = getDateString(now);
+            const cur = document.querySelector('.class-item.current');
+            if (cur) { cur.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+            const todayEl = document.getElementById(`day-${today}`);
+            if (todayEl) { todayEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+            for (const d of schedule) { if (new Date(d.date + 'T00:00:00') >= now) { const el = document.getElementById(`day-${d.date}`); if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); break; } } }
         }
 
-        function openMaterialModalGeneric() { const t=getDateString(new Date()), cd=schedule.find(d=>d.date>=t&&!d.holiday)?.date||schedule[0].date; openMaterialModal(cd); }
-        function closeMaterialModal() { document.getElementById('material-modal').classList.remove('active'); currentMaterialContext=null; pendingFiles=[]; }
+        function scrollToTop() { document.getElementById('calendar-container').scrollTo({ top: 0, behavior: 'smooth' }); }
 
-        function saveMaterial() {
-            const nm=document.getElementById('material-name').value.trim(), cat=document.getElementById('material-category').value, ds=document.getElementById('material-date').value, desc=document.getElementById('material-description').value.trim(), lnk=document.getElementById('material-link').value.trim();
-            if(!nm) { alert('Please enter a name.'); return; }
-            if(!studyMaterials[ds]) studyMaterials[ds]=[];
-            if(lnk) { studyMaterials[ds].push({name:nm,category:cat,description:desc,type:'link',url:lnk,addedAt:new Date().toISOString()}); }
-            else if(pendingFiles.length) { pendingFiles.forEach(f=>studyMaterials[ds].push({name:pendingFiles.length===1?nm:`${nm} - ${f.name}`,category:cat,description:desc,type:'file',fileName:f.name,fileType:f.type,dataUrl:f.dataUrl,addedAt:new Date().toISOString()})); }
-            else { alert('Please add a link or file.'); return; }
-            localStorage.setItem('studyMaterials',JSON.stringify(studyMaterials)); closeMaterialModal(); generateCalendar();
+        function updateLivePosition() {
+            const now = new Date(), today = getDateString(now), ts = schedule.find(d => d.date === today);
+            if (!ts?.classes) return;
+            ts.classes.forEach((cl, idx) => {
+                const el = document.getElementById(`class-${today}-${idx}`); if (!el) return;
+                const st = parseTime(today, cl.time), et = parseTime(today, cl.end);
+                const isCur = now >= st && now <= et, isComp = now > et;
+                el.classList.toggle('current', isCur); el.classList.toggle('current-indicator', isCur); el.classList.toggle('completed', isComp);
+                const cd = el.querySelector('.countdown'); if (cd && !isComp && !isCur) { const t = getTimeUntil(st, now); cd.textContent = t ? `in ${t}` : ''; }
+                const se = el.querySelector('.class-status');
+                if (se) { if (isCur) { se.className = 'class-status in-progress'; se.textContent = '● LIVE'; } else if (isComp) { se.className = 'class-status completed'; se.textContent = 'completed'; } else { se.className = 'class-status upcoming'; se.textContent = 'upcoming'; } }
+            });
         }
 
-        function deleteMaterial(ds,i) { if(!confirm('Delete?'))return; if(studyMaterials[ds]){studyMaterials[ds].splice(i,1);if(!studyMaterials[ds].length)delete studyMaterials[ds];localStorage.setItem('studyMaterials',JSON.stringify(studyMaterials));generateCalendar();} }
-        function downloadMaterial(ds,i) { const m=studyMaterials[ds]?.[i]; if(m?.dataUrl){const a=document.createElement('a');a.href=m.dataUrl;a.download=m.fileName||'download';document.body.appendChild(a);a.click();document.body.removeChild(a);} }
-
-        function setupFileUpload() {
-            const ua=document.getElementById('file-upload-area'), fi=document.getElementById('file-input');
-            ua.addEventListener('click',()=>fi.click());
-            ua.addEventListener('dragover',e=>{e.preventDefault();ua.classList.add('dragover');});
-            ua.addEventListener('dragleave',()=>ua.classList.remove('dragover'));
-            ua.addEventListener('drop',e=>{e.preventDefault();ua.classList.remove('dragover');handleFiles(e.dataTransfer.files);});
-            fi.addEventListener('change',e=>handleFiles(e.target.files));
+        // Overview Functions
+        function showOverview() {
+            generateOverview();
+            document.getElementById('overview-modal').classList.add('active');
         }
 
-        function handleFiles(files) {
-            pendingFiles=[];
-            const sf=document.getElementById('selected-files'); sf.innerHTML='';
-            Promise.all(Array.from(files).map(f=>new Promise(r=>{const rd=new FileReader();rd.onload=e=>r({name:f.name,type:f.type,size:f.size,dataUrl:e.target.result});rd.readAsDataURL(f);}))).then(res=>{pendingFiles=res;sf.innerHTML=res.map(f=>`<div style="padding:10px;background:rgba(255,255,255,0.05);border-radius:8px;margin-bottom:8px;font-size:0.85rem;">📄 ${f.name} (${(f.size/1024).toFixed(1)} KB)</div>`).join('');});
+        function hideOverview() {
+            document.getElementById('overview-modal').classList.remove('active');
         }
 
-        function init() { generateLegend(); generateCalendar(); updateStatus(); updateLiveTime(); setupFileUpload(); setTimeout(scrollToToday,500); }
+        function generateOverview() {
+            const now = new Date(), today = getDateString(now);
+            const weeks = {};
+            schedule.forEach(d => { if (!weeks[d.week]) weeks[d.week] = []; weeks[d.week].push(d); });
+
+            let html = '';
+            Object.entries(weeks).forEach(([wk, days]) => {
+                html += `<div class="overview-week"><h3>Week ${wk}</h3>`;
+                days.forEach(d => {
+                    const isToday = d.date === today, isPast = new Date(d.date + 'T23:59:59') < now;
+                    let cls = 'overview-day'; if (isToday) cls += ' today'; if (isPast && !isToday) cls += ' past';
+                    html += `<div class="${cls}"><div class="overview-day-name">${dayNames[new Date(d.date + 'T00:00:00').getDay()]} ${formatDate(d.date)}${isToday ? ' (TODAY)' : ''}</div>`;
+                    html += '<div class="overview-topics">';
+                    if (d.holiday) { html += `<span class="overview-topic holiday">🎉 ${d.holiday}</span>`; }
+                    else if (d.classes) {
+                        const unique = [...new Set(d.classes.map(c => c.topic))];
+                        unique.forEach(t => {
+                            const isExam = t.toLowerCase().includes('exam');
+                            html += `<span class="overview-topic ${isExam ? 'exam' : ''}">${t}</span>`;
+                        });
+                    }
+                    html += '</div></div>';
+                });
+                html += '</div>';
+            });
+            document.getElementById('overview-grid').innerHTML = html;
+        }
+
+        function init() {
+            getDailyQuote();
+            generateCalendar();
+            updateStatus();
+            updateClock();
+            setTimeout(scrollToNow, 300);
+        }
+
         init();
-        setInterval(()=>{updateLiveTime();updateStatus();},1000);
-        document.getElementById('material-modal').addEventListener('click',e=>{if(e.target.id==='material-modal')closeMaterialModal();});
+        setInterval(() => { updateClock(); updateStatus(); updateLivePosition(); }, 1000);
     </script>
 </body>
 </html>
