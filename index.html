@@ -296,10 +296,15 @@
 
         /* Past days - lighter opacity */
         .day-card.past {
-            opacity: 0.4;
+            opacity: 0.5;
         }
         .day-card.past:hover {
-            opacity: 0.6;
+            opacity: 0.7;
+        }
+
+        /* Today's card - full opacity */
+        .day-card.today {
+            opacity: 1;
         }
 
         .day-header {
@@ -363,9 +368,14 @@
             50% { box-shadow: inset 0 0 20px 0 rgba(74, 222, 128, 0.15); }
         }
 
-        /* Completed classes - lighter opacity */
+        /* Completed classes - lighter opacity but still readable */
         .class-item.completed {
-            opacity: 0.35;
+            opacity: 0.55;
+        }
+
+        /* Past day's classes are already faded by parent, so don't double-fade */
+        .day-card.past .class-item.completed {
+            opacity: 1;
         }
 
         .class-main {
