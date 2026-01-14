@@ -1461,29 +1461,92 @@
         // Show tutorial on load
         document.addEventListener('DOMContentLoaded', checkShowTutorial);
 
-        // Biblical Quotes for Pharmacy Students
+        // Daily Quotes - Christian Authors, Pharmacists & Healthcare Pioneers, Bible Verses
         const dailyQuotes = [
-            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", verse: "Proverbs 3:5" },
-            { text: "I can do all things through Christ who strengthens me.", verse: "Philippians 4:13" },
-            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you.", verse: "Jeremiah 29:11" },
-            { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", verse: "Joshua 1:9" },
-            { text: "Commit to the Lord whatever you do, and he will establish your plans.", verse: "Proverbs 16:3" },
-            { text: "The Lord is my strength and my shield; my heart trusts in him.", verse: "Psalm 28:7" },
-            { text: "Do not be anxious about anything, but in every situation, by prayer present your requests to God.", verse: "Philippians 4:6" },
-            { text: "Whatever you do, work at it with all your heart, as working for the Lord.", verse: "Colossians 3:23" },
-            { text: "But those who hope in the Lord will renew their strength.", verse: "Isaiah 40:31" },
-            { text: "The fear of the Lord is the beginning of knowledge.", verse: "Proverbs 1:7" },
-            { text: "Cast all your anxiety on him because he cares for you.", verse: "1 Peter 5:7" },
-            { text: "And let us not grow weary of doing good, for in due season we will reap.", verse: "Galatians 6:9" },
-            { text: "The Lord will fight for you; you need only to be still.", verse: "Exodus 14:14" },
-            { text: "Ask and it will be given to you; seek and you will find.", verse: "Matthew 7:7" },
-            { text: "With God all things are possible.", verse: "Matthew 19:26" },
-            { text: "Be still, and know that I am God.", verse: "Psalm 46:10" },
-            { text: "Have I not commanded you? Be strong and courageous!", verse: "Joshua 1:9" },
-            { text: "The Lord is near to all who call on him.", verse: "Psalm 145:18" },
-            { text: "Peace I leave with you; my peace I give you.", verse: "John 14:27" },
-            { text: "In all your ways acknowledge him, and he will make straight your paths.", verse: "Proverbs 3:6" }
+            // C.S. Lewis (8)
+            { text: "I believe in Christianity as I believe the sun has risen: not only because I see it, but because by it I see everything else.", author: "C.S. Lewis" },
+            { text: "Aim at heaven and you will get earth thrown in. Aim at earth and you get neither.", author: "C.S. Lewis" },
+            { text: "You are never too old to set another goal or to dream a new dream.", author: "C.S. Lewis" },
+            { text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis" },
+            { text: "There are far, far better things ahead than any we leave behind.", author: "C.S. Lewis" },
+            { text: "The Christian does not think God will love us because we are good, but that God will make us good because He loves us.", author: "C.S. Lewis" },
+            { text: "Faith is the art of holding on to things your reason has accepted, in spite of your changing moods.", author: "C.S. Lewis" },
+            { text: "To be a Christian means to forgive the inexcusable because God has forgiven the inexcusable in you.", author: "C.S. Lewis" },
+            // Corrie ten Boom (6)
+            { text: "Never be afraid to trust an unknown future to a known God.", author: "Corrie ten Boom" },
+            { text: "Worry does not empty tomorrow of its sorrow; it empties today of its strength.", author: "Corrie ten Boom" },
+            { text: "There is no pit so deep that God's love is not deeper still.", author: "Corrie ten Boom" },
+            { text: "If you look at the world, you'll be distressed. If you look within, you'll be depressed. If you look at God, you'll be at rest.", author: "Corrie ten Boom" },
+            { text: "Faith sees the invisible, believes the unbelievable, and receives the impossible.", author: "Corrie ten Boom" },
+            { text: "Every experience God gives us is the perfect preparation for a future only He can see.", author: "Corrie ten Boom" },
+            // Billy Graham (5)
+            { text: "God will not take us where the grace of God cannot sustain us.", author: "Billy Graham" },
+            { text: "Mountaintops are for views and inspiration, but fruit is grown in the valleys.", author: "Billy Graham" },
+            { text: "When we come to the end of ourselves, we come to the beginning of God.", author: "Billy Graham" },
+            { text: "Being a Christian is not an instantaneous conversion—it is a daily process of becoming more like Christ.", author: "Billy Graham" },
+            { text: "God has given us two hands: one to receive with and the other to give with.", author: "Billy Graham" },
+            // Max Lucado (5)
+            { text: "God never said the journey would be easy, but He did say the arrival would be worthwhile.", author: "Max Lucado" },
+            { text: "Focus on giants, you stumble. Focus on God, your giants tumble.", author: "Max Lucado" },
+            { text: "Faith is not believing God will do what we want. Faith is believing God will do what is right.", author: "Max Lucado" },
+            { text: "You are valuable because you exist. Not because of what you do or what you have done.", author: "Max Lucado" },
+            { text: "A woman's heart should be so hidden in God that a man has to seek Him just to find her.", author: "Max Lucado" },
+            // Martin Luther King Jr. (5)
+            { text: "Faith is taking the first step even when you don't see the whole staircase.", author: "Martin Luther King Jr." },
+            { text: "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.", author: "Martin Luther King Jr." },
+            { text: "If you can't fly, run. If you can't run, walk. If you can't walk, crawl. But by all means, keep moving.", author: "Martin Luther King Jr." },
+            { text: "Our capacity to deal creatively with shattered dreams is determined by our faith in God.", author: "Martin Luther King Jr." },
+            { text: "We must learn that to expect God to do everything while we do nothing is not faith but superstition.", author: "Martin Luther King Jr." },
+            // Elisabeth Elliot (3)
+            { text: "Faith does not eliminate questions. But faith knows where to take them.", author: "Elisabeth Elliot" },
+            { text: "God never withholds from His child that which His love and wisdom call good.", author: "Elisabeth Elliot" },
+            { text: "The secret is Christ in me, not me in a different set of circumstances.", author: "Elisabeth Elliot" },
+            // John Piper (2)
+            { text: "God is most glorified in us when we are most satisfied in Him.", author: "John Piper" },
+            { text: "One of the great enemies of hope is forgetting God's promises.", author: "John Piper" },
+            // Francis of Assisi (3)
+            { text: "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible.", author: "Francis of Assisi" },
+            { text: "Lord, make me an instrument of your peace. Where there is hatred, let me sow love.", author: "Francis of Assisi" },
+            { text: "I have been all things unholy. If God can work through me, He can work through anyone.", author: "Francis of Assisi" },
+            // Nick Vujicic (3)
+            { text: "I was never crippled until I lost hope.", author: "Nick Vujicic" },
+            { text: "Fear is the biggest disability of all. It will paralyze you more than being in a wheelchair.", author: "Nick Vujicic" },
+            { text: "I know for certain that God does not make mistakes, but He does make miracles. I am one. You are, too.", author: "Nick Vujicic" },
+            // Pharmacists & Healthcare Pioneers (15)
+            { text: "The pharmacist is one of the best friends your medicines can have.", author: "Hubert H. Humphrey" },
+            { text: "The good physician treats the disease; the great physician treats the patient who has the disease.", author: "Sir William Osler" },
+            { text: "Medicine is learned by the bedside and not in the classroom.", author: "Sir William Osler" },
+            { text: "He who studies medicine without books sails an uncharted sea, but he who studies medicine without patients does not go to sea at all.", author: "Sir William Osler" },
+            { text: "The value of experience is not in seeing much, but in seeing wisely.", author: "Sir William Osler" },
+            { text: "Acquire the art of detachment, the virtue of method, and the quality of thoroughness, but above all the grace of humility.", author: "Sir William Osler" },
+            { text: "The physician treats, but nature heals.", author: "Hippocrates" },
+            { text: "Wherever the art of medicine is loved, there is also a love of humanity.", author: "Hippocrates" },
+            { text: "Healing is a matter of time, but it is sometimes also a matter of opportunity.", author: "Hippocrates" },
+            { text: "Cure sometimes, treat often, comfort always.", author: "Hippocrates" },
+            { text: "It's far more important to know what person the disease has than what disease the person has.", author: "Hippocrates" },
+            { text: "The art of healing comes from nature, not from the physician. Therefore the physician must start from nature, with an open mind.", author: "Paracelsus" },
+            { text: "Medicine is not only a science; it is also an art. It deals with the very processes of life.", author: "Paracelsus" },
+            { text: "Behind every prescription is a pharmacist ensuring safe healing journeys.", author: "Pharmacy Wisdom" },
+            { text: "You are more than just a pill counter.", author: "Alex Barker" },
+            // Key Bible Verses (10)
+            { text: "I can do all things through Christ who strengthens me.", author: "Philippians 4:13" },
+            { text: "For I know the plans I have for you, declares the Lord, plans to prosper you.", author: "Jeremiah 29:11" },
+            { text: "Trust in the Lord with all your heart and lean not on your own understanding.", author: "Proverbs 3:5" },
+            { text: "Those who hope in the Lord will renew their strength.", author: "Isaiah 40:31" },
+            { text: "With God all things are possible.", author: "Matthew 19:26" },
+            { text: "Be strong and courageous. Do not be afraid; do not be discouraged.", author: "Joshua 1:9" },
+            { text: "Be still, and know that I am God.", author: "Psalm 46:10" },
+            { text: "Whatever you do, work at it with all your heart, as working for the Lord.", author: "Colossians 3:23" },
+            { text: "Let us not grow weary of doing good, for in due season we will reap.", author: "Galatians 6:9" },
+            { text: "Cast all your anxiety on Him because He cares for you.", author: "1 Peter 5:7" }
         ];
+
+        // Holiday-specific quotes (override daily rotation)
+        const holidayQuotes = {
+            "1-19": { text: "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that.", author: "Martin Luther King Jr." },
+            "2-14": { text: "Lord, make me an instrument of your peace. Where there is hatred, let me sow love.", author: "Francis of Assisi" },
+            "2-18": { text: "I have been all things unholy. If God can work through me, He can work through anyone.", author: "Francis of Assisi" }
+        };
 
         function getDailyQuote() {
             const now = getCentralTime();
@@ -1493,13 +1556,20 @@
                 document.getElementById('daily-quote').style.display = 'none';
                 return;
             }
-            // Use day of year to cycle through quotes
-            const start = new Date(now.getFullYear(), 0, 0);
-            const diff = now - start;
-            const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const quote = dailyQuotes[dayOfYear % dailyQuotes.length];
+            // Check for holiday quote first
+            const dateKey = `${now.getMonth() + 1}-${now.getDate()}`;
+            let quote;
+            if (holidayQuotes[dateKey]) {
+                quote = holidayQuotes[dateKey];
+            } else {
+                // Use day of year to cycle through quotes
+                const start = new Date(now.getFullYear(), 0, 0);
+                const diff = now - start;
+                const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
+                quote = dailyQuotes[dayOfYear % dailyQuotes.length];
+            }
             document.getElementById('quote-text').textContent = `"${quote.text}"`;
-            document.getElementById('quote-verse').textContent = `— ${quote.verse}`;
+            document.getElementById('quote-verse').textContent = `— ${quote.author}`;
         }
 
         // Theme
