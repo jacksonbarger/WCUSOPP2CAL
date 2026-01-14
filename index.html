@@ -146,20 +146,25 @@
 
         .theme-toggle {
             display: flex;
-            gap: 5px;
+            gap: 6px;
+            padding: 4px 6px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
         }
 
         .theme-dot-btn {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            border: 2px solid transparent;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
+            opacity: 0.6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        .theme-dot-btn:hover { transform: scale(1.15); }
-        .theme-dot-btn.active { border-color: #fff; box-shadow: 0 0 10px var(--color-glow); }
+        .theme-dot-btn:hover { opacity: 1; transform: scale(1.1); }
+        .theme-dot-btn.active { opacity: 1; transform: scale(1.15); box-shadow: 0 0 8px rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.3); }
         .theme-dot-btn.default { background: linear-gradient(135deg, #22D3EE, #6366F1); }
         .theme-dot-btn.blue { background: linear-gradient(135deg, #7DD3FC, #0EA5E9); }
         .theme-dot-btn.camo { background: linear-gradient(135deg, #BEF264, #84CC16); }
