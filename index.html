@@ -48,6 +48,7 @@
             --block-special: #34D399;
             --block-exam: #F97316;
             --block-lab: #E879F9;
+            --block-law: #94A3B8;
         }
 
         /* Theme: Ocean Depths (Dark)
@@ -75,6 +76,7 @@
             --block-special: #009E73;
             --block-exam: #D55E00;
             --block-lab: #CC79A7;
+            --block-law: #94A3B8;
         }
 
         /* Theme: Cream & Coffee (Light)
@@ -102,6 +104,7 @@
             --block-special: #059669;
             --block-exam: #EA580C;
             --block-lab: #C026D3;
+            --block-law: #475569;
         }
 
         /* Theme: Arctic Frost (Light)
@@ -129,6 +132,7 @@
             --block-special: #059669;
             --block-exam: #EA580C;
             --block-lab: #C026D3;
+            --block-law: #475569;
         }
 
         /* Theme: Rose Garden (Light)
@@ -156,6 +160,7 @@
             --block-special: #059669;
             --block-exam: #EA580C;
             --block-lab: #BE185D;
+            --block-law: #475569;
         }
 
         /* Theme: Lavender Dreams (Dark)
@@ -183,6 +188,7 @@
             --block-special: #34D399;
             --block-exam: #F97316;
             --block-lab: #F472B6;
+            --block-law: #94A3B8;
         }
 
         html, body {
@@ -519,6 +525,7 @@
         .class-item[data-block="special"] { border-color: var(--block-special); }
         .class-item[data-block="exam"] { border-color: var(--block-exam); }
         .class-item[data-block="lab"] { border-color: var(--block-lab); }
+        .class-item[data-block="law"] { border-color: var(--block-law); }
 
         .class-item.current {
             background: rgba(74, 222, 128, 0.15);
@@ -1518,7 +1525,8 @@
             { week: 1, date: "2026-01-13", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Parkinson Disease/Restless Leg Syndrome", block: "neuro1" },
                 { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Parkinson Disease/Restless Leg Syndrome", block: "neuro1" },
-                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Smith", topic: "Law: Introduction to the MPJE", block: "law" }
             ]},
             { week: 1, date: "2026-01-14", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab", block: "lab" },
@@ -1528,7 +1536,8 @@
             { week: 1, date: "2026-01-15", classes: [
                 { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Pathophysiology: Neurocognitive disorders", block: "neuro1" },
                 { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Neurocognitive disorders", block: "neuro1" },
-                { time: "13:15", end: "14:45", instructor: "Burmeister/Lounsbury-Rivera", topic: "Neuroreceptor Review and Pain Pathways", block: "neuro1" }
+                { time: "13:15", end: "14:45", instructor: "Burmeister/Lounsbury-Rivera", topic: "Neuroreceptor Review and Pain Pathways", block: "neuro1" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Federal Law and Regulations", block: "law" }
             ]},
             { week: 1, date: "2026-01-16", classes: [
                 { time: "08:30", end: "10:00", instructor: "Burmeister", topic: "Pathophysiology: Epilepsy", block: "neuro1" },
@@ -1539,7 +1548,8 @@
             { week: 2, date: "2026-01-20", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Neurocognitive disorders (Dementia)", block: "neuro1" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Epilepsy/Status Epilepticus", block: "neuro1" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Epilepsy/Refractory Epilepsy", details: "The Road to Status Epilepticus", block: "neuro1" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Epilepsy/Refractory Epilepsy", details: "The Road to Status Epilepticus", block: "neuro1" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Federal Law and Regulations cont.", block: "law" }
             ]},
             { week: 2, date: "2026-01-21", event: "💵 LOANS SHOULD BE HITTIN 💵", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab – Dementia Tour", block: "lab" },
@@ -1549,7 +1559,8 @@
             { week: 2, date: "2026-01-22", event: "💵 LOANS SHOULD BE HITTIN 💵", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Complications of Antiepileptics", details: "DRESS, TENS, SJS | PT Quiz 1", block: "neuro1" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Lab", block: "lab" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Operations", block: "law" }
             ]},
             { week: 2, date: "2026-01-23", event: "💵 LOANS SHOULD BE HITTIN 💵", block: "Block 2: Neurology Part 2", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 1", block: "exam" },
@@ -1564,7 +1575,8 @@
             { week: 3, date: "2026-01-27", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 1", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: NSAIDs, Opioids", block: "neuro2" },
-                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: Triptans", details: "and other prophylactic agents", block: "neuro2" }
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: Triptans", details: "and other prophylactic agents", block: "neuro2" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Operations", details: "Quiz 1", block: "law" }
             ]},
             { week: 3, date: "2026-01-28", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 1", block: "exam" },
@@ -1573,7 +1585,8 @@
             { week: 3, date: "2026-01-29", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Pain (nociceptive, neuropathic, inflammatory)", block: "neuro2" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Pain (nociceptive, neuropathic, inflammatory)", block: "neuro2" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Operations cont.", block: "law" }
             ]},
             { week: 3, date: "2026-01-30", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", block: "lab" },
@@ -1588,7 +1601,8 @@
             { week: 4, date: "2026-02-03", classes: [
                 { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Sleep Disorders", block: "neuro2" },
                 { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Sleep Disorders", block: "neuro2" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Sleep-Wake Cycle Disorder", details: "narcolepsy/insomnia", block: "neuro2" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Sleep-Wake Cycle Disorder", details: "narcolepsy/insomnia", block: "neuro2" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Operations cont.", block: "law" }
             ]},
             { week: 4, date: "2026-02-04", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", details: "PT Quiz 2", block: "lab" },
@@ -1598,7 +1612,8 @@
             { week: 4, date: "2026-02-05", block: "Block 3: Psychiatry", classes: [
                 { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Anxiety/Depression", block: "psych" },
                 { time: "10:15", end: "11:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: SSRI/SNRI/MAOI/etc.", block: "psych" },
-                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: SSRI/SNRI/MAOI", block: "psych" }
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Med Chem & Pharm: SSRI/SNRI/MAOI", block: "psych" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Practice", block: "law" }
             ]},
             { week: 4, date: "2026-02-06", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 2", block: "exam" },
@@ -1613,7 +1628,8 @@
             { week: 5, date: "2026-02-10", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 2", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "Long", topic: "Lab", block: "lab" },
-                { time: "13:15", end: "14:45", instructor: "Long", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "", topic: "Law: Pharmacy Practice cont.", block: "law" }
             ]},
             { week: 5, date: "2026-02-11", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 2", block: "exam" },
@@ -1622,7 +1638,8 @@
             { week: 5, date: "2026-02-12", classes: [
                 { time: "08:30", end: "10:00", instructor: "C. Breese", topic: "Pathophysiology: Schizophrenia/Bipolar", block: "psych" },
                 { time: "10:15", end: "11:45", instructor: "C. Breese", topic: "Lab", block: "lab" },
-                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: Antipsychotics", block: "psych" }
+                { time: "13:15", end: "14:45", instructor: "Lounsbury-Rivera", topic: "Medicinal Chemistry: Antipsychotics", block: "psych" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Exam 1", block: "exam" }
             ]},
             { week: 5, date: "2026-02-13", classes: [
                 { time: "08:30", end: "10:00", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Antipsychotics", block: "psych" },
@@ -1637,7 +1654,8 @@
             { week: 6, date: "2026-02-17", classes: [
                 { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", block: "lab" },
                 { time: "10:15", end: "11:45", instructor: "Long", topic: "Bipolar Disorder", block: "psych" },
-                { time: "13:15", end: "14:45", instructor: "Long", topic: "Bipolar Disorder", block: "psych" }
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Bipolar Disorder", block: "psych" },
+                { time: "15:00", end: "TBD", instructor: "Smith", topic: "Law: Pharmacy Practice cont.", block: "law" }
             ]},
             { week: 6, date: "2026-02-18", classes: [
                 { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", details: "PT Quiz 3", block: "lab" },
@@ -1647,7 +1665,8 @@
             { week: 6, date: "2026-02-19", classes: [
                 { time: "08:30", end: "10:00", instructor: "Lounsbury-Rivera", topic: "Pharmacology: Drug and Alcohol Abuse", block: "psych" },
                 { time: "10:15", end: "11:45", instructor: "Long", topic: "Substance Use Disorder", details: "Alcohol, Opioid, Medical Marijuana, Vaping", block: "psych" },
-                { time: "13:15", end: "14:45", instructor: "Long", topic: "Substance Use Disorder", block: "psych" }
+                { time: "13:15", end: "14:45", instructor: "Long", topic: "Substance Use Disorder", block: "psych" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Pharmacy Practice cont.", block: "law" }
             ]},
             { week: 6, date: "2026-02-20", block: "Block 4: Dermatology/Rheumatology", classes: [
                 { time: "08:30", end: "10:00", instructor: "Long", topic: "Lab", block: "lab" },
@@ -1662,7 +1681,8 @@
             { week: 7, date: "2026-02-24", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 3", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Dermatologic Conditions", details: "including Alopecia", block: "derm" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Controlled Substances", block: "law" }
             ]},
             { week: 7, date: "2026-02-25", classes: [
                 { time: "08:30", end: "10:00", instructor: "A Weldon", topic: "Pathology: Musculoskeletal & Rheumatic", block: "derm" },
@@ -1672,7 +1692,8 @@
             { week: 7, date: "2026-02-26", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics Exam – Block 3", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "A Weldon", topic: "Rheumatology: Immunosuppressants", block: "derm" },
-                { time: "13:15", end: "14:45", instructor: "A Weldon", topic: "Anti-gout therapies", block: "derm" }
+                { time: "13:15", end: "14:45", instructor: "A Weldon", topic: "Anti-gout therapies", block: "derm" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Controlled Substances cont.", block: "law" }
             ]},
             { week: 7, date: "2026-02-27", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Patient Care Lab Exam – Block 3", block: "exam" },
@@ -1686,7 +1707,8 @@
             { week: 8, date: "2026-03-03", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Gout", details: "PT Quiz 4", block: "derm" },
                 { time: "10:15", end: "11:45", instructor: "Reed/A Weldon", topic: "Lab", block: "lab" },
-                { time: "13:15", end: "14:45", instructor: "Reed/A Weldon", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Reed/A Weldon", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Controlled Substances cont.", details: "Quiz 2", block: "law" }
             ]},
             { week: 8, date: "2026-03-04", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Lab", block: "lab" },
@@ -1696,7 +1718,8 @@
             { week: 8, date: "2026-03-05", block: "Block 5: Special Populations", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Principles of Drug Action Exam – Block 4", block: "exam" },
                 { time: "10:15", end: "11:45", instructor: "Reed", topic: "Sickle Cell Disease", block: "special" },
-                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Reed", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Controlled Substances cont.", block: "law" }
             ]},
             { week: 8, date: "2026-03-06", classes: [
                 { time: "08:30", end: "10:00", instructor: "Reed", topic: "Intro to Pediatrics", details: "Growth/Development", block: "special" },
@@ -1716,7 +1739,8 @@
             { week: 10, date: "2026-03-17", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Ophthalmic Disorders", block: "special" },
                 { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Lab", block: "lab" },
-                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Intro to Geriatrics/BEERS", details: "Medication Use in the Elderly", block: "special" }
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Intro to Geriatrics/BEERS", details: "Medication Use in the Elderly", block: "special" },
+                { time: "15:00", end: "TBD", instructor: "", topic: "Law: Exam 2", block: "exam" }
             ]},
             { week: 10, date: "2026-03-18", classes: [
                 { time: "08:30", end: "10:00", instructor: "", topic: "Therapeutics/Patient Care Lab Exam – Block 4", block: "exam" },
@@ -1725,7 +1749,8 @@
             { week: 10, date: "2026-03-19", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Lab", block: "lab" },
                 { time: "10:15", end: "11:45", instructor: "Zumwalt", topic: "Geriatric Syndrome", details: "Swallowing Issues, Pressure Ulcers", block: "special" },
-                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" }
+                { time: "13:15", end: "14:45", instructor: "Zumwalt", topic: "Lab", block: "lab" },
+                { time: "15:00", end: "TBD", instructor: "Vidal", topic: "Law: Compounding and OTC", block: "law" }
             ]},
             { week: 10, date: "2026-03-20", classes: [
                 { time: "08:30", end: "10:00", instructor: "Zumwalt", topic: "Intro to Critical Care/MODS", block: "special" },
@@ -1740,7 +1765,9 @@
             { week: 11, date: "2026-03-24", holiday: "Study Day" },
             { week: 11, date: "2026-03-25", classes: [{ time: "08:30", end: "12:00", instructor: "", topic: "Therapeutics Final Exam", block: "exam" }]},
             { week: 11, date: "2026-03-26", classes: [{ time: "08:30", end: "12:00", instructor: "", topic: "Patient Care Lab Final Exam", block: "exam" }]},
-            { week: 11, date: "2026-03-27", holiday: "End of Term for P2s" }
+            { week: 11, date: "2026-03-27", event: "End of Term for P2s", classes: [
+                { time: "15:00", end: "TBD", instructor: "", topic: "Law: Final Exam", block: "exam" }
+            ]}
         ];
 
         let studyMaterials = JSON.parse(localStorage.getItem('studyMaterials')) || {};
@@ -1851,7 +1878,7 @@
                     if (day.event) html += `<div class="event-banner">${day.event}</div>`;
                     html += '<div class="classes-list">';
                     day.classes.forEach((cl, idx) => {
-                        const st = parseTime(ds, cl.time), et = parseTime(ds, cl.end);
+                        const st = parseTime(ds, cl.time), et = cl.end === 'TBD' ? parseTime(ds, '23:59') : parseTime(ds, cl.end);
                         let status = 'upcoming'; if (isPast || now > et) status = 'completed'; else if (now >= st && now <= et) status = 'in-progress';
                         const countdown = status === 'upcoming' && isToday ? getTimeUntil(st, now) : null;
                         const hasMaterials = (studyMaterials[ds]?.length || 0) > 0;
@@ -1859,7 +1886,7 @@
 
                         html += `<div class="class-item ${status === 'completed' ? 'completed' : ''} ${isCurrent ? 'current current-indicator' : ''}" data-block="${cl.block}" id="class-${ds}-${idx}">
                             <div class="class-main" onclick="toggleClass('${ds}',${idx})">
-                                <div class="class-time"><div class="time-range">${formatTime12(cl.time)} - ${formatTime12(cl.end)}</div>${countdown ? `<div class="countdown">in ${countdown}</div>` : ''}</div>
+                                <div class="class-time"><div class="time-range">${formatTime12(cl.time)} - ${cl.end === 'TBD' ? 'TBD' : formatTime12(cl.end)}</div>${countdown ? `<div class="countdown">in ${countdown}</div>` : ''}</div>
                                 <div class="class-info"><div class="class-name">${cl.topic}</div><div class="class-details">${cl.instructor || ''}${cl.details ? ' • ' + cl.details : ''}${hasMaterials && idx === 0 ? ' • 📚' : ''}</div></div>
                                 <span class="class-status ${status}">${status === 'in-progress' ? '● LIVE' : status}</span>
                                 <span class="expand-icon">▼</span>
@@ -1899,7 +1926,7 @@
 
             if (ts?.classes) {
                 let cur = null, nxt = null;
-                for (const cl of ts.classes) { const st = parseTime(today, cl.time), et = parseTime(today, cl.end); if (now >= st && now <= et) { cur = cl; break; } else if (now < st && !nxt) { nxt = cl; } }
+                for (const cl of ts.classes) { const st = parseTime(today, cl.time), et = cl.end === 'TBD' ? parseTime(today, '23:59') : parseTime(today, cl.end); if (now >= st && now <= et) { cur = cl; break; } else if (now < st && !nxt) { nxt = cl; } }
 
                 if (cur) {
                     const et = parseTime(today, cur.end), rem = getTimeUntil(et, now);
@@ -1992,7 +2019,7 @@
             if (!ts?.classes) return;
             ts.classes.forEach((cl, idx) => {
                 const el = document.getElementById(`class-${today}-${idx}`); if (!el) return;
-                const st = parseTime(today, cl.time), et = parseTime(today, cl.end);
+                const st = parseTime(today, cl.time), et = cl.end === 'TBD' ? parseTime(today, '23:59') : parseTime(today, cl.end);
                 const isCur = now >= st && now <= et, isComp = now > et;
                 el.classList.toggle('current', isCur); el.classList.toggle('current-indicator', isCur); el.classList.toggle('completed', isComp);
                 const cd = el.querySelector('.countdown'); if (cd && !isComp && !isCur) { const t = getTimeUntil(st, now); cd.textContent = t ? `in ${t}` : ''; }
