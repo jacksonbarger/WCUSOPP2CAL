@@ -1065,6 +1065,209 @@
         .exam-type-badge.final { background: rgba(239, 68, 68, 0.2); color: #F87171; }
         .exam-type-badge.quiz { background: rgba(232, 121, 249, 0.2); color: #E879F9; }
 
+        /* Am I Cooked Slider */
+        .cooked-slider-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 12px;
+            min-width: 120px;
+        }
+
+        .cooked-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 60px;
+            height: 24px;
+            background: linear-gradient(90deg, var(--color-background-card) 0%, rgba(239,68,68,0.3) 100%);
+            border-radius: 12px;
+            outline: none;
+            cursor: pointer;
+            border: 1px solid var(--color-border);
+        }
+
+        .cooked-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F97316, #EF4444);
+            cursor: grab;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+        }
+
+        .cooked-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        .cooked-slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F97316, #EF4444);
+            cursor: grab;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .cooked-label {
+            font-size: 0.6rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .cooked-label.active {
+            color: #EF4444;
+            font-weight: 700;
+            animation: cookedPulse 0.5s ease-in-out;
+        }
+
+        @keyframes cookedPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Quiz Modal */
+        .quiz-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .quiz-modal.show { display: flex; }
+
+        .quiz-modal-content {
+            background: var(--color-background);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .quiz-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .quiz-close {
+            background: none;
+            border: none;
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .quiz-close:hover { color: var(--color-text-primary); }
+
+        .quiz-progress {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            margin-bottom: 16px;
+        }
+
+        .quiz-question {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: var(--color-background-light);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: var(--color-text-primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover:not(:disabled) {
+            background: var(--color-background-card);
+            border-color: var(--color-primary);
+        }
+
+        .quiz-option.correct {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: #22C55E;
+            color: #86EFAC;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: #EF4444;
+            color: #FCA5A5;
+        }
+
+        .quiz-result {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .result-emoji {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .result-score {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .result-verdict {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 24px;
+        }
+
+        .quiz-close-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .quiz-close-btn:hover { opacity: 0.9; }
+
         .exam-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1379,6 +1582,19 @@
                 <button class="tutorial-close-btn" onclick="closeTutorial()">Got it!</button>
             </div>
             <div class="platform-note" id="platform-note"></div>
+        </div>
+    </div>
+
+    <!-- Am I Cooked Quiz Modal -->
+    <div class="quiz-modal" id="quiz-modal">
+        <div class="quiz-modal-content">
+            <div class="quiz-header">
+                <span class="quiz-title" id="quiz-title">🔥 Am I Cooked?</span>
+                <button class="quiz-close" onclick="closeQuizModal()">×</button>
+            </div>
+            <div id="quiz-content">
+                <!-- Quiz questions populated by JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -2224,7 +2440,11 @@
                         </div>
                         <div class="exam-info">
                             <div class="exam-name">${exam.topic}</div>
-                            <div class="exam-details">${formatTime12(exam.time)} - ${formatTime12(exam.end)}</div>
+                            <div class="exam-details">${formatTime12(exam.time)} - ${exam.end === 'TBD' ? 'TBD' : formatTime12(exam.end)}</div>
+                        </div>
+                        <div class="cooked-slider-container">
+                            <input type="range" class="cooked-slider" min="0" max="100" value="0" oninput="handleCookedSlider(this)">
+                            <span class="cooked-label">slide →</span>
                         </div>
                         <span class="exam-type-badge ${exam.examType.badge}">${exam.examType.label}</span>
                     </div>`;
@@ -2306,6 +2526,140 @@
             }
 
             document.getElementById('exams-content').innerHTML = html;
+        }
+
+        // "Am I Cooked?" Quiz Data - Add questions for each exam topic
+        const cookedQuizzes = {
+            "Principles of Drug Action Exam – Block 1": {
+                title: "Block 1: Neurology Part 1",
+                questions: [
+                    { q: "Quiz questions coming soon!", options: ["Check back later"], answer: 0 }
+                ]
+            },
+            "Therapeutics Exam – Block 1": {
+                title: "Block 1: Therapeutics",
+                questions: [
+                    { q: "Quiz questions coming soon!", options: ["Check back later"], answer: 0 }
+                ]
+            }
+            // Add more exam quizzes here...
+        };
+
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+
+        function handleCookedSlider(slider) {
+            const label = slider.nextElementSibling;
+            const value = parseInt(slider.value);
+
+            if (value < 30) {
+                label.textContent = 'slide →';
+                label.classList.remove('active');
+            } else if (value < 70) {
+                label.textContent = 'am i...';
+                label.classList.remove('active');
+            } else if (value < 95) {
+                label.textContent = 'cooked? 🔥';
+                label.classList.add('active');
+            } else {
+                label.textContent = 'COOKED! 🔥';
+                label.classList.add('active');
+                // Find the exam topic from the parent element
+                const examItem = slider.closest('.exam-item');
+                const examName = examItem.querySelector('.exam-name').textContent;
+                openCookedQuiz(examName);
+                // Reset slider after a moment
+                setTimeout(() => {
+                    slider.value = 0;
+                    label.textContent = 'slide →';
+                    label.classList.remove('active');
+                }, 500);
+            }
+        }
+
+        function openCookedQuiz(examTopic) {
+            const quiz = cookedQuizzes[examTopic];
+            if (!quiz || quiz.questions.length === 0) {
+                // Show placeholder message
+                alert(`🔥 Quiz for "${examTopic}" coming soon!\n\nCheck back later for practice questions.`);
+                return;
+            }
+
+            currentQuiz = quiz;
+            currentQuestionIndex = 0;
+            quizScore = 0;
+
+            document.getElementById('quiz-modal').classList.add('show');
+            document.getElementById('quiz-title').textContent = `🔥 Am I Cooked? - ${quiz.title}`;
+            showQuizQuestion();
+        }
+
+        function showQuizQuestion() {
+            if (!currentQuiz) return;
+
+            const q = currentQuiz.questions[currentQuestionIndex];
+            const total = currentQuiz.questions.length;
+
+            let html = `
+                <div class="quiz-progress">${currentQuestionIndex + 1} / ${total}</div>
+                <div class="quiz-question">${q.q}</div>
+                <div class="quiz-options">
+            `;
+
+            q.options.forEach((opt, i) => {
+                html += `<button class="quiz-option" onclick="selectQuizAnswer(${i})">${opt}</button>`;
+            });
+
+            html += '</div>';
+            document.getElementById('quiz-content').innerHTML = html;
+        }
+
+        function selectQuizAnswer(index) {
+            const q = currentQuiz.questions[currentQuestionIndex];
+            const buttons = document.querySelectorAll('.quiz-option');
+
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.answer) btn.classList.add('correct');
+                else if (i === index) btn.classList.add('wrong');
+            });
+
+            if (index === q.answer) quizScore++;
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < currentQuiz.questions.length) {
+                    showQuizQuestion();
+                } else {
+                    showQuizResult();
+                }
+            }, 1000);
+        }
+
+        function showQuizResult() {
+            const total = currentQuiz.questions.length;
+            const percent = Math.round((quizScore / total) * 100);
+            let verdict, emoji;
+
+            if (percent >= 90) { verdict = "NOT COOKED!"; emoji = "😎"; }
+            else if (percent >= 70) { verdict = "Slightly warm"; emoji = "😅"; }
+            else if (percent >= 50) { verdict = "Medium rare"; emoji = "😬"; }
+            else { verdict = "FULLY COOKED"; emoji = "🔥💀"; }
+
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="quiz-result">
+                    <div class="result-emoji">${emoji}</div>
+                    <div class="result-score">${quizScore} / ${total}</div>
+                    <div class="result-verdict">${verdict}</div>
+                    <button class="quiz-close-btn" onclick="closeQuizModal()">Close</button>
+                </div>
+            `;
+        }
+
+        function closeQuizModal() {
+            document.getElementById('quiz-modal').classList.remove('show');
+            currentQuiz = null;
         }
 
         function init() {
