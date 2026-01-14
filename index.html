@@ -394,6 +394,52 @@
             text-transform: uppercase;
         }
 
+        /* Cooked Tip */
+        .cooked-tip {
+            margin-top: 8px;
+            padding: 10px 14px;
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(239, 68, 68, 0.1));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cooked-tip:hover {
+            background: linear-gradient(135deg, rgba(249, 115, 22, 0.25), rgba(239, 68, 68, 0.15));
+            transform: translateY(-1px);
+        }
+
+        .cooked-tip-fire {
+            font-size: 1.3rem;
+            animation: fireWave 0.6s ease-in-out infinite;
+        }
+
+        .cooked-tip-content {
+            flex: 1;
+        }
+
+        .cooked-tip-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #F97316;
+            margin-bottom: 2px;
+        }
+
+        .cooked-tip-desc {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+
+        .cooked-tip-arrow {
+            font-size: 0.9rem;
+            color: #F97316;
+            opacity: 0.7;
+        }
+
         /* Calendar Container */
         .calendar-container {
             flex: 1;
@@ -1551,6 +1597,14 @@
                 <span class="countdown-days" id="final-days">--</span>
                 <span class="countdown-label">Days</span>
             </div>
+        </div>
+        <div class="cooked-tip" onclick="showExams()">
+            <span class="cooked-tip-fire">🔥</span>
+            <div class="cooked-tip-content">
+                <div class="cooked-tip-title">How cooked am I?</div>
+                <div class="cooked-tip-desc">Tap Exams → swipe any exam left to test yourself</div>
+            </div>
+            <span class="cooked-tip-arrow">→</span>
         </div>
     </div>
 
