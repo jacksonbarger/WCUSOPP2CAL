@@ -779,6 +779,11 @@
     </div>
 
     <script>
+        // Get current time in Central Time (Mississippi)
+        function getCentralTime() {
+            return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+        }
+
         // Biblical Quotes for Pharmacy Students
         const dailyQuotes = [
             { text: "Trust in the Lord with all your heart and lean not on your own understanding.", verse: "Proverbs 3:5" },
@@ -804,7 +809,7 @@
         ];
 
         function getDailyQuote() {
-            const now = new Date();
+            const now = getCentralTime();
             const dayOfWeek = now.getDay();
             // Show quotes on weekdays only (1-5)
             if (dayOfWeek === 0 || dayOfWeek === 6) {
@@ -1146,7 +1151,7 @@
         }
 
         function generateCalendar() {
-            const cal = document.getElementById('calendar'), now = new Date(), today = getDateString(now);
+            const cal = document.getElementById('calendar'), now = getCentralTime(), today = getDateString(now);
             let html = '', cw = 0, cb = '';
 
             for (const day of schedule) {
@@ -1189,7 +1194,7 @@
         function toggleClass(ds, i) { document.getElementById(`class-${ds}-${i}`)?.classList.toggle('expanded'); }
 
         function updateStatus() {
-            const now = new Date(), today = getDateString(now), ts = schedule.find(d => d.date === today);
+            const now = getCentralTime(), today = getDateString(now), ts = schedule.find(d => d.date === today);
             const sb = document.getElementById('status-badge'), si = document.getElementById('status-info'), bar = document.getElementById('status-bar');
 
             if (ts?.holiday) { bar.className = 'status-bar'; sb.className = 'status-badge done'; sb.textContent = 'OFF'; si.innerHTML = `🎉 ${ts.holiday}`; return; }
@@ -1217,13 +1222,13 @@
         }
 
         function updateClock() {
-            const now = new Date();
-            document.getElementById('live-time').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' });
+            const now = getCentralTime();
+            document.getElementById('live-time').textContent = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + ' CT';
             document.getElementById('live-date').textContent = `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
         }
 
         function scrollToNow() {
-            const now = new Date(), today = getDateString(now);
+            const now = getCentralTime(), today = getDateString(now);
             const cur = document.querySelector('.class-item.current');
             if (cur) { cur.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
             const todayEl = document.getElementById(`day-${today}`);
@@ -1234,7 +1239,7 @@
         function scrollToTop() { document.getElementById('calendar-container').scrollTo({ top: 0, behavior: 'smooth' }); }
 
         function updateLivePosition() {
-            const now = new Date(), today = getDateString(now), ts = schedule.find(d => d.date === today);
+            const now = getCentralTime(), today = getDateString(now), ts = schedule.find(d => d.date === today);
             if (!ts?.classes) return;
             ts.classes.forEach((cl, idx) => {
                 const el = document.getElementById(`class-${today}-${idx}`); if (!el) return;
@@ -1258,7 +1263,7 @@
         }
 
         function generateOverview() {
-            const now = new Date(), today = getDateString(now);
+            const now = getCentralTime(), today = getDateString(now);
             const weeks = {};
             schedule.forEach(d => { if (!weeks[d.week]) weeks[d.week] = []; weeks[d.week].push(d); });
 
