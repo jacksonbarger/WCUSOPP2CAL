@@ -1027,9 +1027,11 @@
         }
 
         .exam-item {
+            position: relative;
             display: flex;
             align-items: center;
             padding: 12px;
+            padding-right: 80px;
             background: var(--color-background-light);
             border-radius: 8px;
             border-left: 4px solid var(--block-exam);
@@ -1101,6 +1103,9 @@
         }
 
         .exam-type-badge {
+            position: absolute;
+            right: 8px;
+            top: 8px;
             padding: 4px 10px;
             border-radius: 12px;
             font-size: 0.6rem;
@@ -1173,7 +1178,7 @@
             background: var(--color-background-light);
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: grab;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
             user-select: none;
         }
 
@@ -1192,15 +1197,14 @@
         .swipe-hint {
             position: absolute;
             right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.6rem;
+            bottom: 6px;
+            font-size: 0.55rem;
             color: var(--color-text-muted);
-            opacity: 0.6;
+            opacity: 0.5;
             pointer-events: none;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 3px;
         }
 
         .swipe-hint-arrow {
@@ -1220,7 +1224,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.85);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('assets/jail-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             z-index: 10000;
             justify-content: center;
             align-items: center;
@@ -1349,6 +1356,244 @@
         }
 
         .quiz-close-btn:hover { opacity: 0.9; }
+
+        /* Select All That Apply Styles */
+        .quiz-select-all .quiz-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .quiz-option.selected {
+            background: rgba(129, 140, 248, 0.2);
+            border-color: var(--color-primary);
+        }
+
+        .quiz-option.selected .checkbox-icon {
+            color: var(--color-primary);
+        }
+
+        .checkbox-icon {
+            font-size: 1.2rem;
+            min-width: 24px;
+            color: var(--color-text-muted);
+        }
+
+        .quiz-submit-btn {
+            margin-top: 16px;
+            width: 100%;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .quiz-submit-btn:hover { opacity: 0.9; }
+        .quiz-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* Quiz Feedback & Next Button */
+        .quiz-feedback {
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            animation: fadeSlideIn 0.3s ease;
+        }
+        .quiz-feedback.correct {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22C55E;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        .quiz-feedback.wrong {
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        .quiz-next-btn {
+            margin-top: 12px;
+            width: 100%;
+            background: linear-gradient(135deg, #3B82F6, #2563EB);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .quiz-next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+        .quiz-next-btn:active {
+            transform: translateY(0);
+        }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Matching Question Styles */
+        .match-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .match-column {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .match-item {
+            background: var(--color-background-light);
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .match-item:hover:not(.paired) {
+            border-color: var(--color-primary);
+        }
+
+        .match-item.active {
+            border-color: var(--color-primary);
+            background: rgba(129, 140, 248, 0.15);
+            box-shadow: 0 0 0 2px rgba(129, 140, 248, 0.3);
+        }
+
+        .match-item.paired {
+            opacity: 0.5;
+            pointer-events: none;
+            border-style: dashed;
+        }
+
+        .match-number, .match-letter {
+            font-weight: 700;
+            color: var(--color-accent);
+            min-width: 20px;
+            flex-shrink: 0;
+        }
+
+        .match-text {
+            flex: 1;
+        }
+
+        .match-pairs {
+            margin-top: 12px;
+            padding: 10px;
+            background: var(--color-background-light);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--color-text-muted);
+        }
+
+        .match-pair-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .match-pair-item:last-child { border-bottom: none; }
+
+        .match-pair-remove {
+            color: #EF4444;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        /* Hint Card Styles */
+        .quiz-hint {
+            text-align: center;
+            padding: 24px 16px;
+        }
+
+        .hint-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+
+        .hint-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #F59E0B;
+            margin-bottom: 16px;
+        }
+
+        .hint-text {
+            font-size: 1rem;
+            color: var(--color-text-primary);
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .hint-continue-btn {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .hint-continue-btn:hover { opacity: 0.9; }
+
+        /* Question type indicator */
+        .quiz-type-badge {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .quiz-type-badge.mc { background: rgba(34, 211, 238, 0.2); color: #22D3EE; }
+        .quiz-type-badge.select { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
+        .quiz-type-badge.match { background: rgba(251, 146, 60, 0.2); color: #FB923C; }
+
+        /* Mobile: Stack matching columns */
+        @media (max-width: 500px) {
+            .match-container {
+                grid-template-columns: 1fr;
+            }
+
+            .match-left { order: 1; }
+            .match-right {
+                order: 2;
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 1px dashed var(--color-border);
+            }
+
+            .match-item {
+                padding: 12px;
+            }
+        }
 
         .exam-stats {
             display: grid;
@@ -2626,46 +2871,533 @@
         }
 
         // "Am I Cooked?" Quiz Data - Add questions for each exam topic
-        const cookedQuizzes = {
+        // Question Bank for "How Cooked Am I?" Quiz
+        const examQuestionBanks = {
             "Principles of Drug Action Exam – Block 1": {
-                title: "Block 1: Neurology Part 1",
+                title: "Block 1: Principles of Drug Action",
+                hints: [
+                    "Questions coming soon!"
+                ],
                 questions: [
-                    { q: "Quiz questions coming soon!", options: ["Check back later"], answer: 0 }
+                    {
+                        type: "mc",
+                        q: "Check back later for PDA Block 1 questions!",
+                        options: ["Check back later", "Coming soon", "Stay tuned", "Questions pending"],
+                        answer: 0
+                    }
                 ]
             },
             "Therapeutics Exam – Block 1": {
-                title: "Block 1: Therapeutics",
+                title: "Block 1: Therapeutics (PD/MS/ET/RLS)",
+                hints: [
+                    "OLD / COG IMPAIRED → LEVODOPA",
+                    "YOUNG / NO COG → DOPAMINE AGONIST",
+                    "Check iron levels first in RLS",
+                    "Propranolol for Essential Tremor (unless HF)",
+                    "OCRELIZUMAB = Only FDA-approved for PPMS",
+                    "True MS relapse: ≥24h symptoms + ≥30 days since last",
+                    "Steroids shorten relapse, DON'T prevent disability",
+                    "Teriflunomide = Cat X, 2yr washout without procedure",
+                    "Natalizumab = Highest PML risk (JCV antibody monitoring)",
+                    "Ofatumumab = Anti-CD20 self-injectable (weekly x3, then monthly)",
+                    "IFNs + Glatiramer = Lower efficacy but BEST safety",
+                    "DMF flushing → non-enteric ASA 325mg 30min before"
+                ],
                 questions: [
-                    { q: "Quiz questions coming soon!", options: ["Check back later"], answer: 0 }
+                    // ========== PARKINSON'S DISEASE - Multiple Choice (7) ==========
+                    {
+                        type: "mc",
+                        q: "A 66-year-old patient newly diagnosed with Parkinson disease has mild functional impairment, no cognitive issues, and tremor is not the predominant symptom. Which is the best initial therapy?",
+                        options: ["Carbidopa/levodopa", "Pramipexole", "Selegiline", "Benztropine"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which adverse effect is MOST associated with dopamine agonists compared with levodopa?",
+                        options: ["Orthostatic hypotension", "Impulse control disorders", "Dyskinesia", "Nausea"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient develops painful sustained muscle contractions in the early morning before the first levodopa dose. What is the best description of this complication?",
+                        options: ["Peak-dose dyskinesia", "Wearing-off phenomenon", "Off-period dystonia", "Freezing of gait"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A 62-year-old patient with Parkinson disease is started on pramipexole. Two months later, his spouse reports new compulsive gambling behavior. Which mechanism best explains this adverse effect?",
+                        options: ["NMDA receptor antagonism", "Dopamine receptor overstimulation", "Anticholinergic effects", "Inhibition of dopamine metabolism"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which medication is CONTRAINDICATED with selegiline due to risk of serotonin syndrome?",
+                        options: ["Acetaminophen", "Sertraline", "Meperidine", "Ibuprofen"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Why is carbidopa combined with levodopa in Parkinson disease treatment?",
+                        options: ["To increase dopamine release in the CNS", "To prevent levodopa from crossing the BBB", "To reduce peripheral conversion of levodopa", "To treat levodopa-induced dyskinesia"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which patient is the BEST candidate for dopamine agonist monotherapy as initial treatment?",
+                        options: ["78-year-old with hallucinations", "70-year-old with cognitive impairment", "60-year-old with mild PD and intact cognition", "82-year-old with orthostatic hypotension"],
+                        answer: 2
+                    },
+
+                    // ========== PARKINSON'S DISEASE - Matching (5) ==========
+                    {
+                        type: "match",
+                        q: "Match the medication class to its PRIMARY role:",
+                        pairs: [
+                            { left: "Amantadine", right: "Treatment of levodopa-induced dyskinesia" },
+                            { left: "MAO-B inhibitors", right: "Monotherapy option for mild PD" },
+                            { left: "COMT inhibitors", right: "Adjunct to reduce OFF time" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the symptom to the MOST appropriate pharmacologic approach:",
+                        pairs: [
+                            { left: "Tremor in young patient", right: "Anticholinergic" },
+                            { left: "Peak-dose dyskinesia", right: "Amantadine" },
+                            { left: "Wearing-off", right: "Add COMT inhibitor" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the medication to the KEY safety concern:",
+                        pairs: [
+                            { left: "Tolcapone", right: "Hepatotoxicity" },
+                            { left: "Dopamine agonists", right: "Impulse control disorders" },
+                            { left: "Anticholinergics", right: "Cognitive impairment" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the complication with the BEST management strategy:",
+                        pairs: [
+                            { left: "Peak-dose dyskinesia", right: "Add amantadine" },
+                            { left: "Off-period dystonia", right: "Add long-acting bedtime levodopa" },
+                            { left: "Wearing-off", right: "Add COMT inhibitor" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the medication with its PRIMARY adverse effect:",
+                        pairs: [
+                            { left: "Amantadine", right: "Livedo reticularis" },
+                            { left: "Dopamine agonists", right: "Impulse control disorders" },
+                            { left: "Tolcapone", right: "Hepatotoxicity" }
+                        ]
+                    },
+
+                    // ========== PARKINSON'S DISEASE - Select All (4) ==========
+                    {
+                        type: "select",
+                        q: "Which of the following medications should generally be AVOIDED in patients with Parkinson disease due to worsening motor symptoms? (Select ALL that apply)",
+                        options: ["Metoclopramide", "Prochlorperazine", "Quetiapine", "Haloperidol", "Ondansetron"],
+                        answer: [0, 1, 3]
+                    },
+                    {
+                        type: "select",
+                        q: "Which of the following are appropriate management strategies for peak-dose dyskinesia? (Select ALL that apply)",
+                        options: ["Reduce individual levodopa doses", "Increase dosing frequency", "Add amantadine", "Add COMT inhibitor", "Discontinue MAO-B inhibitor"],
+                        answer: [0, 1, 2]
+                    },
+                    {
+                        type: "select",
+                        q: "Which of the following are recognized non-motor complications of Parkinson disease? (Select ALL that apply)",
+                        options: ["Orthostatic hypotension", "Depression", "Hallucinations", "Hyperthyroidism", "REM sleep behavior disorder"],
+                        answer: [0, 1, 2, 4]
+                    },
+                    {
+                        type: "select",
+                        q: "Which of the following medication classes can POTENTIATE levodopa effects and increase dyskinesia risk? (Select ALL that apply)",
+                        options: ["COMT inhibitors", "MAO-B inhibitors", "Anticholinergics", "Dopamine agonists", "Beta blockers"],
+                        answer: [0, 1, 3]
+                    },
+
+                    // ========== ESSENTIAL TREMOR & RLS - Multiple Choice (3) ==========
+                    {
+                        type: "mc",
+                        q: "A 67-year-old woman presents with a bilateral hand tremor that is worse when holding objects and writing. The tremor improves after drinking alcohol. There is no rigidity or bradykinesia. Which medication is the best initial therapy?",
+                        options: ["Carbidopa/levodopa", "Propranolol", "Pramipexole", "Benztropine"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient with essential tremor also has heart failure with reduced ejection fraction (EF 30%). Which medication is the most appropriate first-line option?",
+                        options: ["Propranolol", "Metoprolol", "Primidone", "Topiramate"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A 70-year-old patient reports an urge to move her legs associated with unpleasant sensations that are worse at night and at rest, and improve with movement. Labs reveal iron deficiency. Which is the most appropriate initial intervention?",
+                        options: ["Start pramipexole", "Start gabapentin enacarbil", "Start carbidopa/levodopa", "Correct iron deficiency"],
+                        answer: 3
+                    },
+
+                    // ========== ESSENTIAL TREMOR & RLS - Matching (1) ==========
+                    {
+                        type: "match",
+                        q: "Match the disease with its KEY distinguishing feature:",
+                        pairs: [
+                            { left: "Parkinson disease", right: "Bradykinesia required for diagnosis" },
+                            { left: "Essential tremor", right: "Improves with alcohol" },
+                            { left: "Restless leg syndrome", right: "Urge to move legs relieved by movement" }
+                        ]
+                    },
+
+                    // ========== ESSENTIAL TREMOR & RLS - Select All (1) ==========
+                    {
+                        type: "select",
+                        q: "Which of the following statements about Essential Tremor are TRUE? (Select ALL that apply)",
+                        options: ["Tremor is typically worse at rest", "Tremor is usually bilateral and symmetric", "Responds to propranolol or primidone", "Improves with levodopa", "Head tremor ('yes-yes' or 'no-no') may occur"],
+                        answer: [1, 2, 4]
+                    },
+
+                    // ========== MULTIPLE SCLEROSIS - Multiple Choice (15) ==========
+                    {
+                        type: "mc",
+                        q: "A 55-year-old is diagnosed with primary progressive MS (PPMS). Which DMT is specifically highlighted as the only FDA-approved agent for PPMS?",
+                        options: ["Natalizumab", "Ocrelizumab", "Fingolimod", "Ofatumumab"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which scenario best meets the definition of a true MS exacerbation appropriate to consider treatment (vs pseudo-exacerbation)?",
+                        options: ["Symptoms for 12 hours, last relapse 2 months ago", "Symptoms for 48 hours, last relapse 10 days ago", "Symptoms for 30 hours, last relapse 45 days ago", "Symptoms for 20 hours, last relapse 45 days ago"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient has a severe relapse with functional decline. Which regimen is most consistent with the recommendation?",
+                        options: ["Prednisone 10 mg daily x 5 days", "IV methylprednisolone 500–1000 mg/day x 3–5 days", "IM methylprednisolone 40 mg once", "Dexamethasone 1 mg twice daily x 10 days"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which statement about corticosteroids for MS relapses is TRUE?",
+                        options: ["Steroids prevent future relapses when used monthly", "Steroids reduce long-term disability progression when used early", "Steroids shorten relapse duration/severity but do not alter long-term disability accumulation", "Steroids should be used for relapse prevention instead of DMTs"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which DMTs are described as traditional injectables with lower efficacy/slower onset but best safety profile?",
+                        options: ["Interferons and glatiramer acetate", "Natalizumab and ocrelizumab", "Fingolimod and dimethyl fumarate", "Cladribine and alemtuzumab"],
+                        answer: 0
+                    },
+                    {
+                        type: "mc",
+                        q: "Which self-injectable DMT is an anti-CD20 therapy and is noted as an exception because it 'behaves like infusion therapies'?",
+                        options: ["Glatiramer acetate", "Interferon beta-1a", "Ofatumumab", "Peginterferon beta-1a"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which of the following is the correct Kesimpta (ofatumumab) dosing pattern?",
+                        options: ["20 mg SQ monthly starting immediately", "20 mg SQ weekly at weeks 0, 1, 2; then monthly starting week 4", "20 mg SQ daily for 14 days, then stop", "30 mcg IM weekly"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "For interferon beta products, which monitoring plan matches the recommended schedule?",
+                        options: ["CBC only at baseline, then annually", "LFTs monthly indefinitely, no CBC needed", "CBC/platelets/LFTs baseline, 1 month, q3 months x 1 year, then q6 months (plus suicide risk monitoring)", "No monitoring needed unless symptoms occur"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient on glatiramer acetate reports facial flushing, palpitations, chest discomfort, shortness of breath, and anxiety starting minutes after injection and resolving within ~30 minutes. Best interpretation?",
+                        options: ["This is anaphylaxis—administer epinephrine immediately", "This is the benign post-injection reaction; reassure/counsel and monitor", "This indicates liver failure—stop therapy", "This is PML—urgent MRI needed"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which oral DMT is explicitly noted as having a pregnancy Category X concern and may require a washout procedure?",
+                        options: ["Dimethyl fumarate", "Teriflunomide", "Fingolimod", "Cladribine"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient taking teriflunomide wants to become pregnant soon. What is the best counseling point?",
+                        options: ["Stop teriflunomide; no further steps needed because it clears in ~1 week", "Stop teriflunomide; without washout it may take up to 2 years to reach acceptable plasma levels", "Continue teriflunomide through pregnancy because relapse risk decreases during pregnancy", "Switch to natalizumab immediately and give a live vaccine booster first"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which counseling recommendation is specifically highlighted for dimethyl fumarate–associated flushing?",
+                        options: ["Take on an empty stomach to improve absorption", "Premedicate with non-enteric aspirin 325 mg 30 minutes before the dose", "Crush and sprinkle capsule contents on food", "Avoid all food with dimethyl fumarate to reduce GI upset"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which oral DMT is the only one with a pediatric indication (≥10 years old) among the S1P modulators?",
+                        options: ["Siponimod", "Ozanimod", "Fingolimod", "Ponesimod"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which statement best reflects the 'place in therapy' concept for natalizumab?",
+                        options: ["Best first-line for all mild RRMS due to lowest risk", "Reserved for highly active disease; risk/benefit must be considered case-by-case", "Used only for PPMS", "Used only for CIS and never RRMS"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Discontinuation of a DMT may be considered in which scenario?",
+                        options: ["RRMS patient with no relapse for 3 months", "SPMS patient who is not ambulatory (EDSS ≥7) and has no ongoing relapses/MRI activity for ≥2 years", "Any patient who dislikes injections", "Any patient who becomes pregnant, regardless of agent"],
+                        answer: 1
+                    },
+
+                    // ========== MULTIPLE SCLEROSIS - Matching (3) ==========
+                    {
+                        type: "match",
+                        q: "Match the DMT to its route + dosing frequency:",
+                        pairs: [
+                            { left: "Avonex", right: "IM once weekly" },
+                            { left: "Plegridy", right: "SQ q2 weeks" },
+                            { left: "Betaseron", right: "SQ every other day" },
+                            { left: "Glatiramer acetate (Copaxone/Glatopa)", right: "SQ 20 mg daily or 40 mg three times weekly" },
+                            { left: "Ofatumumab (Kesimpta)", right: "SQ weekly at weeks 0,1,2 then monthly starting week 4" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the drug to the key 'must-check/monitor' item:",
+                        pairs: [
+                            { left: "Interferon beta products", right: "CBC/platelets/LFT schedule and depression/suicide risk monitoring" },
+                            { left: "Ofatumumab", right: "HBV screening + quantitative serum immunoglobulins" },
+                            { left: "Natalizumab", right: "JCV antibody testing and close PML vigilance" },
+                            { left: "Teriflunomide", right: "Pregnancy testing + TB test + LFTs/BP; washout counseling" },
+                            { left: "Mitoxantrone", right: "LVEF monitoring + lifetime exposure/cardiotoxicity precautions" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the medication to the most appropriate 'when would you use it?' scenario:",
+                        pairs: [
+                            { left: "Ocrelizumab", right: "Only FDA-approved DMT for PPMS (also used in relapsing forms)" },
+                            { left: "Alemtuzumab", right: "Reserved for patients with inadequate response to ≥2 MS meds" },
+                            { left: "Cladribine", right: "RRMS/active SPMS (NOT CIS) and generally reserved when other therapies fail" },
+                            { left: "Traditional injectables (IFNs, glatiramer)", right: "Lower efficacy/slower onset but best safety profile" },
+                            { left: "Natalizumab", right: "Highly active relapsing MS; high efficacy but major PML monitoring" }
+                        ]
+                    },
+
+                    // ========== MULTIPLE SCLEROSIS - Select All (2) ==========
+                    {
+                        type: "select",
+                        q: "Select ALL vaccines listed as live vaccines (generally avoided during many MS immunomodulatory/immunosuppressive therapies):",
+                        options: ["MMR", "Varicella", "Rotavirus", "FluMist (intranasal influenza)", "Yellow fever", "Injectable influenza vaccine"],
+                        answer: [0, 1, 2, 3, 4]
+                    },
+                    {
+                        type: "select",
+                        q: "Select ALL statements that are TRUE regarding MS disease-modifying therapies:",
+                        options: ["Many DMTs may take 1–2 years before effectiveness can be seen", "Steroids are used long-term to prevent disability progression", "Natalizumab has the highest PML risk among DMTs highlighted", "Teriflunomide may require a washout procedure and can persist for up to 2 years without washout", "Ocrelizumab requires premedication and post-infusion observation"],
+                        answer: [0, 2, 3, 4]
+                    }
+                ]
+            },
+            "Multiple Sclerosis": {
+                title: "Multiple Sclerosis DMTs & Management",
+                hints: [
+                    "OCRELIZUMAB = Only FDA-approved for PPMS",
+                    "True relapse: ≥24h symptoms + ≥30 days since last",
+                    "Steroids shorten relapse, DON'T prevent disability",
+                    "Teriflunomide = Cat X, 2yr washout without procedure",
+                    "Natalizumab = Highest PML risk (JCV antibody monitoring)",
+                    "Ofatumumab = Anti-CD20 self-injectable (weekly x3, then monthly)",
+                    "IFNs + Glatiramer = Lower efficacy but BEST safety",
+                    "DMF flushing → non-enteric ASA 325mg 30min before",
+                    "Fingolimod = Only S1P with pediatric indication (≥10yo)",
+                    "Live vaccines AVOID: MMR, Varicella, Rotavirus, FluMist, Yellow fever"
+                ],
+                questions: [
+                    // === MULTIPLE SCLEROSIS - Multiple Choice (1-15) ===
+                    {
+                        type: "mc",
+                        q: "A 55-year-old is diagnosed with primary progressive MS (PPMS). Which DMT is specifically highlighted as the only FDA-approved agent for PPMS?",
+                        options: ["Natalizumab", "Ocrelizumab", "Fingolimod", "Ofatumumab"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which scenario best meets the definition of a true MS exacerbation appropriate to consider treatment (vs pseudo-exacerbation)?",
+                        options: ["Symptoms for 12 hours, last relapse 2 months ago", "Symptoms for 48 hours, last relapse 10 days ago", "Symptoms for 30 hours, last relapse 45 days ago", "Symptoms for 20 hours, last relapse 45 days ago"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient has a severe relapse with functional decline. Which regimen is most consistent with the recommendation?",
+                        options: ["Prednisone 10 mg daily x 5 days", "IV methylprednisolone 500–1000 mg/day x 3–5 days", "IM methylprednisolone 40 mg once", "Dexamethasone 1 mg twice daily x 10 days"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which statement about corticosteroids for MS relapses is TRUE?",
+                        options: ["Steroids prevent future relapses when used monthly", "Steroids reduce long-term disability progression when used early", "Steroids shorten relapse duration/severity but do not alter long-term disability accumulation", "Steroids should be used for relapse prevention instead of DMTs"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which DMTs are described as traditional injectables with lower efficacy/slower onset but best safety profile?",
+                        options: ["Interferons and glatiramer acetate", "Natalizumab and ocrelizumab", "Fingolimod and dimethyl fumarate", "Cladribine and alemtuzumab"],
+                        answer: 0
+                    },
+                    {
+                        type: "mc",
+                        q: "Which self-injectable DMT is an anti-CD20 therapy and is noted as an exception because it 'behaves like infusion therapies'?",
+                        options: ["Glatiramer acetate", "Interferon beta-1a", "Ofatumumab", "Peginterferon beta-1a"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which of the following is the correct Kesimpta (ofatumumab) dosing pattern?",
+                        options: ["20 mg SQ monthly starting immediately", "20 mg SQ weekly at weeks 0, 1, 2; then monthly starting week 4", "20 mg SQ daily for 14 days, then stop", "30 mcg IM weekly"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "For interferon beta products, which monitoring plan matches the recommended schedule?",
+                        options: ["CBC only at baseline, then annually", "LFTs monthly indefinitely, no CBC needed", "CBC/platelets/LFTs baseline, 1 month, q3 months x 1 year, then q6 months (plus suicide risk monitoring)", "No monitoring needed unless symptoms occur"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient on glatiramer acetate reports facial flushing, palpitations, chest discomfort, shortness of breath, and anxiety starting minutes after injection and resolving within ~30 minutes. Best interpretation?",
+                        options: ["This is anaphylaxis—administer epinephrine immediately", "This is the benign post-injection reaction; reassure/counsel and monitor", "This indicates liver failure—stop therapy", "This is PML—urgent MRI needed"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which oral DMT is explicitly noted as having a pregnancy Category X concern and may require a washout procedure?",
+                        options: ["Dimethyl fumarate", "Teriflunomide", "Fingolimod", "Cladribine"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "A patient taking teriflunomide wants to become pregnant soon. What is the best counseling point?",
+                        options: ["Stop teriflunomide; no further steps needed because it clears in ~1 week", "Stop teriflunomide; without washout it may take up to 2 years to reach acceptable plasma levels", "Continue teriflunomide through pregnancy because relapse risk decreases during pregnancy", "Switch to natalizumab immediately and give a live vaccine booster first"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which counseling recommendation is specifically highlighted for dimethyl fumarate–associated flushing?",
+                        options: ["Take on an empty stomach to improve absorption", "Premedicate with non-enteric aspirin 325 mg 30 minutes before the dose", "Crush and sprinkle capsule contents on food", "Avoid all food with dimethyl fumarate to reduce GI upset"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Which oral DMT is the only one with a pediatric indication (≥10 years old) among the S1P modulators?",
+                        options: ["Siponimod", "Ozanimod", "Fingolimod", "Ponesimod"],
+                        answer: 2
+                    },
+                    {
+                        type: "mc",
+                        q: "Which statement best reflects the 'place in therapy' concept for natalizumab?",
+                        options: ["Best first-line for all mild RRMS due to lowest risk", "Reserved for highly active disease; risk/benefit must be considered case-by-case", "Used only for PPMS", "Used only for CIS and never RRMS"],
+                        answer: 1
+                    },
+                    {
+                        type: "mc",
+                        q: "Discontinuation of a DMT may be considered in which scenario?",
+                        options: ["RRMS patient with no relapse for 3 months", "SPMS patient who is not ambulatory (EDSS ≥7) and has no ongoing relapses/MRI activity for ≥2 years", "Any patient who dislikes injections", "Any patient who becomes pregnant, regardless of agent"],
+                        answer: 1
+                    },
+
+                    // === MULTIPLE SCLEROSIS - Matching (16-18) ===
+                    {
+                        type: "match",
+                        q: "Match the DMT to its route + dosing frequency:",
+                        pairs: [
+                            { left: "Avonex", right: "IM once weekly" },
+                            { left: "Plegridy", right: "SQ q2 weeks" },
+                            { left: "Betaseron", right: "SQ every other day" },
+                            { left: "Glatiramer acetate (Copaxone/Glatopa)", right: "SQ 20 mg daily or 40 mg three times weekly" },
+                            { left: "Ofatumumab (Kesimpta)", right: "SQ weekly at weeks 0,1,2 then monthly starting week 4" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the drug to the key 'must-check/monitor' item:",
+                        pairs: [
+                            { left: "Interferon beta products", right: "CBC/platelets/LFT schedule and depression/suicide risk monitoring" },
+                            { left: "Ofatumumab", right: "HBV screening + quantitative serum immunoglobulins" },
+                            { left: "Natalizumab", right: "JCV antibody testing and close PML vigilance" },
+                            { left: "Teriflunomide", right: "Pregnancy testing + TB test + LFTs/BP; washout counseling" },
+                            { left: "Mitoxantrone", right: "LVEF monitoring + lifetime exposure/cardiotoxicity precautions" }
+                        ]
+                    },
+                    {
+                        type: "match",
+                        q: "Match the medication to the most appropriate 'when would you use it?' scenario:",
+                        pairs: [
+                            { left: "Ocrelizumab", right: "Only FDA-approved DMT for PPMS (also used in relapsing forms)" },
+                            { left: "Alemtuzumab", right: "Reserved for patients with inadequate response to ≥2 MS meds" },
+                            { left: "Cladribine", right: "RRMS/active SPMS (NOT CIS) and generally reserved when other therapies fail" },
+                            { left: "Traditional injectables (IFNs, glatiramer)", right: "Lower efficacy/slower onset but best safety profile" },
+                            { left: "Natalizumab", right: "Highly active relapsing MS; high efficacy but major PML monitoring" }
+                        ]
+                    },
+
+                    // === MULTIPLE SCLEROSIS - Select All That Apply (19-20) ===
+                    {
+                        type: "select",
+                        q: "Select ALL vaccines listed as live vaccines (generally avoided during many MS immunomodulatory/immunosuppressive therapies):",
+                        options: ["MMR", "Varicella", "Rotavirus", "FluMist (intranasal influenza)", "Yellow fever", "Injectable influenza vaccine"],
+                        answer: [0, 1, 2, 3, 4]
+                    },
+                    {
+                        type: "select",
+                        q: "Select ALL statements that are TRUE regarding MS disease-modifying therapies:",
+                        options: ["Many DMTs may take 1–2 years before effectiveness can be seen", "Steroids are used long-term to prevent disability progression", "Natalizumab has the highest PML risk among DMTs highlighted", "Teriflunomide may require a washout procedure and can persist for up to 2 years without washout", "Ocrelizumab requires premedication and post-infusion observation"],
+                        answer: [0, 2, 3, 4]
+                    }
                 ]
             }
-            // Add more exam quizzes here...
         };
 
+        // Quiz State Management
         let currentQuiz = null;
+        let currentQuestions = [];
         let currentQuestionIndex = 0;
         let quizScore = 0;
+        let consecutiveWrong = 0;
+        let selectedAnswers = [];
+        let matchSelection = { left: null, right: null };
+        let matchedPairs = {};
 
         // Swipe-to-reveal drag handling
         let dragState = {
             isDragging: false,
             startX: 0,
+            startY: 0,
             currentX: 0,
-            element: null
+            element: null,
+            directionLocked: null,  // 'horizontal' | 'vertical' | null
+            hasMoved: false
         };
 
         function startDrag(e, element) {
             // Prevent default only for touch to allow mouse selection elsewhere
             if (e.type === 'touchstart') {
                 dragState.startX = e.touches[0].clientX;
+                dragState.startY = e.touches[0].clientY;
             } else {
                 dragState.startX = e.clientX;
+                dragState.startY = e.clientY;
                 e.preventDefault();
             }
 
             dragState.isDragging = true;
             dragState.element = element;
             dragState.currentX = 0;
+            dragState.directionLocked = null;
+            dragState.hasMoved = false;
             element.classList.add('dragging');
             element.classList.remove('released');
 
@@ -2679,18 +3411,66 @@
         function onDrag(e) {
             if (!dragState.isDragging || !dragState.element) return;
 
-            let clientX;
+            let clientX, clientY;
             if (e.type === 'touchmove') {
                 clientX = e.touches[0].clientX;
-                e.preventDefault();
+                clientY = e.touches[0].clientY;
+
+                // Direction detection (only on first significant movement)
+                if (!dragState.directionLocked) {
+                    const deltaX = Math.abs(clientX - dragState.startX);
+                    const deltaY = Math.abs(clientY - dragState.startY);
+                    const threshold = 10; // pixels before locking direction
+
+                    if (deltaX > threshold || deltaY > threshold) {
+                        if (deltaX > deltaY) {
+                            dragState.directionLocked = 'horizontal';
+                        } else {
+                            // User is scrolling vertically - abort drag
+                            dragState.directionLocked = 'vertical';
+                            cancelDrag();
+                            return; // Let scroll happen naturally
+                        }
+                    } else {
+                        return; // Not enough movement to determine direction
+                    }
+                }
+
+                // Only preventDefault for horizontal drags
+                if (dragState.directionLocked === 'horizontal') {
+                    e.preventDefault();
+                } else {
+                    return; // Let vertical scroll pass through
+                }
             } else {
                 clientX = e.clientX;
             }
 
-            const diff = clientX - dragState.startX;
-            // Only allow dragging left (negative values)
-            dragState.currentX = Math.min(0, Math.max(diff, -200));
-            dragState.element.style.transform = `translateX(${dragState.currentX}px)`;
+            // Only apply transform for horizontal drags
+            if (dragState.directionLocked === 'horizontal' || e.type === 'mousemove') {
+                const diff = clientX - dragState.startX;
+                // Only allow dragging left (negative values)
+                dragState.currentX = Math.min(0, Math.max(diff, -200));
+                dragState.element.style.transform = `translateX(${dragState.currentX}px)`;
+                dragState.hasMoved = true;
+            }
+        }
+
+        function cancelDrag() {
+            if (!dragState.element) return;
+
+            const element = dragState.element;
+            element.classList.remove('dragging');
+            element.style.transform = 'translateX(0)';
+
+            dragState.isDragging = false;
+            dragState.element = null;
+            dragState.directionLocked = null;
+
+            document.removeEventListener('mousemove', onDrag);
+            document.removeEventListener('mouseup', endDrag);
+            document.removeEventListener('touchmove', onDrag);
+            document.removeEventListener('touchend', endDrag);
         }
 
         function endDrag(e) {
@@ -2700,8 +3480,8 @@
             element.classList.remove('dragging');
             element.classList.add('released');
 
-            // If dragged more than 120px, trigger the quiz
-            if (dragState.currentX < -120) {
+            // Only trigger quiz if user actually dragged horizontally past threshold
+            if (dragState.directionLocked === 'horizontal' && dragState.currentX < -120) {
                 const examName = element.querySelector('.exam-name').textContent;
                 // Animate fully off before opening quiz
                 element.style.transform = 'translateX(-100%)';
@@ -2720,6 +3500,8 @@
             // Clean up
             dragState.isDragging = false;
             dragState.element = null;
+            dragState.directionLocked = null;
+            dragState.hasMoved = false;
             document.removeEventListener('mousemove', onDrag);
             document.removeEventListener('mouseup', endDrag);
             document.removeEventListener('touchmove', onDrag);
@@ -2727,66 +3509,350 @@
         }
 
         function openCookedQuiz(examTopic) {
-            const quiz = cookedQuizzes[examTopic];
-            if (!quiz || quiz.questions.length === 0) {
-                // Show placeholder message
+            const bank = examQuestionBanks[examTopic];
+            if (!bank || bank.questions.length === 0 || (bank.questions.length === 1 && bank.questions[0].options[0] === "Check back later")) {
                 alert(`🔥 Quiz for "${examTopic}" coming soon!\n\nCheck back later for practice questions.`);
                 return;
             }
 
-            currentQuiz = quiz;
+            // Random selection of 10 questions (or all if < 10)
+            const shuffled = [...bank.questions].sort(() => Math.random() - 0.5);
+            currentQuestions = shuffled.slice(0, Math.min(10, shuffled.length));
+
+            currentQuiz = bank;
             currentQuestionIndex = 0;
             quizScore = 0;
+            consecutiveWrong = 0;
 
             document.getElementById('quiz-modal').classList.add('show');
-            document.getElementById('quiz-title').textContent = `🔥 Am I Cooked? - ${quiz.title}`;
+            document.getElementById('quiz-title').textContent = `🔥 Am I Cooked? - ${bank.title}`;
             showQuizQuestion();
         }
 
         function showQuizQuestion() {
-            if (!currentQuiz) return;
+            if (!currentQuiz || currentQuestionIndex >= currentQuestions.length) return;
 
-            const q = currentQuiz.questions[currentQuestionIndex];
-            const total = currentQuiz.questions.length;
+            const q = currentQuestions[currentQuestionIndex];
+            const total = currentQuestions.length;
+            const typeLabels = { mc: "Multiple Choice", select: "Select All", match: "Matching" };
 
             let html = `
                 <div class="quiz-progress">${currentQuestionIndex + 1} / ${total}</div>
+                <span class="quiz-type-badge ${q.type}">${typeLabels[q.type] || "Question"}</span>
                 <div class="quiz-question">${q.q}</div>
-                <div class="quiz-options">
             `;
 
-            q.options.forEach((opt, i) => {
-                html += `<button class="quiz-option" onclick="selectQuizAnswer(${i})">${opt}</button>`;
-            });
+            if (q.type === "mc") {
+                html += renderMultipleChoice(q);
+            } else if (q.type === "select") {
+                html += renderSelectAll(q);
+            } else if (q.type === "match") {
+                html += renderMatching(q);
+            }
 
-            html += '</div>';
             document.getElementById('quiz-content').innerHTML = html;
         }
 
-        function selectQuizAnswer(index) {
-            const q = currentQuiz.questions[currentQuestionIndex];
+        // === MULTIPLE CHOICE ===
+        function renderMultipleChoice(q) {
+            const indexed = q.options.map((opt, i) => ({ text: opt, originalIndex: i }));
+            indexed.sort(() => Math.random() - 0.5);
+            currentQuestions[currentQuestionIndex].shuffledOptions = indexed;
+
+            let html = '<div class="quiz-options">';
+            indexed.forEach((opt, i) => {
+                html += `<button class="quiz-option" onclick="selectMCAnswer(${i})">${opt.text}</button>`;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function selectMCAnswer(index) {
+            const q = currentQuestions[currentQuestionIndex];
+            const shuffled = q.shuffledOptions;
             const buttons = document.querySelectorAll('.quiz-option');
+            const selectedOriginal = shuffled[index].originalIndex;
+            const isCorrect = selectedOriginal === q.answer;
 
             buttons.forEach((btn, i) => {
                 btn.disabled = true;
-                if (i === q.answer) btn.classList.add('correct');
+                const origIndex = shuffled[i].originalIndex;
+                if (origIndex === q.answer) btn.classList.add('correct');
                 else if (i === index) btn.classList.add('wrong');
             });
 
-            if (index === q.answer) quizScore++;
+            handleAnswerResult(isCorrect);
+        }
 
-            setTimeout(() => {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < currentQuiz.questions.length) {
-                    showQuizQuestion();
-                } else {
-                    showQuizResult();
+        // === SELECT ALL THAT APPLY ===
+        function renderSelectAll(q) {
+            selectedAnswers = [];
+            const indexed = q.options.map((opt, i) => ({ text: opt, originalIndex: i }));
+            indexed.sort(() => Math.random() - 0.5);
+            currentQuestions[currentQuestionIndex].shuffledOptions = indexed;
+
+            let html = '<div class="quiz-options quiz-select-all">';
+            indexed.forEach((opt, i) => {
+                html += `
+                    <button class="quiz-option quiz-checkbox" onclick="toggleSelectAnswer(${i}, this)">
+                        <span class="checkbox-icon">☐</span>
+                        <span class="checkbox-text">${opt.text}</span>
+                    </button>`;
+            });
+            html += '</div>';
+            html += '<button class="quiz-submit-btn" onclick="submitSelectAll()">Submit Answer</button>';
+            return html;
+        }
+
+        function toggleSelectAnswer(index, btn) {
+            btn.classList.toggle('selected');
+            const icon = btn.querySelector('.checkbox-icon');
+            if (btn.classList.contains('selected')) {
+                icon.textContent = '☑';
+                if (!selectedAnswers.includes(index)) selectedAnswers.push(index);
+            } else {
+                icon.textContent = '☐';
+                selectedAnswers = selectedAnswers.filter(i => i !== index);
+            }
+        }
+
+        function submitSelectAll() {
+            const q = currentQuestions[currentQuestionIndex];
+            const shuffled = q.shuffledOptions;
+            const buttons = document.querySelectorAll('.quiz-option');
+            const submitBtn = document.querySelector('.quiz-submit-btn');
+            submitBtn.disabled = true;
+
+            // Map selected indices to original indices
+            const selectedOriginal = selectedAnswers.map(i => shuffled[i].originalIndex).sort();
+            const correctOriginal = [...q.answer].sort();
+
+            // Check if arrays match
+            const isCorrect = selectedOriginal.length === correctOriginal.length &&
+                selectedOriginal.every((val, i) => val === correctOriginal[i]);
+
+            // Show feedback
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                const origIndex = shuffled[i].originalIndex;
+                const shouldBeSelected = q.answer.includes(origIndex);
+                const wasSelected = selectedAnswers.includes(i);
+
+                if (shouldBeSelected && wasSelected) btn.classList.add('correct');
+                else if (shouldBeSelected && !wasSelected) btn.classList.add('correct'); // missed
+                else if (!shouldBeSelected && wasSelected) btn.classList.add('wrong');
+            });
+
+            handleAnswerResult(isCorrect);
+        }
+
+        // === MATCHING ===
+        function renderMatching(q) {
+            matchedPairs = {};
+            matchSelection = { left: null, right: null };
+
+            const leftItems = q.pairs.map((p, i) => ({ text: p.left, index: i }));
+            const rightItems = q.pairs.map((p, i) => ({ text: p.right, index: i }));
+            rightItems.sort(() => Math.random() - 0.5);
+            currentQuestions[currentQuestionIndex].shuffledRight = rightItems;
+
+            let html = `
+                <div class="match-container">
+                    <div class="match-column match-left">
+                        ${leftItems.map((item, i) => `
+                            <div class="match-item" data-left="${i}" onclick="selectMatchItem(this, 'left', ${i})">
+                                <span class="match-number">${i + 1}.</span>
+                                <span class="match-text">${item.text}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="match-column match-right">
+                        ${rightItems.map((item, displayIndex) => `
+                            <div class="match-item" data-right="${item.index}" onclick="selectMatchItem(this, 'right', ${item.index})">
+                                <span class="match-letter">${String.fromCharCode(65 + displayIndex)}.</span>
+                                <span class="match-text">${item.text}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="match-pairs" id="match-pairs">Click a term, then click its match</div>
+                <button class="quiz-submit-btn" onclick="submitMatching()" id="match-submit-btn" disabled>Submit Answer</button>
+            `;
+            return html;
+        }
+
+        function selectMatchItem(el, side, index) {
+            if (el.classList.contains('paired')) return;
+
+            // Remove active from same column
+            document.querySelectorAll(`.match-${side} .match-item`).forEach(item => {
+                item.classList.remove('active');
+            });
+
+            el.classList.add('active');
+            matchSelection[side] = { element: el, index: index };
+
+            // If both selected, create pair
+            if (matchSelection.left && matchSelection.right) {
+                const leftIdx = matchSelection.left.index;
+                const rightIdx = matchSelection.right.index;
+
+                matchedPairs[leftIdx] = rightIdx;
+
+                matchSelection.left.element.classList.remove('active');
+                matchSelection.left.element.classList.add('paired');
+                matchSelection.right.element.classList.remove('active');
+                matchSelection.right.element.classList.add('paired');
+
+                updateMatchPairsDisplay();
+
+                matchSelection = { left: null, right: null };
+
+                // Enable submit if all pairs made
+                const q = currentQuestions[currentQuestionIndex];
+                if (Object.keys(matchedPairs).length === q.pairs.length) {
+                    document.getElementById('match-submit-btn').disabled = false;
                 }
-            }, 1000);
+            }
+        }
+
+        function updateMatchPairsDisplay() {
+            const q = currentQuestions[currentQuestionIndex];
+            const pairsDiv = document.getElementById('match-pairs');
+
+            if (Object.keys(matchedPairs).length === 0) {
+                pairsDiv.innerHTML = 'Click a term, then click its match';
+                return;
+            }
+
+            let html = '<strong>Your pairs:</strong>';
+            for (const [leftIdx, rightIdx] of Object.entries(matchedPairs)) {
+                const leftText = q.pairs[leftIdx].left;
+                const rightItem = q.pairs.find((p, i) => i === parseInt(rightIdx));
+                html += `<div class="match-pair-item">
+                    <span>${parseInt(leftIdx) + 1}. ${leftText} → ${rightItem ? rightItem.right : '?'}</span>
+                    <span class="match-pair-remove" onclick="removeMatchPair(${leftIdx})">✕</span>
+                </div>`;
+            }
+            pairsDiv.innerHTML = html;
+        }
+
+        function removeMatchPair(leftIdx) {
+            const rightIdx = matchedPairs[leftIdx];
+            delete matchedPairs[leftIdx];
+
+            // Unpair the elements
+            document.querySelector(`.match-item[data-left="${leftIdx}"]`).classList.remove('paired');
+            document.querySelector(`.match-item[data-right="${rightIdx}"]`).classList.remove('paired');
+
+            updateMatchPairsDisplay();
+            document.getElementById('match-submit-btn').disabled = true;
+        }
+
+        function submitMatching() {
+            const q = currentQuestions[currentQuestionIndex];
+            const submitBtn = document.getElementById('match-submit-btn');
+            submitBtn.disabled = true;
+
+            // Check correctness: left index should match right index (pairs are 1:1)
+            let correctCount = 0;
+            for (const [leftIdx, rightIdx] of Object.entries(matchedPairs)) {
+                if (parseInt(leftIdx) === parseInt(rightIdx)) correctCount++;
+            }
+
+            const isCorrect = correctCount === q.pairs.length;
+
+            // Show feedback in pairs display
+            const pairsDiv = document.getElementById('match-pairs');
+            let html = '<strong>Results:</strong>';
+            for (const [leftIdx, rightIdx] of Object.entries(matchedPairs)) {
+                const leftText = q.pairs[leftIdx].left;
+                const rightItem = q.pairs.find((p, i) => i === parseInt(rightIdx));
+                const correct = parseInt(leftIdx) === parseInt(rightIdx);
+                html += `<div class="match-pair-item" style="color: ${correct ? '#22C55E' : '#EF4444'}">
+                    <span>${correct ? '✓' : '✗'} ${leftText} → ${rightItem.right}</span>
+                </div>`;
+            }
+            pairsDiv.innerHTML = html;
+
+            // Disable all match items
+            document.querySelectorAll('.match-item').forEach(el => {
+                el.style.pointerEvents = 'none';
+            });
+
+            handleAnswerResult(isCorrect);
+        }
+
+        // === HINT SYSTEM ===
+        function showHint() {
+            const hints = currentQuiz.hints || ["Keep studying! You've got this!"];
+            const randomHint = hints[Math.floor(Math.random() * hints.length)];
+
+            document.getElementById('quiz-content').innerHTML = `
+                <div class="quiz-hint">
+                    <div class="hint-icon">💡</div>
+                    <div class="hint-title">High-Yield Tip!</div>
+                    <div class="hint-text">${randomHint}</div>
+                    <button class="hint-continue-btn" onclick="continueAfterHint()">Continue</button>
+                </div>
+            `;
+        }
+
+        function continueAfterHint() {
+            advanceQuestion();
+        }
+
+        function handleAnswerResult(isCorrect) {
+            if (isCorrect) {
+                quizScore++;
+                consecutiveWrong = 0;
+            } else {
+                consecutiveWrong++;
+            }
+
+            // Show Next button instead of auto-advancing
+            setTimeout(() => {
+                showNextButton(isCorrect);
+            }, 400);
+        }
+
+        function showNextButton(wasCorrect) {
+            const quizContent = document.getElementById('quiz-content');
+            const isLastQuestion = currentQuestionIndex >= currentQuestions.length - 1;
+            const buttonText = isLastQuestion ? 'See Results' : 'Next Question →';
+
+            // Create feedback banner and next button
+            const feedbackHtml = `
+                <div class="quiz-feedback ${wasCorrect ? 'correct' : 'wrong'}">
+                    ${wasCorrect ? '✓ Correct!' : '✗ Incorrect - Review the correct answer above'}
+                </div>
+                <button class="quiz-next-btn" onclick="handleNextClick()">${buttonText}</button>
+            `;
+
+            // Append to quiz content
+            quizContent.insertAdjacentHTML('beforeend', feedbackHtml);
+        }
+
+        function handleNextClick() {
+            if (consecutiveWrong >= 3) {
+                consecutiveWrong = 0;
+                showHint();
+            } else {
+                advanceQuestion();
+            }
+        }
+
+        function advanceQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuestions.length) {
+                showQuizQuestion();
+            } else {
+                showQuizResult();
+            }
         }
 
         function showQuizResult() {
-            const total = currentQuiz.questions.length;
+            const total = currentQuestions.length;
             const percent = Math.round((quizScore / total) * 100);
             let verdict, emoji;
 
@@ -2800,7 +3866,7 @@
                     <div class="result-emoji">${emoji}</div>
                     <div class="result-score">${quizScore} / ${total}</div>
                     <div class="result-verdict">${verdict}</div>
-                    <button class="quiz-close-btn" onclick="closeQuizModal()">Close</button>
+                    <button class="quiz-close-btn" onclick="closeQuizModal()">Try Again</button>
                 </div>
             `;
         }
@@ -2808,6 +3874,9 @@
         function closeQuizModal() {
             document.getElementById('quiz-modal').classList.remove('show');
             currentQuiz = null;
+            currentQuestions = [];
+            matchedPairs = {};
+            selectedAnswers = [];
         }
 
         function init() {
