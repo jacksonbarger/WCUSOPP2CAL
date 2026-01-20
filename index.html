@@ -1623,6 +1623,58 @@
             margin-top: 2px;
         }
 
+        .law-practice-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--block-law) 0%, #64748b 100%);
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin: 16px 0;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .law-practice-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .law-practice-link:active {
+            transform: translateY(0);
+        }
+
+        .law-practice-link .icon {
+            font-size: 1.2rem;
+        }
+
+        .law-practice-link .text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .law-practice-link .text .main {
+            font-weight: 600;
+        }
+
+        .law-practice-link .text .sub {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .law-practice-link .arrow {
+            margin-left: auto;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
         /* Current indicator - green background applied via .class-item.current */
 
         @media (max-width: 500px) {
@@ -2792,6 +2844,19 @@
                     </div>`;
                 });
                 html += '</div></div>';
+
+                // Law Practice Link - show if there are any law exams
+                const hasLawExams = upcomingExamsList.some(e => e.topic.toLowerCase().includes('law'));
+                if (hasLawExams) {
+                    html += `<a href="https://pharmlaw.vercel.app" target="_blank" class="law-practice-link">
+                        <span class="icon">⚖️</span>
+                        <span class="text">
+                            <span class="main">Practice Pharmacy Law</span>
+                            <span class="sub">AI-powered MPJE study trainer</span>
+                        </span>
+                        <span class="arrow">→</span>
+                    </a>`;
+                }
             }
 
             // PT Quizzes Section
