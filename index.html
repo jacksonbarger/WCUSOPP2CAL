@@ -1216,6 +1216,96 @@
             50% { transform: translateX(-4px); opacity: 1; }
         }
 
+        /* Law Exam Expandable Resources */
+        .exam-swipe-container.law-exam {
+            flex-direction: column;
+        }
+
+        .exam-swipe-container.law-exam .exam-item-draggable {
+            cursor: pointer;
+        }
+
+        .exam-swipe-container.law-exam .expand-indicator {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            transition: transform 0.2s;
+        }
+
+        .exam-swipe-container.law-exam.expanded .expand-indicator {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .law-exam-resources {
+            display: none;
+            background: var(--color-background);
+            border-radius: 0 0 8px 8px;
+            padding: 12px 16px;
+            margin-top: -4px;
+            border-left: 4px solid var(--block-law);
+        }
+
+        .exam-swipe-container.law-exam.expanded .law-exam-resources {
+            display: block;
+        }
+
+        .law-exam-resources-title {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .law-exam-resource-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: var(--color-background-light);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+            transition: all 0.2s;
+        }
+
+        .law-exam-resource-link:last-child {
+            margin-bottom: 0;
+        }
+
+        .law-exam-resource-link:hover {
+            background: rgba(255,255,255,0.05);
+            transform: translateX(4px);
+        }
+
+        .law-exam-resource-link .resource-icon {
+            font-size: 1.2rem;
+        }
+
+        .law-exam-resource-link .resource-info {
+            flex: 1;
+        }
+
+        .law-exam-resource-link .resource-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .law-exam-resource-link .resource-desc {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+        }
+
+        .law-exam-resource-link .resource-arrow {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
         /* Quiz Modal */
         .quiz-modal {
             display: none;
@@ -2591,6 +2681,13 @@
 
         function toggleClass(ds, i) { document.getElementById(`class-${ds}-${i}`)?.classList.toggle('expanded'); }
 
+        function toggleLawExamResources(examIndex) {
+            const container = document.getElementById(`law-exam-${examIndex}`);
+            if (container) {
+                container.classList.toggle('expanded');
+            }
+        }
+
         function updateStatus() {
             const now = getCentralTime(), today = getDateString(now), ts = schedule.find(d => d.date === today);
             const sb = document.getElementById('status-badge'), si = document.getElementById('status-info'), bar = document.getElementById('status-bar');
@@ -2815,11 +2912,13 @@
                 html += '<div class="exam-section">';
                 html += '<div class="exam-section-title"><span class="icon">🔴</span> Upcoming Exams</div>';
                 html += '<div class="exam-list">';
-                upcomingExamsList.forEach(exam => {
+                upcomingExamsList.forEach((exam, examIndex) => {
                     const isToday = exam.date === today;
                     const daysUntil = Math.ceil((new Date(exam.date + 'T00:00:00') - now) / (1000 * 60 * 60 * 24));
                     const countdown = isToday ? 'TODAY' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil} days`;
-                    html += `<div class="exam-swipe-container">
+                    const isLawExam = exam.topic.toLowerCase().includes('law');
+
+                    html += `<div class="exam-swipe-container ${isLawExam ? 'law-exam' : ''}" ${isLawExam ? `id="law-exam-${examIndex}"` : ''}>
                         <div class="cooked-reveal" onclick="openCookedQuiz('${exam.topic.replace(/'/g, "\\'")}')">
                             <span class="cooked-fire">🔥</span>
                             <span class="cooked-fire">🔥</span>
@@ -2827,8 +2926,9 @@
                             <span class="cooked-text">How cooked am I?</span>
                         </div>
                         <div class="exam-item exam-item-draggable ${isToday ? 'today' : ''}"
-                             onmousedown="startDrag(event, this)"
-                             ontouchstart="startDrag(event, this)">
+                             onmousedown="${isLawExam ? '' : 'startDrag(event, this)'}"
+                             ontouchstart="${isLawExam ? '' : 'startDrag(event, this)'}"
+                             onclick="${isLawExam ? `toggleLawExamResources(${examIndex})` : ''}">
                             <div class="exam-date">
                                 <div class="day">${dayNames[new Date(exam.date + 'T00:00:00').getDay()]}</div>
                                 <div class="date">${formatDate(exam.date)}</div>
@@ -2839,8 +2939,20 @@
                                 <div class="exam-details">${formatTime12(exam.time)} - ${exam.end === 'TBD' ? 'TBD' : formatTime12(exam.end)}</div>
                             </div>
                             <span class="exam-type-badge ${exam.examType.badge}">${exam.examType.label}</span>
-                            <span class="swipe-hint"><span class="swipe-hint-arrow">←</span> swipe</span>
+                            ${isLawExam ? '<span class="expand-indicator">▼</span>' : '<span class="swipe-hint"><span class="swipe-hint-arrow">←</span> swipe</span>'}
                         </div>
+                        ${isLawExam ? `
+                        <div class="law-exam-resources">
+                            <div class="law-exam-resources-title">Study Resources</div>
+                            <a href="https://pharmlaw.vercel.app" target="_blank" class="law-exam-resource-link">
+                                <span class="resource-icon">⚖️</span>
+                                <div class="resource-info">
+                                    <div class="resource-name">Practice Pharmacy Law</div>
+                                    <div class="resource-desc">AI-powered MPJE study trainer</div>
+                                </div>
+                                <span class="resource-arrow">→</span>
+                            </a>
+                        </div>` : ''}
                     </div>`;
                 });
                 html += '</div></div>';
