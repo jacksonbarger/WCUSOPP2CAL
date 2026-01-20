@@ -1222,27 +1222,30 @@
         }
 
         .exam-swipe-container.law-exam .expand-indicator {
-            position: absolute;
-            right: 6px;
-            top: 6px;
-            font-size: 0.65rem;
-            color: var(--color-text-muted);
-            background: var(--color-background);
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            height: 44px;
+            font-size: 1.4rem;
+            color: var(--color-text-primary);
+            background: linear-gradient(135deg, var(--block-law) 0%, #64748b 100%);
+            border: none;
+            border-radius: 8px;
+            margin-right: 12px;
             cursor: pointer;
             transition: all 0.2s;
             z-index: 5;
+            flex-shrink: 0;
         }
 
         .exam-swipe-container.law-exam .expand-indicator:hover {
-            background: var(--color-background-light);
-            color: var(--color-text-primary);
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        .exam-swipe-container.law-exam.expanded .expand-indicator {
-            transform: rotate(180deg);
+        .exam-swipe-container.law-exam .expand-indicator:active {
+            transform: scale(0.98);
         }
 
         .law-exam-resources {
@@ -2934,6 +2937,7 @@
                         <div class="exam-item exam-item-draggable ${isToday ? 'today' : ''}"
                              onmousedown="startDrag(event, this)"
                              ontouchstart="startDrag(event, this)">
+                            ${isLawExam ? `<span class="expand-indicator" onclick="event.stopPropagation(); toggleLawExamResources(${examIndex})">📚</span>` : ''}
                             <div class="exam-date">
                                 <div class="day">${dayNames[new Date(exam.date + 'T00:00:00').getDay()]}</div>
                                 <div class="date">${formatDate(exam.date)}</div>
@@ -2944,7 +2948,6 @@
                                 <div class="exam-details">${formatTime12(exam.time)} - ${exam.end === 'TBD' ? 'TBD' : formatTime12(exam.end)}</div>
                             </div>
                             <span class="exam-type-badge ${exam.examType.badge}">${exam.examType.label}</span>
-                            ${isLawExam ? `<span class="expand-indicator" onclick="event.stopPropagation(); toggleLawExamResources(${examIndex})">📚</span>` : ''}
                             <span class="swipe-hint"><span class="swipe-hint-arrow">←</span> swipe</span>
                         ${isLawExam ? `
                         <div class="law-exam-resources">
